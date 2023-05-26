@@ -1,0 +1,23 @@
+{
+  "pyright.inlayHints.functionReturnTypes" : false,
+  "pyright.inlayHints.variableTypes": false,
+  "python.analysis.typeshedPaths": [
+  "/mnt/c/Users/thiba/AppData/Local/Programs/Python/Python311/Lib:site-packages"
+  ],
+
+
+  "editor.tabCompletion": true,
+  "editor.snippetSuggestions": "none",
+  "editor.quickSuggestions": false,
+
+  "diagnostic.errorSign": " ",
+  "diagnostic.warningSign": " ",
+  "diagnostic.infoSign": " ",
+  "diagnostic.hintSign": " ",
+
+  "clangd.path": "~/.config/coc/extensions/coc-clangd-data/install/16.0.2/clangd_16.0.2/bin/clangd",
+  "preferences.virtualText": false,
+  "clangd.disableDiagnostics": true,
+}
+
+
