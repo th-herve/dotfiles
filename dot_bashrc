@@ -23,7 +23,7 @@ alias bsi="nvim ~/.bashrc"
 alias bss="source ~/.bashrc"
 # see img in terminal
 alias icat="kitty +kitten icat"
-alias chezmoi="czm"
+alias cmoid="chezmoi cd"
 
 # set default editor
 export VISUAL=nvim;
