@@ -24,7 +24,7 @@
 # OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 # SOFTWARE.
 
-from libqtile import bar, layout, widget
+from libqtile import bar, layout, widget, hook
 from libqtile.config import Click, Drag, Group, Key, Match, Screen
 from libqtile.lazy import lazy
 
@@ -33,6 +33,10 @@ import datetime
 mod = "mod4"
 terminal = "kitty"
 editor = "nvim"
+
+@hook.subscribe.startup
+def autostart():
+    lazy.spawn("~/.config/qtile/autostart.sh")
 
 
 keys = [
