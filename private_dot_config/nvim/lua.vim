@@ -1,6 +1,6 @@
-lua <<EOF
 
--- Treesitter
+" Treesitter
+lua <<EOF
 
 require'nvim-treesitter.configs'.setup {
   -- A list of parser names, or "all" (the five listed parsers should always be installed)
@@ -23,13 +23,11 @@ require'nvim-treesitter.configs'.setup {
     additional_vim_regex_highlighting = false,
   },
 }
-
 EOF
 
- 
-lua <<EOF
 
--- NvimTree
+" Nvim tree 
+lua <<EOF
 
 vim.g.loaded_netrw = 1
 vim.g.loaded_netrwPlugin = 1
@@ -53,6 +51,4 @@ require("nvim-tree").setup({
   },
 })
 
-
 EOF
-

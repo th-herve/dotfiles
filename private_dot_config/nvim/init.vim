@@ -157,6 +157,8 @@ nnoremap <M-u> <C-u>zz
 nnoremap ' m
 nnoremap m '
 
+nnoremap <leader>c ColorizerToggle 
+
 
 " +-------------------------------+
 " |           Plugins             |
@@ -264,6 +266,8 @@ highlight NvimTreeWinSeparator guifg=#181926
 " +-------------------------------+
 " |           Function            |
 " +-------------------------------+
+
+autocmd FileType html,css ColorizerAttachToBuffer
 
 function! Recording()
   if v:register != '*'
