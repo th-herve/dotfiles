@@ -18,6 +18,8 @@ set clipboard=unnamedplus
 
 set scrolloff=8
 
+set termguicolors  
+
 "    === Status bar === 
 
 set statusline=%=%l/%L 
@@ -138,11 +140,11 @@ nnoremap <C-u> <C-u>zz
 nnoremap n nzzzv
 nnoremap N nzzzv 
 
-nnoremap <leader>u :UndotreeToggle<CR>
+nnoremap <silent> <leader>u :UndotreeToggle<CR>
 
 nnoremap <leader>l :ls<CR>:b <Space> 
 
-nnoremap <leader>; A;<Esc> 
+nnoremap <leader>; A;<Esc>
 
 nnoremap <leader><Space> za
 
@@ -157,7 +159,7 @@ nnoremap <M-u> <C-u>zz
 nnoremap ' m
 nnoremap m '
 
-nnoremap <leader>c ColorizerToggle 
+nnoremap <silent> <leader>cl :ColorizerToggle<CR>
 
 
 " +-------------------------------+
@@ -199,7 +201,7 @@ call plug#begin('~/.config/nvim/plugged')
     
 call plug#end()
 
-
+lua require'colorizer'.setup()
 source   ~/.config/nvim/lua.vim
 
 "        === Vimwiki ===
@@ -267,7 +269,6 @@ highlight NvimTreeWinSeparator guifg=#181926
 " |           Function            |
 " +-------------------------------+
 
-autocmd FileType html,css ColorizerAttachToBuffer
 
 function! Recording()
   if v:register != '*'
