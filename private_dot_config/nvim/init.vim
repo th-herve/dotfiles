@@ -176,6 +176,7 @@ call plug#begin('~/.config/nvim/plugged')
     Plug 'yamatsum/nvim-cursorline',
     Plug 'itchyny/vim-cursorword',
     Plug 'jiangmiao/auto-pairs',
+    Plug 'norcalli/nvim-colorizer.lua',
 
     Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'},
     Plug 'nvim-treesitter/playground',
