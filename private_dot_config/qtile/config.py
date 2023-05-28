@@ -29,6 +29,8 @@ from libqtile.config import Click, Drag, Group, Key, Match, Screen
 from libqtile.lazy import lazy
 
 import datetime
+import os
+import subprocess
 
 mod = "mod4"
 terminal = "kitty"
@@ -36,7 +38,8 @@ editor = "nvim"
 
 @hook.subscribe.startup
 def autostart():
-    lazy.spawn("~/.config/qtile/autostart.sh")
+    home = os.path.expanduser('~/.config/qtile/autostart.sh')
+    subprocess.call([home])
 
 
 keys = [
