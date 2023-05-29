@@ -23,6 +23,7 @@ leader or ld = space
 | ld+wv  | open init.vim         |
 | C-a/x  | increment/decrement   |
 | #      | search cursor word    |
+| ld+cl  | toggle colorize       |
 
 ## terminal 
 

@@ -132,11 +132,11 @@ groups = [Group("q",  label="  ", spawn=terminal),
                    
           Group("e",  label=" 󰚩 ", spawn="google-chrome https://chat.openai.com/"),
 
-          Group("1",  label="  "),
+          Group("1",  label="  "),
 
           Group("2",  label="  ", spawn=terminal),
 
-          Group("3",  label=" 󰊫 ", spawn="google-chrome https://mail.google.com/mail/u/1/#inbox"),
+          Group("3",  label="  ", spawn="google-chrome https://mail.google.com/mail/u/1/#inbox"),
 
           Group("4",  label="", spawn="spotify")]
 

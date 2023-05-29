@@ -7,9 +7,15 @@ alias v="nvim"
 alias python="python3"
 
 alias r="ranger"
+
 alias nvc="cd ~/.config/nvim"
 alias nvi="chezmoi edit ~/.config/nvim/init.vim"
 alias nvp="cd ~/.config/nvim/plugged"
+alias wiki="nvim ~/.config/nvim/vimwiki/index.md"
+
+# see img in terminal
+alias icat="kitty +kitten icat"
+
 alias bat="batcat"
 alias ipadress="echo $(ifconfig | grep broadcast | awk '{print $2}')"
 alias mv="mv -i" # ask if override
@@ -17,12 +23,12 @@ alias cddl="cd ~/Downloads"
 
 alias qtc="cd ~/.config/qtile"
 alias qti="chezmoi edit ~/.config/qtile/config.py"
+
 alias ktc="cd ~/.config/kitty"
 alias kti="chezmoi edit ~/.config/kitty/kitty.conf"
+
 alias bsi="chezmoi edit ~/.bashrc"
 alias bss="source ~/.bashrc"
-# see img in terminal
-alias icat="kitty +kitten icat"
 
 alias cmd="chezmoi cd"
 alias cme="chezmoi edit"
