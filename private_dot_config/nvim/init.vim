@@ -208,9 +208,10 @@ source   ~/.config/nvim/lua.vim
 
 filetype plugin on
 syntax on
-let g:vimwiki_list = [{'path': '~/.config/nvim/vimwiki', 
+let g:vimwiki_list = [{'path': '~/.config/nvim/vimwiki/wiki', 
             \ 'syntax': 'markdown', 'ext': '.md'}]
-let g:vimwiki_path = '~/.config/nvim/vimwiki/'
+let g:vimwiki_path = '~/.config/nvim/vimwiki/wiki'
+let g:vimwiki_markdown_link_ext = 1
 " let g:vimwiki_auto_fold = 1
 
 "        === Undotree ===
