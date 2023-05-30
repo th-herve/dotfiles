@@ -9,10 +9,10 @@ alias python="python3"
 alias r="ranger"
 
 alias nvc="cd ~/.config/nvim"
-alias nvcw="cd ~/.config/nvim/vimwiki"
+alias nvcw="cd ~/.config/nvim/vimwiki/docs"
 alias nvi="chezmoi edit ~/.config/nvim/init.vim"
 alias nvp="cd ~/.config/nvim/plugged"
-alias wiki="nvim ~/.config/nvim/vimwiki/wiki/index.md"
+alias wiki="nvim ~/.config/nvim/vimwiki/docs/index.md"
 
 # see img in terminal
 alias icat="kitty +kitten icat"

@@ -4,7 +4,7 @@
 # or glow to read only
 
 # Path to your Vim wiki directory
-VIM_WIKI_DIR="/home/adiantum/.config/nvim/vimwiki/"
+VIM_WIKI_DIR="/home/adiantum/.config/nvim/vimwiki/docs/"
 MY_TERM="kitty"
 MY_EDITOR="nvim"
 
