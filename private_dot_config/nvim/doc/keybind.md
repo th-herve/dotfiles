@@ -48,6 +48,8 @@ leader or ld = space
 | :5,10s/old/new/g | replace from line 5 to 10 (inclusive)        |
 | /text            | search for text                              |
 
+> add bufdo to apply to all buffer
+
 ## spell check 
 
 | key     | action               |
