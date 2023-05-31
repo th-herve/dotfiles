@@ -142,9 +142,12 @@ nnoremap N nzzzv
 
 nnoremap <silent> <leader>u :UndotreeToggle<CR>
 
-nnoremap <leader>l :ls<CR>:b <Space> 
+nnoremap <leader>l :ls<CR>:b <Space>
 
 nnoremap <leader>; A;<Esc>
+nnoremap <leader>. A.<Esc>
+nnoremap <leader>, A,<Esc>
+nnoremap <leader>: A:<Esc>
 
 nnoremap <leader><Space> za
 
