@@ -165,6 +165,12 @@ nnoremap m '
 
 nnoremap <silent> <leader>cl :ColorizerToggle<CR>
 
+" Git fugitive
+
+nnoremap <leader>gs :Git status<CR>
+nnoremap <leader>ga. :Git add .<CR>
+nnoremap <leader>gcm :Git commit -m "
+nnoremap <leader>gp :Git push
 
 " +-------------------------------+
 " |           Plugins             |
@@ -317,4 +323,3 @@ endif
 iabbrev inem if __name__ == "__main__jkA:jko
 
 cabbrev snvi source ~/.config/nvim/init.vim
-     
