@@ -58,10 +58,8 @@ set fillchars=fold:\
 
 "      === Other ===
 
-" let g:netrw_liststyle = 3
-" let g:netrw_banner = 0
-
 set spelllang=en_us
+set spellsuggest+=10
 
 set completeopt-=preview
 
@@ -70,6 +68,9 @@ set ignorecase smartcase
 
 set noswapfile
 set nobackup
+
+" let g:netrw_liststyle = 3
+" let g:netrw_banner = 0
 
 " +-------------------------------+
 " |           Keybinds            |
