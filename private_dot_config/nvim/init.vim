@@ -203,6 +203,8 @@ call plug#begin('~/.config/nvim/plugged')
     Plug 'nvim-tree/nvim-web-devicons',
     Plug 'nvim-tree/nvim-tree.lua',
 
+    Plug 'ziontee113/color-picker.nvim',
+    Plug 'KabbAmine/vCoolor.vim',
 "         == themes ==
     Plug 'catppuccin/nvim', { 'as': 'catppuccin' },
     Plug 'Mofiqul/dracula.nvim',
@@ -214,6 +216,8 @@ call plug#end()
 
 lua require'colorizer'.setup()
 source   ~/.config/nvim/lua.vim
+
+lua require('color-picker').setup()
 
 "        === Vimwiki ===
 

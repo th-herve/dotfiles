@@ -102,6 +102,7 @@ keys = [
         desc="Toggle floating",
         ),
     Key([mod], "o", lazy.widget["keyboardlayout"].next_keyboard(), desc="Next keyboard layout."),
+
     
 ]
 
