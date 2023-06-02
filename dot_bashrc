@@ -16,6 +16,7 @@ alias wiki="nvim ~/.config/nvim/vimwiki/docs/index.md"
 
 # see img in terminal
 alias icat="kitty +kitten icat"
+alias kt.='nohup kitty --directory "$(pwd)" >/dev/null 2>&1 & disown'
 
 alias bat="batcat"
 alias ipadress="echo $(ifconfig | grep broadcast | awk '{print $2}')"
