@@ -1,6 +1,7 @@
 #!/bin/sh
 
-exec >> /tmp/autostart.log 2>&1
+# lauch picom
+picom &
 
 # set refresh rate to 144
 xrandr -r 144
@@ -14,5 +15,3 @@ mouse_accel_id=$(xinput list-props $mouse_id | awk -F '\(|\)' '/.*Accel Profile 
 
 # remove mouse accel
 xinput set-prop $mouse_id $mouse_accel_id 0, 1 
-
-# xinput set-prop $mouse_id 309 -0.2

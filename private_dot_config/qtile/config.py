@@ -31,6 +31,7 @@ from libqtile.lazy import lazy
 import datetime
 import os
 import subprocess
+import time
 
 mod = "mod4"
 terminal = "kitty"
@@ -127,7 +128,7 @@ catppuccin = {
 
 # groups = [Group(i) for i in "123456789"]
 
-groups = [Group("q",  label="  ", spawn=terminal),
+groups = [Group("q",  label="  ", layout="Columns"),
                    
           Group("w",  label=" 󰈹 ", spawn="firefox"),
                    
@@ -135,7 +136,7 @@ groups = [Group("q",  label="  ", spawn=terminal),
 
           Group("1",  label="  "),
 
-          Group("2",  label="  ", spawn=terminal),
+          Group("2",  label="  ", layout="Columns"),
 
           Group("3",  label="  ", spawn="google-chrome https://mail.google.com/mail/u/1/#inbox"),
 
