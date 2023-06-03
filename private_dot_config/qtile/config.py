@@ -77,7 +77,7 @@ keys = [
     ),
     Key([mod], "Return", lazy.spawn(terminal), desc="Launch terminal"),
     # Toggle between different layouts as defined below
-    Key([mod], "Tab", lazy.next_layout(), desc="Toggle between layouts"),
+    Key([mod], "m", lazy.next_layout(), desc="Toggle between layouts"),
     Key([mod], "x", lazy.window.kill(), desc="Kill focused window"),
     Key([mod, "control"], "r", lazy.reload_config(), desc="Reload the config"),
     Key([mod, "control"], "q", lazy.shutdown(), desc="Shutdown Qtile"),
@@ -168,7 +168,6 @@ for i in groups:
 
 layouts = [
     # layout.Columns(border_focus_stack=["#6e2fc2", "#712d8c"], border_width=3),
-    layout.Max(),
     layout.Columns(
         border_focus=catppuccin["teal"],
         border_normal=catppuccin["black"],
@@ -176,6 +175,7 @@ layouts = [
         border_width=1,
         margin=8,
         ),
+    layout.Max(),
     # Try more layouts by unleashing below layouts.
     # layout.Stack(num_stacks=2),
     # layout.Bsp(),
