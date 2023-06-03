@@ -209,7 +209,7 @@ screens = [
                     fontsize=25, 
                     background=catppuccin["green"],
                     foreground=catppuccin["black"],
-                    countdown_format='{}',
+                    countdown_format='{} ',
                     ),
 
                 widget.TextBox(
