@@ -25,6 +25,7 @@ alias cddl="cd ~/Downloads"
 
 alias qtc="cd ~/.config/qtile"
 alias qti="chezmoi edit ~/.config/qtile/config.py"
+alias qtr="pkill -SIGUSR1 qtile"
 
 alias ktc="cd ~/.config/kitty"
 alias kti="chezmoi edit ~/.config/kitty/kitty.conf"
