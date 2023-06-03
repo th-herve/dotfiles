@@ -70,7 +70,7 @@ keys = [
     # multiple stack panes
     Key(
         [mod, "shift"],
-        "Return",
+        "Tab",
         lazy.layout.toggle_split(),
         desc="Toggle between split and unsplit sides of stack",
     ),
@@ -168,12 +168,18 @@ for i in groups:
 layouts = [
     # layout.Columns(border_focus_stack=["#6e2fc2", "#712d8c"], border_width=3),
     layout.Max(),
-    layout.Columns(border_focus=catppuccin["teal"],border_normal=catppuccin["black"], border_width=1),
+    layout.Columns(
+        border_focus=catppuccin["teal"],
+        border_normal=catppuccin["black"],
+        border_focus_stack=catppuccin['green'],
+        border_width=1,
+        margin=8,
+        ),
     # Try more layouts by unleashing below layouts.
     # layout.Stack(num_stacks=2),
     # layout.Bsp(),
     # layout.Matrix(),
-    layout.MonadTall(ratio=0.6, border_focus=catppuccin["teal"], border_normal=catppuccin["black"], border_width=1),
+    # layout.MonadTall(ratio=0.6, border_focus=catppuccin["teal"], border_normal=catppuccin["black"], border_width=1),
     # layout.MonadWide(),
     # layout.RatioTile(),
     # layout.Tile(),
@@ -323,7 +329,7 @@ screens = [
             # border_width=[2, 0, 2, 0],  # Draw top and bottom borders
             # border_color=["ff00ff", "000000", "ff00ff", "000000"]  # Borders are magenta
         ),
-        wallpaper='~/.config/qtile/wallpaper/market.png',
+        wallpaper='/home/adiantum/Pictures/wallpaper/rotation/cat_desk.png',
         wallpaper_mode='fill',
 
     ),
