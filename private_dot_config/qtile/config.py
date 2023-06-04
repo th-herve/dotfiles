@@ -9,13 +9,15 @@
 #    ░              ░      ░  ░   ░  ░
                                      
 
-from libqtile import bar, layout, widget, hook
+from libqtile import backend, bar, layout, widget, hook
 from libqtile.config import Click, Drag, Group, Key, Match, Screen
 from libqtile.lazy import lazy
+
 
 import datetime
 import os
 import subprocess
+
 
 mod = "mod4"
 terminal = "kitty"
@@ -103,21 +105,39 @@ catppuccin = {
     "gray": "#6e6c7e",
     "black": "#1a1826",
         }
-
-groups = [Group("q",  label="  "),
+# 
+# groups = [Group("q",  label="  "),
                    
-          Group("w",  label=" 󰈹 ", spawn="firefox"),
+#           Group("w",  label=" 󰈹 ", spawn="firefox"),
                    
-          Group("e",  label=" 󰚩 ", spawn="google-chrome https://chat.openai.com/"),
+#           Group("e",  label=" 󰚩 ", spawn="google-chrome https://chat.openai.com/"),
 
-          Group("1",  label="  "),
+#           Group("1",  label="  "),
 
-          Group("2",  label="  "),
+#           Group("2",  label="  "),
 
-          Group("3",  label="  ", spawn="google-chrome https://mail.google.com/mail/u/1/#inbox"),
+#           Group("3",  label="  ", spawn="google-chrome https://mail.google.com/mail/u/1/#inbox"),
+
+#           Group("4",  label="", spawn="spotify")]
+
+groups = [Group("q",  label="  "),
+                   
+          Group("w",  label="  ", spawn="firefox"),
+                   
+          Group("e",  label="  ", spawn="google-chrome https://chat.openai.com/"),
+
+          Group("1",  label="  "),
+
+          Group("2",  label="  "),
+
+          Group("3",  label="  ", spawn="google-chrome https://mail.google.com/mail/u/1/#inbox"),
 
           Group("4",  label="", spawn="spotify")]
 
+# @hook.subscribe.setgroup
+# def setgroup():
+#     for i in groups:
+#         groups[i.name].label = "○"
 
 for i in groups:
     keys.extend( [
@@ -146,153 +166,166 @@ layouts = [
         border_width=1,
         margin=8,
         ),
-    layout.Max(),
+    layout.Max(
+        margin=8,
+        ),
 ]
 
 widget_defaults = dict(
     font="JetBrainsMono Nerd Font",
-    fontsize=16,
+    fontsize=18,
     padding=3,
     forground=catppuccin["black"],
 )
 extension_defaults = widget_defaults.copy()
 
-# add white space easily in the bottom bar
-def add_white_space(background_color, space_number=1):
-    return widget.TextBox(text=" " * space_number, background=background_color )
 
 # define half circle size in bar
 CIRCLE_SIZE = 35
+BACKGROUND = catppuccin["black"]
+TEXT = "#cad3f5"
+
+# add white space easily in the bottom bar
+def add_white_space(background_color=BACKGROUND, space_number=1):
+    return widget.TextBox(text=" " * space_number, background=background_color )
+
+def add_separator():
+    return widget.TextBox(text="|", background=BACKGROUND, foreground=TEXT)
 
 screens = [
     Screen(
 
         bottom=bar.Bar(
-            [
-                add_white_space(catppuccin["green"]),
+            [   
+
+                add_white_space(),
+                
 
                 widget.QuickExit(
-                    default_text="󰄛 ",
-                    fontsize=25, 
-                    background=catppuccin["green"],
-                    foreground=catppuccin["black"],
+                    default_text=" ",
+                    fontsize=20, 
+                    background=BACKGROUND,
+                    foreground=catppuccin["red"],
                     countdown_format='{} ',
                     ),
 
-                widget.TextBox(
-                    text="",
-                    padding=0,
-                    fontsize=CIRCLE_SIZE,
-                    foreground=catppuccin["green"],
-                    background=catppuccin["mauve"],
-                    ),
+                add_white_space(),
 
-                widget.GroupBox(highlight_method="line", 
-                                fontsize=20,
-                                background=catppuccin["mauve"], 
-                                highlight_color=[catppuccin["mauve"], catppuccin["mauve"]],
-                                inactive=catppuccin["black"],
-                                active=catppuccin["black"]
-                                ),
+                add_separator(),
 
-                widget.TextBox(
-                    text="",
-                    padding=0,
-                    fontsize=CIRCLE_SIZE,
-                    foreground=catppuccin["mauve"],
-                    background=catppuccin["black"],
-                    ),
-
-                widget.WindowName(
-                    format="{state}",
-                    background=catppuccin["black"],
-                    ),
-
-                widget.Countdown(
-                    background=catppuccin["black"],
-                    date=datetime.datetime(2023,5,26,17,0),
-                    format='󰀠 {H}h {M}m'
-                    ),
-
-                add_white_space(catppuccin["black"]),
+                # add_white_space(),
 
                 widget.Systray(
-                    background=catppuccin["black"],
+                    background=BACKGROUND,
                     ),
 
-                add_white_space(catppuccin["black"]),
 
-                widget.TextBox(
-                    text="",
-                    padding=0,
-                    fontsize=CIRCLE_SIZE,
-                    foreground=catppuccin["sky"],
-                    background=catppuccin["black"],
+                widget.Spacer(
+                    length=bar.STRETCH,
+                    background=BACKGROUND,
+                    foreground=BACKGROUND),
+
+                widget.GroupBox(highlight_method="text", 
+                                fontsize=20,
+                                background=BACKGROUND,
+                                # highlight_color=[BACKGROUND, BACKGROUND],
+                                inactive=TEXT,
+                                active=TEXT,
+                                this_screen_border=catppuccin["mauve"],
+                                this_current_screen_border="#c6a0f6",
+                                urgent_border=catppuccin["green"],
+                                ),
+
+
+                widget.Spacer(
+                    length=bar.STRETCH,
+                    background=BACKGROUND,
                     ),
+
+                # widget.WindowName(
+                #     format="{state}",
+                #     background=BACKGROUND,
+                #     ),
+
 
                 widget.PulseVolume(
-                    fmt=" {}",
-                    foreground=catppuccin["black"],
-                    background=catppuccin["sky"],
+                    fmt=" ",
+                    background=BACKGROUND,
+                    foreground=catppuccin["yellow"],
                     ),
 
-                add_white_space(catppuccin["sky"]),
+                add_white_space(),
                 
                 widget.KeyboardLayout(
-                        fmt="󰌌 {}",
-                        foreground=catppuccin["black"],
-                        background=catppuccin["sky"],
+                        fmt="{} ",
+                        background=BACKGROUND,
+                        foreground=catppuccin["sky"],
                         configured_keyboards=['us','us intl'],
-                        display_map={'us':'us', 'us intl':'int'},
+                        display_map={'us':'', 'us intl':''},
                         ),
 
-                add_white_space(catppuccin["sky"]),
+                add_white_space(),
 
                 widget.Wallpaper(directory="~/.config/qtile/wallpaper/",
                                  label=" ",
-                                 foreground=catppuccin["black"],
-                                 background=catppuccin["sky"],
+                                 background=BACKGROUND,
+                                 foreground=catppuccin["peach"],
                                  ),
 
-                add_white_space(catppuccin["sky"]),
+                add_white_space(),
 
-                widget.TextBox(
-                        text="",
-                        padding=0,
-                        fontsize=CIRCLE_SIZE,
-                        foreground=catppuccin["maroon"],
-                        background=catppuccin["sky"],
-                        ),
+                add_separator(),
 
-                add_white_space(catppuccin["maroon"]),
+                add_white_space(),
 
                 widget.TextBox(
                         text=" ",
                         font="Font Awesome 6 Free Solid",
-                        foreground=catppuccin["black"],
-                        background=catppuccin["maroon"]),
+                        foreground=catppuccin["green"],
+                        background=BACKGROUND
+                        ),
 
-                widget.Clock(format="%d %B   %H:%M",
-                             foreground=catppuccin["black"],
-                             background=catppuccin["maroon"]),
+                widget.Clock(format="%d %B",
+                             background=BACKGROUND,
+                             foreground=TEXT,
+                             ),
 
-                add_white_space(catppuccin["maroon"]),
+                add_white_space(),
+
+                widget.TextBox(
+                        text=" ",
+                        foreground=catppuccin["green"],
+                        background=BACKGROUND
+                        ),
+
+                widget.Clock(format="%H:%M",
+                             background=BACKGROUND,
+                             foreground=TEXT,
+                             ),
+
+                add_white_space(),
+
+                add_separator(),
+
+                add_white_space(),
 
                 widget.Wttr(
                         location={'Lorient': 'Lorient'},
-                        background=catppuccin["maroon"],
-                        foreground=catppuccin["black"],
-                        format="%t%c",),
+                        background=BACKGROUND,
+                        foreground=TEXT,
+                        format="%t %c",),
 
-                add_white_space(catppuccin["maroon"]),
+                add_white_space(),
+
             ],
 
             # Bar height
-            35,
+            40,
 
             # background="catppuccin["maroon"]",
             # border_width=[5, 0, 5, 0],  # Draw top and bottom borders
             # border_color=[catppuccin["black"], "000000",catppuccin["black"], "000000"]  # Borders are magenta
+            margin = [0,8,10,8],
         ),
         # wallpaper='~/.config/qtile/wallpaper/cat_desk1080.png',
         # wallpaper_mode='fill',
