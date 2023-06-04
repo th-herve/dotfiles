@@ -248,6 +248,7 @@ let g:coc_suggest_insertCompletion = 'always'
 let g:coc_suggest_selectNextOnEnter = 0
 let g:coc_suggest_acceptSuggestionOnCommitCharacter = 0
 
+let g:vcool_ins_hsl_map = '<C-M>n'		" Insert hsl color.
 
 "        === Cursor line/word ===
 
