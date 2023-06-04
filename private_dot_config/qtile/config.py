@@ -49,7 +49,7 @@ keys = [
 
     Key(
         [mod, "shift"],
-        "Tab",
+        "m",
         lazy.layout.toggle_split(),
         desc="Toggle between split and unsplit sides of stack",
     ),
@@ -57,6 +57,7 @@ keys = [
 
     # Toggle between different layouts as defined below
     Key([mod], "m", lazy.next_layout(), desc="Toggle between layouts"),
+
     Key([mod], "x", lazy.window.kill(), desc="Kill focused window"),
 
     
