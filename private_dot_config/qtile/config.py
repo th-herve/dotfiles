@@ -104,7 +104,6 @@ keys = [
         ),
     Key([mod], "o", lazy.widget["keyboardlayout"].next_keyboard(), desc="Next keyboard layout."),
 
-    
 ]
 
 #Colors
@@ -262,6 +261,8 @@ screens = [
                     background=catppuccin["black"],
                     ),
                 # widget.PulseVolume(background=catppuccin["green"], foreground=catppuccin["black"]),
+
+
                 add_white_space(catppuccin["black"]),
 
                 widget.TextBox(
@@ -290,6 +291,13 @@ screens = [
 
                 add_white_space(catppuccin["sky"]),
 
+                widget.Wallpaper(directory="~/.config/qtile/wallpaper/",
+                                 label=" ",
+                                 foreground=catppuccin["black"],
+                                 background=catppuccin["sky"],
+                                 ),
+
+                add_white_space(catppuccin["sky"]),
 
                 widget.TextBox(
                         text="",
@@ -330,8 +338,8 @@ screens = [
             # border_width=[2, 0, 2, 0],  # Draw top and bottom borders
             # border_color=["ff00ff", "000000", "ff00ff", "000000"]  # Borders are magenta
         ),
-        wallpaper='/home/adiantum/Pictures/wallpaper/rotation/cat_desk.png',
-        wallpaper_mode='fill',
+       # wallpaper='~/.config/qtile/wallpaper/cat_desk1080.png',
+        # wallpaper_mode='fill',
 
     ),
 ]
