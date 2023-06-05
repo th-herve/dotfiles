@@ -171,19 +171,21 @@ layouts = [
         ),
 ]
 
-widget_defaults = dict(
-    font="JetBrainsMono Nerd Font",
-    fontsize=18,
-    padding=3,
-    forground=catppuccin["black"],
-)
-extension_defaults = widget_defaults.copy()
-
-
 # define half circle size in bar
 CIRCLE_SIZE = 35
 BACKGROUND = catppuccin["black"]
 TEXT = "#cad3f5"
+
+widget_defaults = dict(
+    font="JetBrainsMono Nerd Font",
+    fontsize=18,
+    padding=3,
+    foreground = TEXT,
+    background = BACKGROUND,
+)
+
+extension_defaults = widget_defaults.copy()
+
 
 # add white space easily in the bottom bar
 def add_white_space(background_color=BACKGROUND, space_number=1):
@@ -200,18 +202,82 @@ screens = [
 
                 add_white_space(),
 
-                widget.QuickExit(
-                    default_text=" ",
-                    fontsize=20, 
-                    background=BACKGROUND,
-                    foreground=catppuccin["red"],
-                    countdown_format='{} ',
-                    ),
+                widget.WidgetBox( 
+
+                                foreground = catppuccin['green'],
+                                text_closed = '󰌽 ', #    󰌽
+                                # close_button_location = 'right',
+                                text_open = '󰌽 ',
+                                widgets = [
+
+                                add_separator(),
+
+                                widget.QuickExit(
+                                    default_text = " ",
+                                    fontsize = 20, 
+                                    background = BACKGROUND,
+                                    foreground = catppuccin["red"],
+                                    countdown_format = '{} ',
+                                    ),
+                                widget.TextBox(
+                                    text = " ",
+                                    foreground = catppuccin["green"],
+                                    fontsize = 20,
+                                    ),
+
+                                widget.TextBox(
+                                    text = " ",
+                                    foreground = catppuccin["sky"],
+                                    fontsize = 20,
+                                    ),
+
+                                widget.TextBox(
+                                    text = " ",
+                                    foreground = catppuccin["mauve"],
+                                    fontsize = 20,
+                                    ),
+
+                                widget.TextBox(
+                                    text = "󰍃 ",
+                                    foreground = catppuccin["peach"],
+                                    fontsize = 20,
+                                    ),
+                                ]),
+
+
+                add_separator(),
+
+                widget.TextBox(
+                        text=" ",
+                        foreground=catppuccin["pink"],
+                        background=BACKGROUND
+                        ),
+
+                 widget.CPU(
+                    background = BACKGROUND,
+                    format = "{load_percent}%",
+                    fontsize = 15,
+                     ),
+                
+                add_white_space(),
+
+                 widget.TextBox(
+                     text=" ",
+                     foreground = catppuccin["blue"],
+                     background = BACKGROUND,
+                     ),
+
+                 widget.Memory(
+                     background = BACKGROUND,
+                     fontsize = 15,
+                     format = "{MemPercent}%",
+                     ),
+
 
                 add_separator(),
 
                 widget.Systray(
-                    background=BACKGROUND,
+                    background = BACKGROUND,
                     ),
 
                 widget.Spacer(
