@@ -68,10 +68,10 @@ keys = [
     Key([mod], "p", lazy.window.toggle_floating(), desc="Toggle floating",),
 
     # Rofi
-    Key([mod], "d", lazy.spawn("rofi -show drun")),
+    Key([mod], "d", lazy.spawn("/home/adiantum/.config/rofi/scripts/launcher_t2")),
     Key([mod], "f", lazy.spawn("rofi -show window")),
     Key([mod], "g", lazy.spawn("rofi -show filebrowser")),
-    Key([mod], "c", lazy.spawn("$HOME/.config/rofi/vimwiki.sh")),
+    Key([mod], "c", lazy.spawn("/home/adiantum/.config/rofi/vimwiki.sh")),
     Key([mod], "s", lazy.spawn("/home/adiantum/.config/rofi/select_spotify_playlist/rofi_spotify_playlist.sh")),
     
 
@@ -260,18 +260,19 @@ screens = [
                     fontsize = 15,
                      ),
                 
-                add_white_space(),
+                 add_white_space(),
 
                  widget.TextBox(
-                     text=" ",
-                     foreground = catppuccin["blue"],
-                     background = BACKGROUND,
-                     ),
+                         text="memory",
+                         font = "Font Awesome 6 Free Solid",
+                         foreground = catppuccin["blue"],
+                         background = BACKGROUND,
+                         ),
 
                  widget.Memory(
                      background = BACKGROUND,
                      fontsize = 15,
-                     format = "{MemPercent}%",
+                     format = " {MemPercent}%",
                      ),
 
 
