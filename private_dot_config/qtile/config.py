@@ -105,34 +105,34 @@ catppuccin = {
     "gray": "#6e6c7e",
     "black": "#1a1826",
         }
-# 
-# groups = [Group("q",  label="  "),
+
+groups = [Group("q",  label="  "),
                    
-#           Group("w",  label=" 󰈹 ", spawn="firefox"),
+          Group("w",  label=" 󰈹 ", spawn="firefox"),
                    
-#           Group("e",  label=" 󰚩 ", spawn="google-chrome https://chat.openai.com/"),
+          Group("e",  label=" 󰚩 ", spawn="google-chrome https://chat.openai.com/"),
 
-#           Group("1",  label="  "),
+          Group("1",  label="  "),
 
-#           Group("2",  label="  "),
+          Group("2",  label="  "),
 
-#           Group("3",  label="  ", spawn="google-chrome https://mail.google.com/mail/u/1/#inbox"),
-
-#           Group("4",  label="", spawn="spotify")]
-
-groups = [Group("q",  label="  "),
-                   
-          Group("w",  label="  ", spawn="firefox"),
-                   
-          Group("e",  label="  ", spawn="google-chrome https://chat.openai.com/"),
-
-          Group("1",  label="  "),
-
-          Group("2",  label="  "),
-
-          Group("3",  label="  ", spawn="google-chrome https://mail.google.com/mail/u/1/#inbox"),
+          Group("3",  label="  ", spawn="google-chrome https://mail.google.com/mail/u/1/#inbox"),
 
           Group("4",  label="", spawn="spotify")]
+
+# groups = [Group("q",  label="  "),
+                   
+#           Group("w",  label="  ", spawn="firefox"),
+                   
+#           Group("e",  label="  ", spawn="google-chrome https://chat.openai.com/"),
+
+#           Group("1",  label="  "),
+
+#           Group("2",  label="  "),
+
+#           Group("3",  label="  ", spawn="google-chrome https://mail.google.com/mail/u/1/#inbox"),
+
+#           Group("4",  label="", spawn="spotify")]
 
 # @hook.subscribe.setgroup
 # def setgroup():
@@ -199,7 +199,6 @@ screens = [
             [   
 
                 add_white_space(),
-                
 
                 widget.QuickExit(
                     default_text=" ",
@@ -209,16 +208,11 @@ screens = [
                     countdown_format='{} ',
                     ),
 
-                add_white_space(),
-
                 add_separator(),
-
-                # add_white_space(),
 
                 widget.Systray(
                     background=BACKGROUND,
                     ),
-
 
                 widget.Spacer(
                     length=bar.STRETCH,
@@ -236,17 +230,10 @@ screens = [
                                 urgent_border=catppuccin["green"],
                                 ),
 
-
                 widget.Spacer(
                     length=bar.STRETCH,
                     background=BACKGROUND,
                     ),
-
-                # widget.WindowName(
-                #     format="{state}",
-                #     background=BACKGROUND,
-                #     ),
-
 
                 widget.PulseVolume(
                     fmt=" ",
