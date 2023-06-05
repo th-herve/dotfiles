@@ -64,14 +64,14 @@ keys = [
 
     
     Key([mod, "control"], "r", lazy.reload_config(), desc="Reload the config"),
-    Key([mod, "control"], "q", lazy.shutdown(), desc="Shutdown Qtile"),
+    Key([mod, "control"], "q", lazy.spawn("/home/adiantum/.config/rofi/scripts/powermenu_t5"), desc="Shutdown Qtile"),
     Key([mod], "p", lazy.window.toggle_floating(), desc="Toggle floating",),
 
     # Rofi
     Key([mod], "d", lazy.spawn("rofi -show drun")),
     Key([mod], "f", lazy.spawn("rofi -show window")),
     Key([mod], "g", lazy.spawn("rofi -show filebrowser")),
-    Key([mod], "c", lazy.spawn("/home/adiantum/.config/rofi/vimwiki.sh")),
+    Key([mod], "c", lazy.spawn("$HOME/.config/rofi/vimwiki.sh")),
     Key([mod], "s", lazy.spawn("/home/adiantum/.config/rofi/select_spotify_playlist/rofi_spotify_playlist.sh")),
     
 
@@ -208,6 +208,7 @@ screens = [
                                 text_closed = '󰌽 ', #    󰌽
                                 # close_button_location = 'right',
                                 text_open = '󰌽 ',
+                                fontsize = 20,
                                 widgets = [
 
                                 add_separator(),
