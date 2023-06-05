@@ -106,17 +106,17 @@ catppuccin = {
     "black": "#1a1826",
         }
 
-groups = [Group("q",  label="  "),
+groups = [Group("q",  label=""),
                    
-          Group("w",  label=" 󰈹 ", spawn="firefox"),
+          Group("w",  label="󰈹", spawn="firefox"),
                    
-          Group("e",  label=" 󰚩 ", spawn="google-chrome https://chat.openai.com/"),
+          Group("e",  label="󰚩", spawn="google-chrome https://chat.openai.com/"),
 
-          Group("1",  label="  "),
+          Group("1",  label=""),
 
-          Group("2",  label="  "),
+          Group("2",  label=""),
 
-          Group("3",  label="  ", spawn="google-chrome https://mail.google.com/mail/u/1/#inbox"),
+          Group("3",  label="", spawn="google-chrome https://mail.google.com/mail/u/1/#inbox"),
 
           Group("4",  label="", spawn="spotify")]
 
@@ -220,19 +220,20 @@ screens = [
                     foreground=BACKGROUND),
 
                 widget.GroupBox(highlight_method="text", 
-                                fontsize=20,
-                                background=BACKGROUND,
-                                # highlight_color=[BACKGROUND, BACKGROUND],
-                                inactive=TEXT,
-                                active=TEXT,
-                                this_screen_border=catppuccin["mauve"],
-                                this_current_screen_border="#c6a0f6",
-                                urgent_border=catppuccin["green"],
+                                fontsize = 24,
+                                margin = 5,
+                                background = BACKGROUND,
+                                inactive = TEXT,
+                                active = TEXT,
+                                this_screen_border = catppuccin["mauve"],
+                                this_current_screen_border = "#c6a0f6",
+                                urgent_border = catppuccin["green"],
+                                spacing = 35,
                                 ),
 
                 widget.Spacer(
-                    length=bar.STRETCH,
-                    background=BACKGROUND,
+                    length = bar.STRETCH,
+                    background = BACKGROUND,
                     ),
 
                 widget.PulseVolume(
