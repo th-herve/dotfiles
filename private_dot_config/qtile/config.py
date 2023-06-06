@@ -9,10 +9,11 @@
 #    ░              ░      ░  ░   ░  ░
                                      
 
-from libqtile import backend, bar, layout, widget, hook
+from libqtile import backend, bar, layout, widget, hook, qtile
 from libqtile.config import Click, Drag, Group, Key, Match, Screen
 from libqtile.lazy import lazy
 
+from random import choices
 
 import datetime
 import os
@@ -27,6 +28,9 @@ editor = "nvim"
 def autostart():
     home = os.path.expanduser('~/.config/qtile/autostart.sh')
     subprocess.call([home])
+
+        
+
 
 keys = [
     # Switch between windows
@@ -64,10 +68,10 @@ keys = [
 
     
     Key([mod, "control"], "r", lazy.reload_config(), desc="Reload the config"),
-    Key([mod, "control"], "q", lazy.spawn("/home/adiantum/.config/rofi/scripts/powermenu_t5"), desc="Shutdown Qtile"),
     Key([mod], "p", lazy.window.toggle_floating(), desc="Toggle floating",),
 
     # Rofi
+    Key([mod, "control"], "q", lazy.spawn("/home/adiantum/.config/rofi/scripts/powermenu_t5"), desc="Shutdown Qtile"),
     Key([mod], "d", lazy.spawn("/home/adiantum/.config/rofi/scripts/launcher_t2")),
     Key([mod], "f", lazy.spawn("rofi -show window")),
     Key([mod], "g", lazy.spawn("rofi -show filebrowser")),
@@ -258,6 +262,7 @@ screens = [
                     background = BACKGROUND,
                     format = "{load_percent}%",
                     fontsize = 15,
+                    update_interval = 5,
                      ),
                 
                  add_white_space(),
@@ -273,6 +278,8 @@ screens = [
                      background = BACKGROUND,
                      fontsize = 15,
                      format = " {MemPercent}%",
+                     update_interval = 5,
+
                      ),
 
 
@@ -294,8 +301,7 @@ screens = [
                                 inactive = TEXT,
                                 active = TEXT,
                                 this_screen_border = catppuccin["mauve"],
-                                this_current_screen_border = "#c6a0f6",
-                                urgent_border = catppuccin["green"],
+                                # this_current_screen_border = catppuccin["yellow"],                                urgent_border = catppuccin["green"],
                                 spacing = 35,
                                 ),
 
@@ -428,3 +434,24 @@ wl_input_rules = None
 # We choose LG3D to maximize irony: it is a 3D non-reparenting WM written in
 # java that happens to be on java's whitelist.
 wmname = "LG3D"
+
+
+colors = ["#F3CDCD",
+          "#DDB6F2",
+          "#f5c2e7",
+          "#e8a2af",
+          "#f28fad",
+          "#f8bd96",
+          "#fae3b0",
+          "#abe9b3",
+          "#b4e8e0",
+          "#96cdfb",
+          "#89dceb"]
+
+@hook.subscribe.setgroup
+def change_color():
+    newcolor = choices(colors)
+    widget.GroupBox.this_current_screen_border = newcolor
+
+
+    
