@@ -198,6 +198,9 @@ def add_white_space(background_color=BACKGROUND, space_number=1):
 def add_separator():
     return widget.TextBox(text="|", background=BACKGROUND, foreground=TEXT)
 
+def confirm_option(option):
+    return {'Button1':lazy.spawn(home + "/.config/rofi/scripts/confirm.sh " + option)}
+
 screens = [
     Screen(
 
@@ -217,40 +220,43 @@ screens = [
 
                                 add_separator(),
 
-                                widget.QuickExit(
-                                    default_text = " ",
-                                    fontsize = 20, 
-                                    background = BACKGROUND,
+                                widget.TextBox(
+                                    text = " ",
                                     foreground = catppuccin["red"],
-                                    countdown_format = '{} ',
+                                    fontsize = 20, 
+                                    mouse_callbacks = confirm_option("--shutdown"),
                                     ),
+
                                 widget.TextBox(
                                     text = " ",
                                     foreground = catppuccin["green"],
                                     fontsize = 20,
-                                    mouse_callbacks = {'Button1':lazy.spawn(home + "/.config/rofi/scripts/powermenu_t5")}
+                                    mouse_callbacks = confirm_option("--reboot"),
                                     ),
 
                                 widget.TextBox(
                                     text = " ",
                                     foreground = catppuccin["sky"],
                                     fontsize = 20,
-                                    mouse_callbacks = {'Button1':lazy.spawn(home + "/.config/rofi/scripts/powermenu_t5")}
+                                    mouse_callbacks = {'Button1':lazy.spawn("i3lock -i " + home + "/.config/rofi/powermenu/type-5/images/beach_poly.png")},
                                     ),
 
                                 widget.TextBox(
                                     text = " ",
                                     foreground = catppuccin["mauve"],
                                     fontsize = 20,
-                                    mouse_callbacks = {'Button1':lazy.spawn(home + "/.config/rofi/scripts/powermenu_t5")}
+                                    mouse_callbacks = confirm_option("--hibernate"),
                                     ),
 
-                                widget.TextBox(
-                                    text = "󰍃 ",
+
+                                widget.QuickExit(
+                                    default_text = "󰍃 ",
+                                    fontsize = 20, 
+                                    background = BACKGROUND,
                                     foreground = catppuccin["peach"],
-                                    fontsize = 20,
-                                    mouse_callbacks = {'Button1':lazy.spawn(home + "/.config/rofi/scripts/powermenu_t5")}
+                                    countdown_format = '{} ',
                                     ),
+
                                 ]),
 
 
