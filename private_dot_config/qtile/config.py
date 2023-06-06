@@ -19,6 +19,7 @@ import datetime
 import os
 import subprocess
 
+home = os.path.expanduser("~")
 
 mod = "mod4"
 terminal = "kitty"
@@ -71,12 +72,12 @@ keys = [
     Key([mod], "p", lazy.window.toggle_floating(), desc="Toggle floating",),
 
     # Rofi
-    Key([mod, "control"], "q", lazy.spawn("/home/adiantum/.config/rofi/scripts/powermenu_t5"), desc="Shutdown Qtile"),
-    Key([mod], "d", lazy.spawn("/home/adiantum/.config/rofi/scripts/launcher_t2")),
+    Key([mod, "control"], "q", lazy.spawn(home + "/.config/rofi/scripts/powermenu_t5"), desc="Open powermenu"),
+    Key([mod], "d", lazy.spawn(home + "/.config/rofi/scripts/launcher_t2"), desc="Open program selection"),
     Key([mod], "f", lazy.spawn("rofi -show window")),
     Key([mod], "g", lazy.spawn("rofi -show filebrowser")),
-    Key([mod], "c", lazy.spawn("/home/adiantum/.config/rofi/vimwiki.sh")),
-    Key([mod], "s", lazy.spawn("/home/adiantum/.config/rofi/select_spotify_playlist/rofi_spotify_playlist.sh")),
+    Key([mod], "c", lazy.spawn(home + "/.config/rofi/scripts/launcher_t5"), desc="Select vimwiki"),
+    Key([mod], "s", lazy.spawn(home + "/.config/rofi/select_spotify_playlist/rofi_spotify_playlist.sh")),
     
 
     Key([mod], "Return", lazy.spawn(terminal), desc="Launch terminal"),
