@@ -203,8 +203,9 @@ call plug#begin('~/.config/nvim/plugged')
     Plug 'nvim-tree/nvim-web-devicons',
     Plug 'nvim-tree/nvim-tree.lua',
 
-    Plug 'ziontee113/color-picker.nvim',
+    " Plug 'ziontee113/color-picker.nvim',
     Plug 'KabbAmine/vCoolor.vim',
+
 "         == themes ==
     Plug 'catppuccin/nvim', { 'as': 'catppuccin' },
     Plug 'Mofiqul/dracula.nvim',
@@ -214,10 +215,12 @@ call plug#begin('~/.config/nvim/plugged')
     
 call plug#end()
 
+
 lua require'colorizer'.setup()
 source   ~/.config/nvim/lua.vim
 
-lua require('color-picker').setup()
+" lua require('color-picker').setup()
+
 
 "        === Vimwiki ===
 
@@ -248,7 +251,6 @@ let g:coc_suggest_insertCompletion = 'always'
 let g:coc_suggest_selectNextOnEnter = 0
 let g:coc_suggest_acceptSuggestionOnCommitCharacter = 0
 
-let g:vcool_ins_hsl_map = '<C-M>n'		" Insert hsl color.
 
 "        === Cursor line/word ===
 
@@ -264,6 +266,7 @@ augroup END
 
 let g:cursorword_delay=900
 
+let g:vcool_ins_hsl_map = '<C-l>'		" Insert hsl color with vcolor
 
 " +-------------------------------+
 " |         Color scheme          |
