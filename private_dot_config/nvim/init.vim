@@ -212,6 +212,7 @@ call plug#begin('~/.config/nvim/plugged')
     Plug 'rose-pine/neovim',
     Plug 'joshdick/onedark.vim',
     Plug 'nordtheme/vim',
+    Plug 'rebelot/kanagawa.nvim',
     
 call plug#end()
 
