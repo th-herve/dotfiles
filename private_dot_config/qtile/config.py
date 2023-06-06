@@ -30,9 +30,6 @@ def autostart():
     home = os.path.expanduser('~/.config/qtile/autostart.sh')
     subprocess.call([home])
 
-        
-
-
 keys = [
     # Switch between windows
     Key([mod], "h", lazy.layout.left(), desc="Move focus to left"),
@@ -92,6 +89,8 @@ keys = [
 
     Key([mod], "o", lazy.widget["keyboardlayout"].next_keyboard(), desc="Next keyboard layout."),
 ]
+
+
 
 # Colors
 catppuccin = {
@@ -229,24 +228,28 @@ screens = [
                                     text = " ",
                                     foreground = catppuccin["green"],
                                     fontsize = 20,
+                                    mouse_callbacks = {'Button1':lazy.spawn(home + "/.config/rofi/scripts/powermenu_t5")}
                                     ),
 
                                 widget.TextBox(
                                     text = " ",
                                     foreground = catppuccin["sky"],
                                     fontsize = 20,
+                                    mouse_callbacks = {'Button1':lazy.spawn(home + "/.config/rofi/scripts/powermenu_t5")}
                                     ),
 
                                 widget.TextBox(
                                     text = " ",
                                     foreground = catppuccin["mauve"],
                                     fontsize = 20,
+                                    mouse_callbacks = {'Button1':lazy.spawn(home + "/.config/rofi/scripts/powermenu_t5")}
                                     ),
 
                                 widget.TextBox(
                                     text = "󰍃 ",
                                     foreground = catppuccin["peach"],
                                     fontsize = 20,
+                                    mouse_callbacks = {'Button1':lazy.spawn(home + "/.config/rofi/scripts/powermenu_t5")}
                                     ),
                                 ]),
 
