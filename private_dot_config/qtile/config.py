@@ -254,7 +254,7 @@ screens = [
 
                 widget.TextBox(
                         text=" ",
-                        foreground=catppuccin["pink"],
+                        foreground=catppuccin["blue"],
                         background=BACKGROUND
                         ),
 
@@ -331,7 +331,7 @@ screens = [
                 widget.Wallpaper(directory="~/.config/qtile/wallpaper/",
                                  label=" ",
                                  background=BACKGROUND,
-                                 foreground=catppuccin["peach"],
+                                 foreground=catppuccin["mauve"],
                                  ),
 
                 add_white_space(),
@@ -435,7 +435,6 @@ wl_input_rules = None
 # java that happens to be on java's whitelist.
 wmname = "LG3D"
 
-
 colors = ["#F3CDCD",
           "#DDB6F2",
           "#f5c2e7",
@@ -448,10 +447,8 @@ colors = ["#F3CDCD",
           "#96cdfb",
           "#89dceb"]
 
+# Set a random color to the group label when switching group
 @hook.subscribe.setgroup
 def change_color():
     newcolor = choices(colors)
     widget.GroupBox.this_current_screen_border = newcolor
-
-
-    
