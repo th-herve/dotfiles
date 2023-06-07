@@ -311,7 +311,8 @@ screens = [
                                 inactive = TEXT,
                                 active = TEXT,
                                 this_screen_border = catppuccin["mauve"],
-                                # this_current_screen_border = catppuccin["yellow"],                                urgent_border = catppuccin["green"],
+                                this_current_screen_border = catppuccin["yellow"],
+                                urgent_border = catppuccin["green"],
                                 spacing = 35,
                                 ),
 
