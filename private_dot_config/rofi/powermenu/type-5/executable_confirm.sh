@@ -8,6 +8,10 @@ no=''
 
 option=$1
 
+# strip the argument of '--' and capitalize it
+msg=${option#--}
+msg=${msg^}
+
 # Confirmation CMD
 confirm_cmd() {
 	rofi -theme-str 'window {location: center; anchor: center; fullscreen: false; width: 350px;}' \
@@ -17,7 +21,7 @@ confirm_cmd() {
 		-theme-str 'textbox {horizontal-align: 0.5;}' \
 		-dmenu \
 		-p 'Confirmation' \
-		-mesg 'Are you Sure?' \
+		-mesg  $msg'?'\
 		-theme ${dir}/${theme}.rasi
 }
 
