@@ -179,6 +179,7 @@ layouts = [
 CIRCLE_SIZE = 35
 BACKGROUND = catppuccin["black"]
 TEXT = "#cad3f5"
+alt_font = 15
 
 widget_defaults = dict(
     font="JetBrainsMono Nerd Font",
@@ -198,6 +199,7 @@ def add_white_space(background_color=BACKGROUND, space_number=1):
 def add_separator():
     return widget.TextBox(text="|", background=BACKGROUND, foreground=TEXT)
 
+# confirm rebooting, shutdown...
 def confirm_option(option):
     return {'Button1':lazy.spawn(home + "/.config/rofi/scripts/confirm.sh " + option)}
 
@@ -271,7 +273,7 @@ screens = [
                  widget.CPU(
                     background = BACKGROUND,
                     format = "{load_percent}%",
-                    fontsize = 15,
+                    fontsize = alt_font,
                     update_interval = 5,
                      ),
                 
@@ -286,7 +288,7 @@ screens = [
 
                  widget.Memory(
                      background = BACKGROUND,
-                     fontsize = 15,
+                     fontsize = alt_font,
                      format = " {MemPercent}%",
                      update_interval = 5,
 
@@ -321,10 +323,18 @@ screens = [
                     background = BACKGROUND,
                     ),
 
+                widget.TextBox(
+                        text=" ",
+                        foreground=catppuccin["yellow"],
+                        background=BACKGROUND
+                        ),
+
                 widget.PulseVolume(
-                    fmt=" ",
-                    background=BACKGROUND,
-                    foreground=catppuccin["yellow"],
+                    fmt = "{}",
+                    fontsize = alt_font,
+                    background = BACKGROUND,
+                    foreground = TEXT,
+                    update_interval = 0.1,
                     ),
 
                 add_white_space(),
@@ -420,6 +430,8 @@ follow_mouse_focus = True
 bring_front_click = False
 cursor_warp = False
 floating_layout = layout.Floating(
+    border_focus='#1F1D2E',
+    border_normal='#1F1D2E',
     float_rules=[
         # Run the utility of `xprop` to see the wm class and name of an X client.
         *layout.Floating.default_float_rules,
@@ -463,3 +475,5 @@ colors = ["#F3CDCD",
 def change_color():
     newcolor = choices(colors)
     widget.GroupBox.this_current_screen_border = newcolor
+
+# log at: .local/share/qtile
