@@ -16,7 +16,7 @@
   "diagnostic.hintSign": " ",
 
   "clangd.path": "/usr/bin/clangd",
-  "preferences.virtualText": true,
+  "preferences.virtualText": false,
   "clangd.disableDiagnostics": false,
 }
 
