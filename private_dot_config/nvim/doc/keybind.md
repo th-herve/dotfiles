@@ -34,10 +34,11 @@ leader or ld = space
 
 ## navigation
 
-| key     | action         |
-|---------|----------------|
-| Alt+j/k | scroll down/up |
-| C-d/u   | scrool more    |
+| key     | action               |
+|---------|----------------------|
+| Alt+j/k | scroll down/up       |
+| C-d/u   | scrool more          |
+| C-o/i   | go nex/previous jump |
 
 ## command 
 
