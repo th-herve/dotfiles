@@ -122,7 +122,10 @@ groups = [Group("q",  label=""),
 
           Group("3",  label="", spawn="google-chrome https://mail.google.com/mail/u/1/#inbox"),
 
-          Group("4",  label="", spawn="spotify")]
+          Group("4",  label="", spawn="spotify"),
+
+          Group("5",  label="", matches=[Match(wm_class=['Steam'])])
+          ]
 
 # groups = [Group("q",  label="  "),
                    
