@@ -52,6 +52,7 @@ export VISUAL=nvim;
 export EDITOR=nvim;
 
 PATH="$HOME/.local/bin:$PATH"
+export PATH="$HOME/programming/git_clone/eww/target/release:$PATH"
 
 # set vi mode and enable ctrl l in insert mode
 # set -o vi
@@ -185,3 +186,4 @@ PS1="\[\e[0;96m\][\$(if [ \$? = 0 ]; then echo '\[\e[0;1;5;96m\]茶雨\[\e[0m\]'
 PS2="\[\e[0;1;95m\]> \[\e[0m\]"
 
 neofetch
+. "$HOME/.cargo/env"
