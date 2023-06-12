@@ -3,43 +3,33 @@
 # for examples
 
 # my aliases
-alias v="nvim"
 alias python="python3"
-
 alias r="ranger"
+alias bat="batcat"
 
+# nvim
+alias v="nvim"
 alias nvc="cd ~/.config/nvim"
 alias nvcw="cd ~/.config/nvim/vimwiki/docs"
 alias nvi="chezmoi edit ~/.config/nvim/init.vim"
 alias nvp="cd ~/.config/nvim/plugged"
 alias wiki="nvim ~/.config/nvim/vimwiki/docs/index.md"
 
-# see img in terminal
+# Kitty
 alias icat="kitty +kitten icat"
 alias kt.='nohup kitty --directory "$(pwd)" >/dev/null 2>&1 & disown'
+alias ktc="cd ~/.config/kitty"
+alias kti="chezmoi edit ~/.config/kitty/kitty.conf"
 
-alias bat="batcat"
-alias ipadress="echo $(ifconfig | grep broadcast | awk '{print $2}')"
-alias mv="mv -i" # ask if override
-alias cddl="cd ~/Downloads"
-
+# qtile
 alias qtc="cd ~/.config/qtile"
 alias qti="chezmoi edit ~/.config/qtile/config.py"
 alias qtr="pkill -SIGUSR1 qtile"
 
-alias ktc="cd ~/.config/kitty"
-alias kti="chezmoi edit ~/.config/kitty/kitty.conf"
-
-alias bsi="chezmoi edit ~/.bashrc"
-alias bss="source ~/.bashrc"
-
+# chezmoi
 alias cmd="chezmoi cd"
 alias cme="chezmoi edit"
 alias cma="chezmoi -v apply"
-
-
-alias ..="cd .."
-alias rm="rm -i"
 
 # git aliases
 alias gs="git status"
@@ -47,6 +37,17 @@ alias ga="git add"
 alias gc="git commit"
 alias gcm="git commit -m "
 alias gp="git push"
+
+# bashrc
+alias bsi="chezmoi edit ~/.bashrc"
+alias bss="source ~/.bashrc"
+
+# cmd aliases
+alias ipadress="echo $(ifconfig | grep broadcast | awk '{print $2}')"
+alias mv="mv -i" # ask if override
+alias cddl="cd ~/Downloads"
+alias ..="cd .."
+alias rm="rm -i"
 
 # ls aliases
 alias ll='ls -alF'
