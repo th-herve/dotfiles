@@ -39,10 +39,16 @@ alias cma="chezmoi -v apply"
 
 
 alias ..="cd .."
-alias gs="git status"
 alias rm="rm -i"
 
-# some more ls aliases
+# git aliases
+alias gs="git status"
+alias ga="git add"
+alias gc="git commit"
+alias gcm="git commit -m "
+alias gp="git push"
+
+# ls aliases
 alias ll='ls -alF'
 alias la='ls -lA'
 alias l='ls -CF'
