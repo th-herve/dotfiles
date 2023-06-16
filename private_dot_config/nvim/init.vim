@@ -149,6 +149,7 @@ nnoremap <leader>; A;<Esc>
 nnoremap <leader>. A.<Esc>
 nnoremap <leader>, A,<Esc>
 nnoremap <leader>: A:<Esc>
+nnoremap <leader>> A><Esc>
 
 nnoremap <leader><Space> za
 
