@@ -167,11 +167,18 @@ nnoremap m '
 nnoremap <silent> <leader>cl :ColorizerToggle<CR>
 
 " Git fugitive
-
 nnoremap <leader>gs :Git status<CR>
 nnoremap <leader>ga. :Git add .<CR>
 nnoremap <leader>gcm :Git commit -m "
 nnoremap <leader>gp :Git push
+
+
+cnoremap <C-b> <Left>
+cnoremap <C-f> <Right>
+cnoremap <M-b> <c-left>
+cnoremap <M-f> <c-right>
+cnoremap <C-p> <Up>
+cnoremap <C-n> <Down>
 
 " +-------------------------------+
 " |           Plugins             |
