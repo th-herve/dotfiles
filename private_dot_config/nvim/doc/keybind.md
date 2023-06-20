@@ -24,6 +24,7 @@ leader or ld = space
 | C-a/x  | increment/decrement   |
 | #      | search cursor word    |
 | ld+cl  | toggle colorize       |
+| ,-,    | trigger emmet         |
 
 ## terminal 
 

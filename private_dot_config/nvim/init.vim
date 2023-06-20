@@ -106,7 +106,6 @@ vnoremap <C-k> :m '<-2<CR>gv=gv
 
 " NvimTree
 noremap <Leader>b :NvimTreeToggle<CR>
-inoremap <C-b> :NvimTreeToggle<CR>
 nnoremap <C-b> :NvimTreeToggle<CR>
 
 " file navigation/operation
@@ -180,6 +179,7 @@ cnoremap <M-f> <c-right>
 cnoremap <C-p> <Up>
 cnoremap <C-n> <Down>
 
+
 " +-------------------------------+
 " |           Plugins             |
 " +-------------------------------+
@@ -211,9 +211,9 @@ call plug#begin('~/.config/nvim/plugged')
     Plug 'nvim-tree/nvim-web-devicons',
     Plug 'nvim-tree/nvim-tree.lua',
 
-    " Plug 'ziontee113/color-picker.nvim',
     Plug 'KabbAmine/vCoolor.vim',
 
+    Plug 'mattn/emmet-vim',
 "         == themes ==
     Plug 'catppuccin/nvim', { 'as': 'catppuccin' },
     Plug 'Mofiqul/dracula.nvim',
@@ -276,6 +276,10 @@ augroup END
 let g:cursorword_delay=900
 
 let g:vcool_ins_hsl_map = '<C-l>'		" Insert hsl color with vcolor
+
+"        === Emmet ===
+
+let g:user_emmet_leader_key=','
 
 " +-------------------------------+
 " |         Color scheme          |
