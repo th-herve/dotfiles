@@ -279,7 +279,8 @@ let g:vcool_ins_hsl_map = '<C-l>'		" Insert hsl color with vcolor
 
 "        === Emmet ===
 
-let g:user_emmet_leader_key=','
+let g:user_emmet_leader_key='<M-,>'
+
 
 " +-------------------------------+
 " |         Color scheme          |
