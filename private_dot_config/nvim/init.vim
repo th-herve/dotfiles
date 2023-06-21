@@ -184,7 +184,6 @@ cnoremap <C-n> <Down>
 " |           Plugins             |
 " +-------------------------------+
 
-
 call plug#begin('~/.config/nvim/plugged')
 
     Plug 'neoclide/coc.nvim', 
@@ -214,6 +213,8 @@ call plug#begin('~/.config/nvim/plugged')
     Plug 'KabbAmine/vCoolor.vim',
 
     Plug 'mattn/emmet-vim',
+    Plug 'tpope/vim-repeat',
+    Plug 'ggandor/leap.nvim',
 "         == themes ==
     Plug 'catppuccin/nvim', { 'as': 'catppuccin' },
     Plug 'Mofiqul/dracula.nvim',
@@ -227,6 +228,8 @@ call plug#end()
 
 lua require'colorizer'.setup()
 source   ~/.config/nvim/lua.vim
+
+lua require('leap').add_default_mappings()
 
 " lua require('color-picker').setup()
 
