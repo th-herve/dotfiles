@@ -176,8 +176,6 @@ cnoremap <C-b> <Left>
 cnoremap <C-f> <Right>
 cnoremap <M-b> <c-left>
 cnoremap <M-f> <c-right>
-cnoremap <C-p> <Up>
-cnoremap <C-n> <Down>
 
 
 " +-------------------------------+
