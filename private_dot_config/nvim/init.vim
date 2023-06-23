@@ -349,6 +349,7 @@ iabbrev inem if __name__ == "__main__jkA:jko
 cabbrev snvi source ~/.config/nvim/init.vim
 
 " Git fugitive
-cabbrev gga Git add 
-cabbrev ggc Git commit -m " 
-cabbrev ggp Git push 
+cabbrev gs Git status
+cabbrev ga Git add 
+cabbrev gc Git commit -m "
+cabbrev gp Git push
