@@ -347,3 +347,8 @@ endif
 iabbrev inem if __name__ == "__main__jkA:jko
 
 cabbrev snvi source ~/.config/nvim/init.vim
+
+" Git fugitive
+cabbrev gga Git add 
+cabbrev ggc Git commit -m " 
+cabbrev ggp Git push 
