@@ -368,7 +368,8 @@ screens = [
                         text=" ",
                         font="Font Awesome 6 Free Solid",
                         foreground=catppuccin["green"],
-                        background=BACKGROUND
+                        background=BACKGROUND,
+                        mouse_callbacks = {'Button1':lazy.spawn("eww open calendar"), 'Button3':lazy.spawn("eww close calendar")}
                         ),
 
                 widget.Clock(format="%d %B",
