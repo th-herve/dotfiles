@@ -39,15 +39,6 @@ autocmd FileType htmldjango setlocal shiftwidth=2 tabstop=2
 autocmd FileType css setlocal shiftwidth=2 tabstop=2
 autocmd FileType json setlocal shiftwidth=2 tabstop=2
 
-
-"     === Terminal ===
-
-" set shell=powershell.exe
-" let &shellcmdflag = '-NoLogo -NoProfile -ExecutionPolicy RemoteSigned -Command '
-" let &shellquote   = ''
-" let &shellpipe    = '| Out-File -Encoding UTF8 %s'
-" let &shellredir   = '| Out-File -Encoding UTF8 %s'
-
 "       === Fold ===
 
 set foldmethod=indent
