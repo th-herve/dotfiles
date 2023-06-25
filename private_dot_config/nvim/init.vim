@@ -38,7 +38,7 @@ autocmd FileType html setlocal shiftwidth=2 tabstop=2
 autocmd FileType htmldjango setlocal shiftwidth=2 tabstop=2
 autocmd FileType css setlocal shiftwidth=2 tabstop=2
 autocmd FileType json setlocal shiftwidth=2 tabstop=2
-autocmd FileType md setlocal shiftwidth=2 tabstop=2
+autocmd FileType markdown setlocal shiftwidth=2 tabstop=2
 
 "       === Fold ===
 
@@ -60,9 +60,6 @@ set ignorecase smartcase
 
 set noswapfile
 set nobackup
-
-" let g:netrw_liststyle = 3
-" let g:netrw_banner = 0
 
 " +-------------------------------+
 " |           Keybinds            |
@@ -160,9 +157,9 @@ nnoremap <silent> <leader>cl :ColorizerToggle<CR>
 " Git fugitive
 nnoremap <leader>gs :Git status<CR>
 nnoremap <leader>ga. :Git add .<CR>
+nnoremap <leader>gaw :Gw<CR>
 nnoremap <leader>gcm :Git commit -m "
 nnoremap <leader>gp :Git push
-
 
 cnoremap <C-b> <Left>
 cnoremap <C-f> <Right>
@@ -345,3 +342,4 @@ cabbrev gs Git status
 cabbrev ga Git add 
 cabbrev gc Git commit -m "
 cabbrev gp Git push
+cabbrev gw Gw
