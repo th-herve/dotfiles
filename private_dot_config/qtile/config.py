@@ -120,31 +120,13 @@ groups = [Group("q",  label=""),
 
           Group("2",  label=""),
 
-          Group("3",  label="", spawn="google-chrome https://mail.google.com/mail/u/1/#inbox"),
+          Group("3",  label=""),
 
           Group("4",  label="", spawn="spotify"),
 
           Group("5",  label="", matches=[Match(wm_class=['Steam'])])
           ]
 
-# groups = [Group("q",  label="  "),
-                   
-#           Group("w",  label="  ", spawn="firefox"),
-                   
-#           Group("e",  label="  ", spawn="google-chrome https://chat.openai.com/"),
-
-#           Group("1",  label="  "),
-
-#           Group("2",  label="  "),
-
-#           Group("3",  label="  ", spawn="google-chrome https://mail.google.com/mail/u/1/#inbox"),
-
-#           Group("4",  label="", spawn="spotify")]
-
-# @hook.subscribe.setgroup
-# def setgroup():
-#     for i in groups:
-#         groups[i.name].label = "○"
 
 for i in groups:
     keys.extend( [
