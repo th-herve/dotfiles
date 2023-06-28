@@ -343,3 +343,5 @@ cabbrev ga Git add
 cabbrev gc Git commit -m "
 cabbrev gp Git push
 cabbrev gw Gw
+
+cabbrev fi !firefox index.html
