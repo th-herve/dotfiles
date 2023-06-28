@@ -16,28 +16,23 @@ MY_EDITOR="nvim"
 dir="$HOME/.config/rofi/launchers/type-5"
 theme='style-4'
 
-## Run
-# rofi \
-#     -show drun \
-#     -theme ${dir}/${theme}.rasi
+selected_file=$(find "$VIM_WIKI_DIR" -type f -name "*.md" | xargs -I {} basename {} | sed 's/\.[^.]*$//' | sort | rofi -dmenu -i -p " "  -theme ${dir}/${theme}.rasi -kb-custom-1 Alt+v -mesg "Press Alt+v to open in nvim")
 
-selected_file=$(find "$VIM_WIKI_DIR" -type f -name "*.md" | xargs -I {} basename {}  | sort | rofi -dmenu -i -p " "  -theme ${dir}/${theme}.rasi)
+option=$?
 
 if [ -z "$selected_file" ]; then
     exit 0
 fi
 
-$MY_TERM --hold --execute glow -p -s ~/Documents/ressource/glow_theme.json "$VIM_WIKI_DIR$selected_file" | less -R
 
-# option=$?
 # Open with nvim, if pressed the -kb-custom-1 (Alt+v), or with glow if enter
-# if [[ $option -eq 10 ]]; then
+if [[ $option -eq 10 ]]; then
 
-#     $MY_TERM $MY_EDITOR "$VIM_WIKI_DIR$selected_file"
+    $MY_TERM $MY_EDITOR "$VIM_WIKI_DIR$selected_file.md"
 
-# else
+else
 
-#     $MY_TERM --hold --execute glow -p -s ~/Documents/ressource/glow_theme.json "$VIM_WIKI_DIR$selected_file" | less -R
+    $MY_TERM --hold --execute glow -p -s ~/Documents/ressource/glow_theme.json "$VIM_WIKI_DIR$selected_file.md" | less -R
 
-# fi
+fi
 

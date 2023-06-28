@@ -173,7 +173,7 @@ error-message {
 message {
     padding:                     0px;
     background-color:            inherit;
-    text-color:                  #FF9030;
+    text-color:                  #ABE9B3;
 }
 textbox {
     padding:                     0px;
