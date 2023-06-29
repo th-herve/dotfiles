@@ -47,6 +47,7 @@ set foldnestmax=1
 set foldignore=
 set foldtext=CustomFoldText()
 set fillchars=fold:\ 
+autocmd FileType html setlocal foldnestmax=8
 
 "      === Other ===
 
@@ -323,6 +324,7 @@ function! CustomFoldText()
     return expansionString . "\ueb70" . foldSizeStr
 endfunction
 
+
 " make it reopen file at the same line it was closed
 if has("autocmd")
   au BufReadPost * if line("'\"") > 0 && line("'\"") <= line("$")
@@ -340,7 +342,7 @@ cabbrev snvi source ~/.config/nvim/init.vim
 " Git fugitive
 cabbrev gs Git status
 cabbrev ga Git add 
-cabbrev gc Git commit -m "
+cabbrev gcm Git commit -m "
 cabbrev gp Git push
 cabbrev gw Gw
 
