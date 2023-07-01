@@ -151,7 +151,7 @@ layouts = [
     layout.Columns(
         border_focus=catppuccin["teal"],
         border_normal=catppuccin["black"],
-        border_focus_stack=catppuccin['green'],
+        border_focus_stack=catppuccin["mauve"],
         border_width=1,
         margin=8,
         ),
