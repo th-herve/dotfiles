@@ -27,6 +27,9 @@ set laststatus=2
 set noshowmode 
 set winbar=%t
 
+" ugly but the one below set it for all buffer
+autocmd TermEnter * setlocal winbar=--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+" autocmd TermEnter * let &winbar = repeat('-', winwidth(0))
 
 "       === Tab ===
 
@@ -74,7 +77,7 @@ nnoremap <leader>v :vsplit<CR>
 
 tnoremap <silent> <Esc> <C-\><C-n>
 tnoremap <silent> <Esc><Esc> <C-\><C-n>:q!<CR>
-nnoremap <silent> <leader>t :vsplit<CR>:terminal bash<CR>:vertical resize 50<CR>i <C-l>
+nnoremap <silent> <leader>t :belowright split<CR>:terminal<CR>:horizontal resize 15<CR>i
 
 nnoremap <leader>e <C-w>
 
