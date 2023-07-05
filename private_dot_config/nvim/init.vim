@@ -27,9 +27,6 @@ set laststatus=2
 set noshowmode 
 set winbar=%t
 
-" ugly but the one below set it for all buffer
-autocmd TermEnter * setlocal winbar=--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
-" autocmd TermEnter * let &winbar = repeat('-', winwidth(0))
 
 "       === Tab ===
 
@@ -51,6 +48,14 @@ set foldignore=
 set foldtext=CustomFoldText()
 set fillchars=fold:\ 
 autocmd FileType html setlocal foldnestmax=8
+
+"     === terminal ===
+
+" ugly but the one below set it for all buffer
+autocmd TermEnter * setlocal winbar=---------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+" autocmd TermEnter * let &winbar = repeat('-', winwidth(0))
+
+autocmd TermEnter * setlocal nonumber norelativenumber
 
 "      === Other ===
 
@@ -75,6 +80,8 @@ let mapleader = "\<Space>"
 
 nnoremap <leader>v :vsplit<CR>
 
+tnoremap <silent> jk <C-\><C-n>
+tnoremap <silent> jkk <C-\><C-n>:q!<CR>
 tnoremap <silent> <Esc> <C-\><C-n>
 tnoremap <silent> <Esc><Esc> <C-\><C-n>:q!<CR>
 nnoremap <silent> <leader>t :belowright split<CR>:terminal<CR>:horizontal resize 15<CR>i
