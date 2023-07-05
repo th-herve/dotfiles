@@ -43,7 +43,7 @@ autocmd FileType markdown setlocal shiftwidth=2 tabstop=2
 "       === Fold ===
 
 set foldmethod=indent
-set foldnestmax=1
+set foldnestmax=4
 set foldignore=
 set foldtext=CustomFoldText()
 set fillchars=fold:\ 
