@@ -22,7 +22,7 @@ configuration {
 
 /*****----- Global Properties -----*****/
 * {
-    font:                        "JetBrainsMono Nerd Font 10";
+    font:                        "JetBrainsMono Nerd Font 16";
 }
 
 /*****----- Main Window -----*****/
