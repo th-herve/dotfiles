@@ -241,6 +241,7 @@ let g:vimwiki_list = [{'path': '~/.config/nvim/vimwiki/docs',
 let g:vimwiki_path = '~/.config/nvim/vimwiki/docs'
 let g:vimwiki_markdown_link_ext = 1
 " let g:vimwiki_auto_fold = 1
+imap <C-space> <Plug>VimwikiTableNextCell
 
 "        === Undotree ===
 
@@ -357,3 +358,4 @@ cabbrev gp Git push
 cabbrev gw Gw
 
 cabbrev fi !firefox index.html
+
