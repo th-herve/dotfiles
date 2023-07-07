@@ -86,7 +86,7 @@ tnoremap <silent> <Esc> <C-\><C-n>
 tnoremap <silent> <Esc><Esc> <C-\><C-n>:q!<CR>
 nnoremap <silent> <leader>t :belowright split<CR>:terminal<CR>:horizontal resize 15<CR>i
 
-nnoremap <leader>e <C-w>
+nnoremap <leader>e <C-w>w
 
 nnoremap <leader>a ggVG 
 vnoremap <leader>a <Esc>
