@@ -38,6 +38,7 @@ autocmd FileType html setlocal shiftwidth=2 tabstop=2
 autocmd FileType htmldjango setlocal shiftwidth=2 tabstop=2
 autocmd FileType css setlocal shiftwidth=2 tabstop=2
 autocmd FileType json setlocal shiftwidth=2 tabstop=2
+autocmd FileType javascript setlocal shiftwidth=2 tabstop=2
 autocmd FileType markdown setlocal shiftwidth=2 tabstop=2
 
 "       === Fold ===
@@ -86,7 +87,7 @@ tnoremap <silent> <Esc> <C-\><C-n>
 tnoremap <silent> <Esc><Esc> <C-\><C-n>:q!<CR>
 nnoremap <silent> <leader>t :belowright split<CR>:terminal<CR>:horizontal resize 15<CR>i
 
-nnoremap <leader>e <C-w>
+nnoremap <leader>e <C-w>w
 
 nnoremap <leader>a ggVG 
 vnoremap <leader>a <Esc>
@@ -241,6 +242,7 @@ let g:vimwiki_list = [{'path': '~/.config/nvim/vimwiki/docs',
 let g:vimwiki_path = '~/.config/nvim/vimwiki/docs'
 let g:vimwiki_markdown_link_ext = 1
 " let g:vimwiki_auto_fold = 1
+imap <C-space> <Plug>VimwikiTableNextCell
 
 "        === Undotree ===
 
@@ -282,6 +284,9 @@ let g:vcool_ins_hsl_map = '<C-l>'		" Insert hsl color with vcolor
 
 let g:user_emmet_leader_key='<M-,>'
 
+"        === telescope ===
+
+lua require('telescope').setup{ defaults = { file_ignore_patterns = {"node_modules"} } } 
 
 " +-------------------------------+
 " |         Color scheme          |
@@ -341,6 +346,8 @@ if has("autocmd")
     \| exe "normal! g'\"" | endif  
 endif
 
+autocmd BufNewFile *.sh exec "normal i#!/usr/bin/env bash\<Esc>"
+
 " +-------------------------------+
 " |         Abbreviations         |
 " +-------------------------------+
@@ -357,3 +364,5 @@ cabbrev gp Git push
 cabbrev gw Gw
 
 cabbrev fi !firefox index.html
+     
+autocmd FileType sh iabbrev #!! #!/usr/bin/env bash
