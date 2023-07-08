@@ -346,6 +346,8 @@ if has("autocmd")
     \| exe "normal! g'\"" | endif  
 endif
 
+autocmd BufNewFile *.sh exec "normal i#!/usr/bin/env bash\<Esc>"
+
 " +-------------------------------+
 " |         Abbreviations         |
 " +-------------------------------+
@@ -362,4 +364,5 @@ cabbrev gp Git push
 cabbrev gw Gw
 
 cabbrev fi !firefox index.html
-
+     
+autocmd FileType sh iabbrev #!! #!/usr/bin/env bash
