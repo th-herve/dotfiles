@@ -284,6 +284,9 @@ let g:vcool_ins_hsl_map = '<C-l>'		" Insert hsl color with vcolor
 
 let g:user_emmet_leader_key='<M-,>'
 
+"        === telescope ===
+
+lua require('telescope').setup{ defaults = { file_ignore_patterns = {"node_modules"} } } 
 
 " +-------------------------------+
 " |         Color scheme          |
