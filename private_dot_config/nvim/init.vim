@@ -34,12 +34,12 @@ set expandtab autoindent
 set tabstop=4
 set softtabstop=4
 set shiftwidth=4
-autocmd FileType html setlocal shiftwidth=2 tabstop=2
+autocmd FileType html       setlocal shiftwidth=2 tabstop=2
 autocmd FileType htmldjango setlocal shiftwidth=2 tabstop=2
-autocmd FileType css setlocal shiftwidth=2 tabstop=2
-autocmd FileType json setlocal shiftwidth=2 tabstop=2
+autocmd FileType css        setlocal shiftwidth=2 tabstop=2
+autocmd FileType json       setlocal shiftwidth=2 tabstop=2
 autocmd FileType javascript setlocal shiftwidth=2 tabstop=2
-autocmd FileType markdown setlocal shiftwidth=2 tabstop=2
+autocmd FileType markdown   setlocal shiftwidth=2 tabstop=2
 
 "       === Fold ===
 
@@ -75,111 +75,111 @@ set nobackup
 " |           Keybinds            |
 " +-------------------------------+
 
-nnoremap <Space> <Nop>
+nnoremap            <Space>         <Nop>
 let mapleader = "\<Space>"
 
 
-nnoremap <leader>v :vsplit<CR>
+nnoremap            <leader>v       :vsplit<CR>
 
-tnoremap <silent> jk <C-\><C-n>
-tnoremap <silent> jkk <C-\><C-n>:q!<CR>
-tnoremap <silent> <Esc> <C-\><C-n>
-tnoremap <silent> <Esc><Esc> <C-\><C-n>:q!<CR>
-nnoremap <silent> <leader>t :belowright split<CR>:terminal<CR>:horizontal resize 15<CR>i
+tnoremap <silent>   jk              <C-\><C-n>
+tnoremap <silent>   jkk             <C-\><C-n>:q!<CR>
+tnoremap <silent>   <Esc>           <C-\><C-n>
+tnoremap <silent>   <Esc><Esc>      <C-\><C-n>:q!<CR>
+nnoremap <silent>   <leader>t       :belowright split<CR>:terminal<CR>:horizontal resize 15<CR>i
 
-nnoremap <leader>e <C-w>w
+nnoremap            <leader>e       <C-w>w
 
-nnoremap <leader>a ggVG 
-vnoremap <leader>a <Esc>
+nnoremap            <leader>a       ggVG 
+vnoremap            <leader>a       <Esc>
 
-nnoremap <silent> <leader>h :if bufloaded(expand('~/.config/nvim/doc/keybind.md')) \| execute ':w' \| execute 'bwipeout! ~/.config/nvim/doc/keybind.md' \| else \| vsplit \| vertical resize 38 \| edit ~/.config/nvim/doc/keybind.md \| endif<CR>
-nnoremap <silent> <leader>wv :if bufloaded(expand('~/.config/nvim/init.vim')) \| execute ':w' \| execute 'bwipeout! ~/.config/nvim/init.vim' \| else \| vsplit \| edit ~/.config/nvim/init.vim \| endif<CR>
+nnoremap <silent>   <leader>h       :if bufloaded(expand('~/.config/nvim/doc/keybind.md')) \| execute ':w' \| execute 'bwipeout! ~/.config/nvim/doc/keybind.md' \| else \| vsplit \| vertical resize 38 \| edit ~/.config/nvim/doc/keybind.md \| endif<CR>
+nnoremap <silent>   <leader>wv      :if bufloaded(expand('~/.config/nvim/init.vim')) \| execute ':w' \| execute 'bwipeout! ~/.config/nvim/init.vim' \| else \| vsplit \| edit ~/.config/nvim/init.vim \| endif<CR>
 
-nnoremap <silent> <leader>z :ZenMode<CR>
+nnoremap <silent>   <leader>z       :ZenMode<CR>
 
-nnoremap <C-k> :m .-2<CR>==
-nnoremap <C-j> :m .+1<CR>==
-inoremap <C-j> <Esc>:m .+1<CR>==gi
-inoremap <C-k> <Esc>:m .-2<CR>==gi
-vnoremap <C-j> :m '>+1<CR>gv=gv
-vnoremap <C-k> :m '<-2<CR>gv=gv
+nnoremap            <C-k>           :m .-2<CR>==
+nnoremap            <C-j>           :m .+1<CR>==
+inoremap            <C-j>           <Esc>:m .+1<CR>==gi
+inoremap            <C-k>           <Esc>:m .-2<CR>==gi
+vnoremap            <C-j>           :m '>+1<CR>gv=gv
+vnoremap            <C-k>           :m '<-2<CR>gv=gv
 
 
 " NvimTree
-noremap <Leader>b :NvimTreeToggle<CR>
-nnoremap <C-b> :NvimTreeToggle<CR>
+noremap             <Leader>b       :NvimTreeToggle<CR>
+nnoremap            <C-b>           :NvimTreeToggle<CR>
 
 " file navigation/operation
-nnoremap <silent> <M-l> :bnext<CR>
-nnoremap <silent> <M-h> :bprevious<CR>
-nnoremap <silent> <leader>s :w<CR>
-nnoremap <silent> <leader>q :w<CR>:bd<CR>
+nnoremap <silent>   <M-l>           :bnext<CR>
+nnoremap <silent>   <M-h>           :bprevious<CR>
+nnoremap <silent>   <leader>s       :w<CR>
+nnoremap <silent>   <leader>q       :w<CR>:bd<CR>
 
-noremap <A-j> <C-e>  
-noremap <A-k> <C-y>
+noremap             <A-j>           <C-e>  
+noremap             <A-k>           <C-y>
 
-nmap <M-v> <C-v>
+nmap                <M-v>           <C-v>
 
-nnoremap <silent> <leader>cc :nohlsearch<CR> <Esc>
+nnoremap <silent>   <leader>cc      :nohlsearch<CR> <Esc>
 
-map <silent> <leader>o :setlocal spell!<CR>
+map      <silent>   <leader>o       :setlocal spell!<CR>
 
 " reselect indentation
-vnoremap < <gv
-vnoremap > >gv
+vnoremap            <               <gv
+vnoremap            >               >gv
 
 " Map Tab key to trigger completion with coc.vim
-inoremap <expr> <Tab> pumvisible() ? "\<C-y>" : "\<Tab>"
+inoremap <expr>     <Tab>           pumvisible() ? "\<C-y>" : "\<Tab>"
 
-nnoremap <leader>ff <cmd>Telescope find_files<cr>
-nnoremap <leader>fg <cmd>Telescope live_grep<cr>
-nnoremap <leader>fb <cmd>Telescope buffers<cr>
-nnoremap <leader>fh <cmd>Telescope help_tags<cr>
+nnoremap            <leader>ff      <cmd>Telescope find_files<cr>
+nnoremap            <leader>fg      <cmd>Telescope live_grep<cr>
+nnoremap            <leader>fb      <cmd>Telescope buffers<cr>
+nnoremap            <leader>fh      <cmd>Telescope help_tags<cr>
 
-nnoremap <C-d> <C-d>zz
-nnoremap <C-u> <C-u>zz
-nnoremap n nzzzv
-nnoremap N nzzzv 
+nnoremap            <C-d>           <C-d>zz
+nnoremap            <C-u>           <C-u>zz
+nnoremap            n               nzzzv
+nnoremap            N               nzzzv 
 
-nnoremap <silent> <leader>u :UndotreeToggle<CR>
+nnoremap <silent>   <leader>u       :UndotreeToggle<CR>
 
-nnoremap <leader>l :ls<CR>:b <Space>
+nnoremap            <leader>l       :ls<CR>:b <Space>
 
-nnoremap <leader>; A;<Esc>
-nnoremap <leader>. A.<Esc>
-nnoremap <leader>, A,<Esc>
-nnoremap <leader>: A:<Esc>
-nnoremap <leader>> A>
+nnoremap            <leader>;       A;<Esc>
+nnoremap            <leader>.       A.<Esc>
+nnoremap            <leader>,       A,<Esc>
+nnoremap            <leader>:       A:<Esc>
+nnoremap            <leader>>       A>
 
-nnoremap <leader><Space> za
+nnoremap            <leader><Space> za
 
-inoremap jk <Esc>
-vnoremap hj <Esc>
-cnoremap jk <Esc>
+inoremap            jk              <Esc>
+vnoremap            hj              <Esc>
+cnoremap            jk              <Esc>
 " nnoremap hj <Esc> 
 
-nnoremap <M-d> <C-d>zz
-nnoremap <M-u> <C-u>zz
+nnoremap            <M-d>           <C-d>zz
+nnoremap            <M-u>           <C-u>zz
 
-nnoremap ' m
-nnoremap m '
+nnoremap            '               m
+nnoremap            m               '
 
-nnoremap <silent> <leader>cl :ColorizerToggle<CR>
+nnoremap <silent>   <leader>cl      :ColorizerToggle<CR>
 
 " Git fugitive
-nnoremap <leader>gs :Git status<CR>
-nnoremap <leader>ga. :Git add .<CR>
-nnoremap <leader>gaw :Gw<CR>
-nnoremap <leader>gcm :Git commit -m "
-nnoremap <leader>gp :Git push
+nnoremap            <leader>gs      :Git status<CR>
+nnoremap            <leader>ga.     :Git add .<CR>
+nnoremap            <leader>gaw     :Gw<CR>
+nnoremap            <leader>gcm     :Git commit -m "
+nnoremap            <leader>gp      :Git push
 
-cnoremap <C-b> <Left>
-cnoremap <C-f> <Right>
-cnoremap <M-b> <c-left>
-cnoremap <M-f> <c-right>
+cnoremap            <C-b>           <Left>
+cnoremap            <C-f>           <Right>
+cnoremap            <M-b>           <c-left>
+cnoremap            <M-f>           <c-right>
 
-nmap L $
-nmap H ^
+nmap                L               $
+nmap                H               ^
 
 " +-------------------------------+
 " |           Plugins             |
@@ -323,7 +323,6 @@ endfunction
 autocmd FileType * setlocal formatoptions-=c formatoptions-=r formatoptions-=o
 
 autocmd FileType vim highlight Comment ctermfg=green
-
 autocmd ColorScheme * highlight Normal guibg=none
 " autocmd ColorScheme * highlight NormalNC guibg=none
 autocmd ColorScheme * highlight StatusLine guibg=none
