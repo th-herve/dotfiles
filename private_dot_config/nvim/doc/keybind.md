@@ -63,13 +63,14 @@ leader or ld = space
 
 ## surround
 
-| key   | action         |
-|-------|----------------|
-| ds"   | delete         |
-| cs"'  | replace        |
-| ysiw) | surround word  |
-| yss)  | surround line  |
-| S'    | in visual mode |
+| key   | action               |
+|-------|----------------------|
+| ds"   | delete               |
+| cs"'  | replace              |
+| ysiw) | surround word        |
+| yss)  | surround line        |
+| S'    | in visual mode       |
+| yww   | surround word with " |
 
 > work with ) } ] ' " htmltag
 > can use b or B for ) }
