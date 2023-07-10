@@ -181,6 +181,7 @@ cnoremap            <M-f>           <c-right>
 nmap                L               $
 nmap                H               ^
 
+
 " +-------------------------------+
 " |           Plugins             |
 " +-------------------------------+
@@ -289,6 +290,10 @@ let g:user_emmet_leader_key='<M-,>'
 "        === telescope ===
 
 lua require('telescope').setup{ defaults = { file_ignore_patterns = {"node_modules"} } } 
+
+"        === surround ===
+
+nmap yww ysiw"
 
 " +-------------------------------+
 " |         Color scheme          |
