@@ -178,6 +178,8 @@ cnoremap <C-f> <Right>
 cnoremap <M-b> <c-left>
 cnoremap <M-f> <c-right>
 
+nmap L $
+nmap H ^
 
 " +-------------------------------+
 " |           Plugins             |
