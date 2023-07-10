@@ -367,3 +367,5 @@ cabbrev gw Gw
 cabbrev fi !firefox index.html
      
 autocmd FileType sh iabbrev #!! #!/usr/bin/env bash
+
+autocmd FileType javascript iabbrev clo console.log();jkhi
