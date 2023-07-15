@@ -195,8 +195,15 @@ LS_COLORS=$LS_COLORS:'ow=0;35:tw=0;35:'
 export LS_COLORS
 
 
-# custorm prompt line (override lines above)
-PS1="\[\e[0;96m\][\$(if [ \$? = 0 ]; then echo '\[\e[0;1;5;96m\]茶雨\[\e[0m\]'; else echo '\[\e[0;1;5;31m\]茶雨\[\e[0m\]'; fi)\[\e[0;96m\]] \[\e[0;32m\]\u\[\e[0m\]:\[\e[0;36m\]\W\[\e[0m\]\$\[\e[0m\] "
+show_git_branch() {
+    local branch_name=$(git symbolic-ref --quiet --short HEAD 2>/dev/null)
+    if [ -n "$branch_name" ]; then
+        echo ": $branch_name"
+    fi
+}
+
+# custom prompt line (override lines above)
+PS1="\[\e[0;96m\][\$(if [ \$? = 0 ]; then echo '\[\e[0;1;96m\]茶雨\[\e[0m\]'; else echo '\[\e[0;1;5;31m\]茶雨\[\e[0m\]'; fi)\[\e[0;96m\]] \[\e[0;32m\]\u\[\e[0m\]:\[\e[0;36m\]\W\[\e[0m\]\$\[\e[0m\] "
 PS2="\[\e[0;1;95m\]> \[\e[0m\]"
 
 # rust env
