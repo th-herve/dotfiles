@@ -224,6 +224,7 @@ call plug#begin('~/.config/nvim/plugged')
     Plug 'joshdick/onedark.vim',
     Plug 'nordtheme/vim',
     Plug 'rebelot/kanagawa.nvim',
+    Plug 'sainnhe/everforest',
     
 call plug#end()
 
@@ -328,7 +329,7 @@ endfunction
 autocmd FileType * setlocal formatoptions-=c formatoptions-=r formatoptions-=o
 
 autocmd FileType vim highlight Comment ctermfg=green
-autocmd ColorScheme * highlight Normal guibg=none
+" autocmd ColorScheme * highlight Normal guibg=none
 " autocmd ColorScheme * highlight NormalNC guibg=none
 autocmd ColorScheme * highlight StatusLine guibg=none
 autocmd ColorScheme * highlight StatusLineNC guibg=none
