@@ -375,3 +375,5 @@ cabbrev fi !firefox index.html
 autocmd FileType sh iabbrev #!! #!/usr/bin/env bash
 
 autocmd FileType javascript iabbrev clo console.log();jkhi
+autocmd FileType javascript iabbrev dcel document.createElement("");jkhhi
+autocmd FileType javascript iabbrev dceld document.createElement("div");
