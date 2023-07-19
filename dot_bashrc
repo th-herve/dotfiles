@@ -48,7 +48,7 @@ alias bsi="chezmoi edit ~/.bashrc"
 alias bss="source ~/.bashrc"
 
 # cmd aliases
-alias ipadress="echo $(ifconfig | grep broadcast | awk '{print $2}')"
+alias ipadress="echo \$(ip addr show | awk '/inet.*brd/{print \$2}' | sed 's|/.*||')"
 alias mv="mv -i" # ask if override
 alias cddl="cd ~/Downloads"
 alias ..="cd .."
