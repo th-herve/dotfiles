@@ -65,6 +65,9 @@ alias npmt="npm test"
 export VISUAL=nvim;
 export EDITOR=nvim;
 
+# enable auto cd
+shopt -s autocd
+
 PATH="$HOME/.local/bin:$PATH"
 export PATH="$HOME/programming/git_clone/eww/target/release:$PATH"
 
