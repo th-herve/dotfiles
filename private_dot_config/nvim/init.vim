@@ -217,6 +217,9 @@ call plug#begin('~/.config/nvim/plugged')
     Plug 'mattn/emmet-vim',
     Plug 'tpope/vim-repeat',
     Plug 'ggandor/leap.nvim',
+
+    Plug 'dense-analysis/ale',
+
 "         == themes ==
     Plug 'catppuccin/nvim', { 'as': 'catppuccin' },
     Plug 'Mofiqul/dracula.nvim',
@@ -231,6 +234,7 @@ call plug#end()
 
 lua require'colorizer'.setup()
 source   ~/.config/nvim/lua.vim
+source   ~/.config/nvim/ale-linting.vim
 
 lua require('leap').add_default_mappings()
 
