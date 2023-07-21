@@ -61,6 +61,8 @@ alias l='ls -CF'
 
 alias npmt="npm test"
 
+alias pacman="sudo pacman -S"
+
 # set default editor
 export VISUAL=nvim;
 export EDITOR=nvim;

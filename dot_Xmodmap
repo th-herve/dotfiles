@@ -111,6 +111,7 @@ keycode 105 = Control_R NoSymbol Control_R
 keycode 106 = KP_Divide KP_Divide KP_Divide KP_Divide KP_Divide KP_Divide XF86Ungrab
 keycode 107 = Print Sys_Req Print Sys_Req
 
+! Not changed
 keycode 108 = Super_L Super_L Alt_R Meta_R
 
 keycode 109 = Linefeed NoSymbol Linefeed
