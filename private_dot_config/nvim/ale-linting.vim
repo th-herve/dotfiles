@@ -8,6 +8,10 @@ let g:ale_echo_msg_warning_str = 'W'      " Set the sign for warnings
 let g:ale_sign_error = '>'
 let g:ale_sign_warning = '-'
 
+let g:ale_sign_column_always = 0
+let g:ale_set_signs = 0
+let g:ale_virtualtext_cursor=0
+
 let g:ale_linters = {
       \ 'javascript':   ['eslint'],
       \ 'html':         ['htmlhint'],
