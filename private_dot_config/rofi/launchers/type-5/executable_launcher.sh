@@ -26,13 +26,13 @@ fi
 
 
 # Open with nvim, if pressed the -kb-custom-1 (Alt+v), or with glow if enter
-# if [[ $option -eq 10 ]]; then
+if [[ $option -eq 10 ]]; then
 
     $MY_TERM $MY_EDITOR "$VIM_WIKI_DIR$selected_file.md"
 
-# else
+else
 
-    # $MY_TERM --hold --execute glow -p -s ~/Documents/ressource/glow_theme.json "$VIM_WIKI_DIR$selected_file.md" | less -R
+    $MY_TERM --hold --execute glow -p -s ~/Documents/ressource/glow_theme.json "$VIM_WIKI_DIR$selected_file.md" | less -R
 
-# fi
+fi
 
