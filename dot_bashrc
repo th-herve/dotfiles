@@ -63,6 +63,8 @@ alias npmt="npm test"
 
 alias pacman="sudo pacman -S"
 
+alias battery="~/battery_level.sh"
+
 # set default editor
 export VISUAL=nvim;
 export EDITOR=nvim;
