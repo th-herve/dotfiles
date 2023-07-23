@@ -1,0 +1,14 @@
+XF86Audio{Prev,Next}
+	playerctl {previous,next}
+
+XF86AudioPlay
+	playerctl --player=spotify play-pause
+
+XF86Audio{Lower,Raise}Volume
+    amixer -c 1 sset PCM 2%{-,+}
+
+XF86AudioMute
+    amixer -c 1 sset PCM toggle
+
+XF86MonBrightness{Down,Up}
+    xbacklight -{dec,inc} 5
