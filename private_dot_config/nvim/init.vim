@@ -178,6 +178,11 @@ cnoremap            <C-f>           <Right>
 cnoremap            <M-b>           <c-left>
 cnoremap            <M-f>           <c-right>
 
+inoremap            <C-b>           <Left>
+inoremap            <C-f>           <Right>
+inoremap            <M-b>           <c-left>
+inoremap            <M-f>           <c-right>
+
 nmap                L               $
 nmap                H               ^
 
@@ -299,6 +304,10 @@ lua require('telescope').setup{ defaults = { file_ignore_patterns = {"node_modul
 "        === surround ===
 
 nmap yww ysiw"
+
+"        === auto-pairs ===
+
+let g:AutoPairsShortcutBackInsert = ''
 
 " +-------------------------------+
 " |         Color scheme          |
