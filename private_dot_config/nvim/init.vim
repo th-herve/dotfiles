@@ -161,9 +161,6 @@ cnoremap            jk              <Esc>
 nnoremap            <M-d>           <C-d>zz
 nnoremap            <M-u>           <C-u>zz
 
-nnoremap            '               m
-nnoremap            m               '
-
 nnoremap <silent>   <leader>cl      :ColorizerToggle<CR>
 
 " Git fugitive
