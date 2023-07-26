@@ -161,9 +161,6 @@ cnoremap            jk              <Esc>
 nnoremap            <M-d>           <C-d>zz
 nnoremap            <M-u>           <C-u>zz
 
-nnoremap            '               m
-nnoremap            m               '
-
 nnoremap <silent>   <leader>cl      :ColorizerToggle<CR>
 
 " Git fugitive
@@ -177,6 +174,11 @@ cnoremap            <C-b>           <Left>
 cnoremap            <C-f>           <Right>
 cnoremap            <M-b>           <c-left>
 cnoremap            <M-f>           <c-right>
+
+inoremap            <C-b>           <Left>
+inoremap            <C-f>           <Right>
+inoremap            <M-b>           <c-left>
+inoremap            <M-f>           <c-right>
 
 nmap                L               $
 nmap                H               ^
@@ -217,6 +219,9 @@ call plug#begin('~/.config/nvim/plugged')
     Plug 'mattn/emmet-vim',
     Plug 'tpope/vim-repeat',
     Plug 'ggandor/leap.nvim',
+
+    Plug 'dense-analysis/ale',
+
 "         == themes ==
     Plug 'catppuccin/nvim', { 'as': 'catppuccin' },
     Plug 'Mofiqul/dracula.nvim',
@@ -224,12 +229,14 @@ call plug#begin('~/.config/nvim/plugged')
     Plug 'joshdick/onedark.vim',
     Plug 'nordtheme/vim',
     Plug 'rebelot/kanagawa.nvim',
+    Plug 'sainnhe/everforest',
     
 call plug#end()
 
 
 lua require'colorizer'.setup()
 source   ~/.config/nvim/lua.vim
+source   ~/.config/nvim/ale-linting.vim
 
 lua require('leap').add_default_mappings()
 
@@ -295,6 +302,10 @@ lua require('telescope').setup{ defaults = { file_ignore_patterns = {"node_modul
 
 nmap yww ysiw"
 
+"        === auto-pairs ===
+
+let g:AutoPairsShortcutBackInsert = ''
+
 " +-------------------------------+
 " |         Color scheme          |
 " +-------------------------------+
@@ -328,7 +339,7 @@ endfunction
 autocmd FileType * setlocal formatoptions-=c formatoptions-=r formatoptions-=o
 
 autocmd FileType vim highlight Comment ctermfg=green
-autocmd ColorScheme * highlight Normal guibg=none
+" autocmd ColorScheme * highlight Normal guibg=none
 " autocmd ColorScheme * highlight NormalNC guibg=none
 autocmd ColorScheme * highlight StatusLine guibg=none
 autocmd ColorScheme * highlight StatusLineNC guibg=none
@@ -374,3 +385,5 @@ cabbrev fi !firefox index.html
 autocmd FileType sh iabbrev #!! #!/usr/bin/env bash
 
 autocmd FileType javascript iabbrev clo console.log();jkhi
+autocmd FileType javascript iabbrev dcel document.createElement("");jkhhi
+autocmd FileType javascript iabbrev dceld document.createElement("div");
