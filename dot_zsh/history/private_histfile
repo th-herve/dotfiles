@@ -1,0 +1,105 @@
+ls
+la
+ls
+ls -a
+exit
+exit
+ls
+echo "source ${(q-)PWD}/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh" >> ${ZDOTDIR:-$HOME}/.zshrc
+ls
+exit
+ls
+la
+exit
+ls
+ls
+exit
+echo "source ${(q-)PWD}/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh" >> ${ZDOTDIR:-$HOME}/.zshrc
+exit
+exit
+ls
+ls -al
+exit
+ls
+la
+ls -la
+exit
+ls
+exit
+exit
+ls
+la
+ls -la
+a;dfjk
+exit
+echo "test
+echo "ef
+exit
+ls
+echo "t\
+ls
+exit
+ls
+echo "t\
+"
+ls
+exit
+ls
+ls -l
+exit
+ls
+cd .dwm
+ls
+gs
+git status
+ls
+exit
+exit
+ls
+neofetch
+ls
+ls
+ls
+ls
+exit
+exit
+exit
+exit
+tet et testi
+exit
+exit
+exit
+test 2 echo truc
+exit
+exit
+echo -ne '\e[5 q'
+v .zshrc
+nvim .zshrc
+exit
+ls
+exit
+ls --color=auto
+exit
+la
+ls
+ls -a
+exit
+la
+v .zshrc
+exit
+exit
+ls
+ls Documents
+ls
+ls -lR
+ls
+zsh
+zsh
+v .zshrc
+exit
+est tset 
+v .zshrc
+nvim .zshrc
+exit
+test  
+exit

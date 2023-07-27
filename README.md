@@ -20,4 +20,3 @@ sudo pacman -S neovim kitty qtile neofetch dmenu rofi
 # for ubuntu install nvim with .deb to have last version
 sudo apt install kitty qtile neofetch dmenu rofi
 ```
-

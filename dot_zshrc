@@ -1,0 +1,34 @@
+# Lines configured by zsh-newuser-install
+autoload -U colors && colors
+
+PROMPT="%{[0;96m%}[%{%(?.%{[0;1;96m%}茶雨%{[0m%}.%{[0;1;5;31m%}茶雨%{[0m%})%{[0;96m%}] %{[0;32m%}%n%{[0m%}:%{[0;36m%}%~%{[0m%}\$%{[0m%} "
+PS2="%{[0;1;95m%}> %{[0m%}"
+
+HISTFILE=~/.zsh/history/histfile
+HISTSIZE=1000
+SAVEHIST=1000
+
+setopt autocd beep extendedglob nomatch notify
+bindkey -e
+zstyle :compinstall filename '/home/adiantum/.zshrc'
+
+# set cursor to beam
+echo -ne '\e[5 q'
+
+# Edit line in vim with ctrl-e:
+autoload edit-command-line; zle -N edit-command-line
+bindkey '^v' edit-command-line
+
+# Basic auto/tab complete:
+autoload -U compinit
+zstyle ':completion:*' menu select
+zmodload zsh/complist
+compinit
+_comp_options+=(globdots)		# Include hidden files.
+
+
+# Alias
+alias ls='ls --color=auto'
+
+source ~/.zsh/zsh-syntax-highlighting/themes/themes/catppuccin_macchiato-zsh-syntax-highlighting.zsh
+source ~/.zsh/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
