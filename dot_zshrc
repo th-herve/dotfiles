@@ -12,6 +12,7 @@ zstyle ':completion:*' menu select
 zmodload zsh/complist
 
 EDITOR=nvim
+export VISUAL=nvim
 
 #        === Prompt ===
 
@@ -107,6 +108,10 @@ alias gg="git graph"
 alias bsi="chezmoi edit ~/.bashrc"
 alias bss="source ~/.bashrc"
 
+# zshrc
+alias zsi="chezmoi edit ~/.zshrc"
+alias zss="source ~/.zshrc"
+
 # cmd aliases
 alias ipadress="echo \$(ip addr show | awk '/inet.*brd/{print \$2}' | sed 's|/.*||')"
 alias mv="mv -i" # ask if override
@@ -133,4 +138,16 @@ alias battery="~/battery_level.sh"
 
 #        === pluggin ===
 
+# History substring keybind
+HISTORY_SUBSTRING_SEARCH_HIGHLIGHT_FOUND="bg=none,fg=cyan"
+HISTORY_SUBSTRING_SEARCH_HIGHLIGHT_NOT_FOUND="bg=none,fg=red"
+
 source ~/.config/zsh/plug/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
+source ~/.config/zsh/plug/zsh-history-substring-search/zsh-history-substring-search.zsh
+source ~/.config/zsh/plug/zsh-autosuggestions/zsh-autosuggestions.zsh
+source ~/.config/zsh/plug/zsh-sudo/sudo.zsh
+
+
+bindkey -M emacs '^P' history-substring-search-up
+bindkey -M emacs '^N' history-substring-search-down
+bindkey '^j' autosuggest-execute
