@@ -10,7 +10,10 @@ _comp_options+=(globdots) # show hidden files
 zstyle ':completion:*' menu select
 zmodload zsh/complist
 
+#        === editor ===
+
 EDITOR=nvim
+export VISUAL=nvim
 
 #        === Prompt ===
 
@@ -106,6 +109,10 @@ alias gg="git graph"
 alias bsi="chezmoi edit ~/.bashrc"
 alias bss="source ~/.bashrc"
 
+# zshrc
+alias zsi="chezmoi edit ~/.zshrc"
+alias zss="source ~/.zshrc"
+
 # cmd aliases
 alias ipadress="echo \$(ip addr show | awk '/inet.*brd/{print \$2}' | sed 's|/.*||')"
 alias mv="mv -i" # ask if override
@@ -142,4 +149,4 @@ source ~/.config/zsh/plug/zsh-autosuggestions/zsh-autosuggestions.zsh
 
 bindkey -M emacs '^P' history-substring-search-up
 bindkey -M emacs '^N' history-substring-search-down
-
+bindkey '^j' autosuggest-execute
