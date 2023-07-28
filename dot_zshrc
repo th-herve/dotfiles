@@ -1,0 +1,136 @@
+
+setopt autocd
+zle_highlight=('paste:none')
+
+#        === autocomplete ===
+
+autoload -Uz compinit promptinit
+compinit
+promptinit
+_comp_options+=(globdots) # show hidden files
+zstyle ':completion:*' menu select
+zmodload zsh/complist
+
+EDITOR=nvim
+
+#        === Prompt ===
+
+PROMPT="%(?.%F{cyan}[茶雨].%F{cyan}[%F{red}茶雨%F{cyan}]) %F{green}%n:%F{cyan}%1~%f%# "
+PS2="%{[0;1;95m%}> %{[0m%}"
+
+
+#        === Right prompt ===
+
+function git_branch_name()
+{
+  branch=$(git symbolic-ref HEAD 2> /dev/null | awk 'BEGIN{FS="/"} {print $NF}')
+  if [[ $branch == "" ]];
+  then
+    :
+  else
+    echo '%F{green}%f '$branch''
+  fi
+}
+setopt prompt_subst
+RPROMPT='$(git_branch_name)'
+
+
+#        === History ===
+
+HISTSIZE=10000
+SAVEHIST=10000
+HISTFILE=~/.config/zsh/history/zshhistory
+
+
+#        === keybind ===
+
+
+# Use vim keys in tab complete menu:
+bindkey -M menuselect 'h' vi-backward-char
+bindkey -M menuselect 'k' vi-up-line-or-history
+bindkey -M menuselect 'l' vi-forward-char
+bindkey -M menuselect 'j' vi-down-line-or-history
+bindkey -v '^?' backward-delete-char
+
+
+bindkey -e  # set emacs key
+
+# Edit line in vim with ctrl-v:
+autoload edit-command-line; zle -N edit-command-line
+bindkey '^v' edit-command-line
+
+
+#        === Alias ===
+
+# working temp aliases
+alias odin="cd ~/programming/web/odin"
+
+# my aliases
+alias python="python3"
+alias r="ranger"
+alias bat="batcat"
+
+# nvim
+alias v="nvim"
+alias nvc="cd ~/.config/nvim"
+alias nvcw="cd ~/.config/nvim/vimwiki/docs"
+alias nvi="chezmoi edit ~/.config/nvim/init.vim"
+alias nvp="cd ~/.config/nvim/plugged"
+alias wiki="nvim ~/.config/nvim/vimwiki/docs/index.md"
+
+# Kitty
+alias icat="kitty +kitten icat"
+alias kt.='nohup kitty --directory "$(pwd)" >/dev/null 2>&1 & disown'
+alias ktc="cd ~/.config/kitty"
+alias kti="chezmoi edit ~/.config/kitty/kitty.conf"
+
+# qtile
+alias qtc="cd ~/.config/qtile"
+alias qti="chezmoi edit ~/.config/qtile/config.py"
+alias qtr="pkill -SIGUSR1 qtile"
+
+# chezmoi
+alias cmd="chezmoi cd"
+alias cme="chezmoi edit"
+alias cma="chezmoi -v apply"
+
+# git aliases
+alias gs="git status"
+alias ga="git add"
+alias gc="git commit"
+alias gcm="git commit -m "
+alias gp="git push"
+alias gd="git diff"
+alias gg="git graph"
+
+# bashrc
+alias bsi="chezmoi edit ~/.bashrc"
+alias bss="source ~/.bashrc"
+
+# cmd aliases
+alias ipadress="echo \$(ip addr show | awk '/inet.*brd/{print \$2}' | sed 's|/.*||')"
+alias mv="mv -i" # ask if override
+alias cddl="cd ~/Downloads"
+alias ..="cd .."
+alias rm="rm -i"
+
+# ls aliases
+alias ll='ls -alF'
+alias la='ls -lA'
+alias l='ls -CF'
+
+alias ls='ls --color=auto'
+alias grep='grep --color=auto'
+alias fgrep='fgrep --color=auto'
+alias egrep='egrep --color=auto'
+
+alias npmt="npm test"
+
+alias pacman="sudo pacman -S"
+
+alias battery="~/battery_level.sh"
+
+
+#        === pluggin ===
+
+source ~/.config/zsh/plug/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
