@@ -135,6 +135,7 @@ alias pacman="sudo pacman -S"
 
 alias battery="~/battery_level.sh"
 
+alias feh="feh --scale-down -B 'black' -z --action 'feh --bg-scale %f' "
 
 #        === pluggin ===
 
