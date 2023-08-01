@@ -114,14 +114,17 @@ alias zss="source ~/.zshrc"
 
 # cmd aliases
 alias ipadress="echo \$(ip addr show | awk '/inet.*brd/{print \$2}' | sed 's|/.*||')"
-alias mv="mv -i" # ask if override
 alias cddl="cd ~/Downloads"
 alias ..="cd .."
+
+# security
+alias mv="mv -i"
 alias rm="rm -i"
+alias cp="cp -i"
 
 # ls aliases
 alias ll='ls -alF'
-alias la='ls -lA'
+alias la='ls -lAh'
 alias l='ls -CF'
 
 alias ls='ls --color=auto'
@@ -136,6 +139,14 @@ alias pacman="sudo pacman -S"
 alias battery="~/battery_level.sh"
 
 alias feh="feh --scale-down -B 'black' -z --action 'feh --bg-scale %f' "
+
+# apt
+alias aptup="sudo apt update && sudo apt upgrade"
+alias aptin="sudo apt install"
+alias aptrm="sudo apt remove"
+
+alias mkdir="mkdir -pv"
+
 
 #        === pluggin ===
 
