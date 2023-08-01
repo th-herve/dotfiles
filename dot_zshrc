@@ -102,7 +102,7 @@ alias gc="git commit"
 alias gcm="git commit -m "
 alias gp="git push"
 alias gd="git diff"
-alias gg="git graph"
+alias gg="git log --graph --abbrev-commit --oneline --all --decorate"
 
 # bashrc
 alias bsi="chezmoi edit ~/.bashrc"
@@ -152,3 +152,6 @@ source ~/.config/zsh/plug/zsh-sudo/sudo.zsh
 bindkey -M emacs '^P' history-substring-search-up
 bindkey -M emacs '^N' history-substring-search-down
 bindkey '^j' autosuggest-execute
+
+# Created by `pipx` on 2023-07-30 14:33:14
+export PATH="$PATH:/home/adiantum/.local/bin"
