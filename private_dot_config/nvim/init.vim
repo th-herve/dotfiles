@@ -174,11 +174,15 @@ cnoremap            <C-b>           <Left>
 cnoremap            <C-f>           <Right>
 cnoremap            <M-b>           <c-left>
 cnoremap            <M-f>           <c-right>
+cnoremap            <C-a>           <Home>
+cnoremap            <C-e>           <End>
 
 inoremap            <C-b>           <Left>
 inoremap            <C-f>           <Right>
 inoremap            <M-b>           <c-left>
 inoremap            <M-f>           <c-right>
+inoremap            <C-a>           <Home>
+inoremap            <C-e>           <End>
 
 nmap                L               $
 nmap                H               ^
