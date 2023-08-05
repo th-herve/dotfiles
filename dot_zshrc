@@ -1,4 +1,3 @@
-
 setopt autocd
 zle_highlight=('paste:none')
 
@@ -134,11 +133,17 @@ alias egrep='egrep --color=auto'
 
 alias npmt="npm test"
 
-alias pacman="sudo pacman -S"
-
 alias battery="~/battery_level.sh"
 
 alias feh="feh --scale-down -B 'black' -z --action 'feh --bg-scale %f' "
+
+# Pacman
+alias paci="sudo pacman -S"
+alias pacr="sudo pacman -R"
+alias pacrd="sudo pacman -Rs"
+alias pacu="sudo pacman -Syu"
+alias pacs="sudo pacman -Ss"
+alias paclist="sudo pacman -Q"
 
 # apt
 alias aptup="sudo apt update && sudo apt upgrade"
@@ -168,11 +173,9 @@ bindkey '^j' autosuggest-execute
 #        === env ===
 
 # Created by `pipx` on 2023-07-30 14:33:14
-export PATH="$PATH:/home/adiantum/.local/bin"
+# export PATH="$PATH:/home/adiantum/.local/bin"
 
-# nvm env (copy from the auto generated in bash)
 export NVM_DIR="$HOME/.nvm"
 [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
-[ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
 
 export PATH="$HOME/.yarn/bin:$HOME/.config/yarn/global/node_modules/.bin:$PATH"
