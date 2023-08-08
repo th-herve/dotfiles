@@ -18,3 +18,6 @@ Print
 
 mod4 + shift + k
     $HOME/.config/dmenu_script/pkill_process.sh
+
+mod4 + shift + c
+    GTK_THEME=Orchis-Dark-Nord gnome-calculator
