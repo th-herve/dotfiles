@@ -228,8 +228,10 @@ call plug#begin('~/.config/nvim/plugged')
 
     Plug 'dense-analysis/ale',
 
-    Plug 'akinsho/toggleterm.nvim', {'tag' : '*'}
+    Plug 'akinsho/toggleterm.nvim', {'tag' : '*'},
 
+    Plug 'folke/noice.nvim',
+    Plug 'MunifTanjim/nui.nvim',
 
 "         == themes ==
     Plug 'catppuccin/nvim', { 'as': 'catppuccin' },
@@ -243,11 +245,14 @@ call plug#begin('~/.config/nvim/plugged')
 call plug#end()
 
 
-lua require'colorizer'.setup()
 source   ~/.config/nvim/lua.vim
 source   ~/.config/nvim/ale-linting.vim
 
+lua require'colorizer'.setup()
+
 lua require('leap').add_default_mappings()
+
+lua require("noice").setup()
 
 " lua require('color-picker').setup()
 
