@@ -204,8 +204,8 @@ call plug#begin('~/.config/nvim/plugged')
     Plug 'vimwiki/vimwiki',
     Plug 'ellisonleao/glow.nvim',
     Plug 'tpope/vim-fugitive',
-    Plug 'yamatsum/nvim-cursorline',
-    Plug 'itchyny/vim-cursorword',
+    " Plug 'yamatsum/nvim-cursorline',
+    " Plug 'itchyny/vim-cursorword',
     Plug 'jiangmiao/auto-pairs',
     Plug 'norcalli/nvim-colorizer.lua',
 
@@ -214,10 +214,10 @@ call plug#begin('~/.config/nvim/plugged')
 
     Plug 'nvim-lua/plenary.nvim',
     Plug 'nvim-telescope/telescope.nvim', { 'tag': '0.1.1' },
+    Plug 'nvim-tree/nvim-web-devicons',
 
     Plug 'mbbill/undotree',
 
-    Plug 'nvim-tree/nvim-web-devicons',
     Plug 'nvim-tree/nvim-tree.lua',
 
     Plug 'KabbAmine/vCoolor.vim',
