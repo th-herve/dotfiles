@@ -81,7 +81,7 @@ nnoremap            <Space>         <Nop>
 let mapleader = "\<Space>"
 
 
-nnoremap            <leader>v       :vsplit<CR>
+nnoremap <silent>   <leader>v       :vsplit<CR>
 
 tnoremap <silent>   jk              <C-\><C-n>
 tnoremap <silent>   jkk             <C-\><C-n>:q!<CR>
@@ -99,12 +99,12 @@ nnoremap <silent>   <leader>wv      :if bufloaded(expand('~/.config/nvim/init.vi
 
 nnoremap <silent>   <leader>z       :ZenMode<CR>
 
-nnoremap            <C-k>           :m .-2<CR>==
-nnoremap            <C-j>           :m .+1<CR>==
-inoremap            <C-j>           <Esc>:m .+1<CR>==gi
-inoremap            <C-k>           <Esc>:m .-2<CR>==gi
-vnoremap            <C-j>           :m '>+1<CR>gv=gv
-vnoremap            <C-k>           :m '<-2<CR>gv=gv
+nnoremap <silent>   <C-k>           :m .-2<CR>==
+nnoremap <silent>   <C-j>           :m .+1<CR>==
+inoremap <silent>   <C-j>           <Esc>:m .+1<CR>==gi
+inoremap <silent>   <C-k>           <Esc>:m .-2<CR>==gi
+vnoremap <silent>   <C-j>           :m '>+1<CR>gv=gv
+vnoremap <silent>   <C-k>           :m '<-2<CR>gv=gv
 
 
 " NvimTree
@@ -212,8 +212,8 @@ call plug#begin('~/.config/nvim/plugged')
     Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'},
     Plug 'nvim-treesitter/playground',
 
-    Plug 'nvim-lua/plenary.nvim',
     Plug 'nvim-telescope/telescope.nvim', { 'tag': '0.1.1' },
+    Plug 'nvim-lua/plenary.nvim',
     Plug 'nvim-tree/nvim-web-devicons',
 
     Plug 'mbbill/undotree',
@@ -232,6 +232,8 @@ call plug#begin('~/.config/nvim/plugged')
 
     Plug 'folke/noice.nvim',
     Plug 'MunifTanjim/nui.nvim',
+
+    " Plug 'stevearc/oil.nvim'
 
 "         == themes ==
     Plug 'catppuccin/nvim', { 'as': 'catppuccin' },
