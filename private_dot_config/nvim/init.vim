@@ -85,9 +85,9 @@ let mapleader = "\<Space>"
 nnoremap <silent>   <leader>v       :vsplit<CR>
 
 tnoremap <silent>   jk              <C-\><C-n>
-tnoremap <silent>   jkk             <C-\><C-n>:q!<CR>
-tnoremap <silent>   <Esc>           <C-\><C-n>
-tnoremap <silent>   <Esc><Esc>      <C-\><C-n>:q!<CR>
+" tnoremap <silent>   jkk             <C-\><C-n>:q!<CR>
+" tnoremap <silent>   <Esc>           <C-\><C-n>
+" tnoremap <silent>   <Esc><Esc>      <C-\><C-n>:q!<CR>
 " nnoremap <silent>   <leader>t       :belowright split<CR>:terminal<CR>:horizontal resize 15<CR>i
 
 nnoremap            <leader>e       <C-w>w
