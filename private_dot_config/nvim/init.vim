@@ -190,6 +190,8 @@ inoremap            <C-e>           <End>
 nmap                L               $
 nmap                H               ^
 
+noremap <C-I> <C-O>
+noremap <C-O> <C-I>
 
 " +-------------------------------+
 " |           Plugins             |
