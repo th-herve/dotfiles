@@ -119,3 +119,13 @@ Lower case (char) mark, are specific to each file, upper case are global and wor
 | ze   | delete all fold    |
 | [/]z | start/end of fold  |
 :mkview :loadview
+
+## Harpoon
+
+| key  | action       |
+|------|--------------|
+| C-h  | Toggle menu  |
+| C-p  | Harpoon file |
+| ld+j | file1        |
+| ld+k | file2        |
+| ld+l | file3        |
