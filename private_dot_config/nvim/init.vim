@@ -100,8 +100,8 @@ nnoremap <silent>   <leader>wv      :if bufloaded(expand('~/.config/nvim/init.vi
 
 nnoremap <silent>   <leader>z       :ZenMode<CR>
 
-" nnoremap <silent>   <C-k>           :m .-2<CR>==
-" nnoremap <silent>   <C-j>           :m .+1<CR>==
+nnoremap <silent>   <C-S-J>           :m .+1<CR>==
+nnoremap <silent>   <C-S-k>           :m .-2<CR>==
 inoremap <silent>   <C-j>           <Esc>:m .+1<CR>==gi
 inoremap <silent>   <C-k>           <Esc>:m .-2<CR>==gi
 vnoremap <silent>   <C-j>           :m '>+1<CR>gv=gv
