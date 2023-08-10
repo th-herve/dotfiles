@@ -145,7 +145,7 @@ nnoremap            N               nzzzv
 
 nnoremap <silent>   <leader>u       :UndotreeToggle<CR>
 
-nnoremap            <leader>l       :ls<CR>:b <Space>
+" nnoremap            <leader>l       :ls<CR>:b <Space>
 
 nnoremap            <leader>;       A;<Esc>
 nnoremap            <leader>.       A.<Esc>
@@ -230,7 +230,8 @@ call plug#begin('~/.config/nvim/plugged')
 
     Plug 'akinsho/toggleterm.nvim', {'tag' : '*'},
 
-    Plug 'stevearc/oil.nvim'
+    Plug 'stevearc/oil.nvim',
+    Plug 'ThePrimeagen/harpoon',
 
 "         == themes ==
     Plug 'catppuccin/nvim', { 'as': 'catppuccin' },
@@ -330,6 +331,16 @@ nmap <silent> t :ToggleTerm<CR>
 
 nnoremap <silent> <leader>b :Oil --float<Cr>
 nnoremap <silent> <C-b> :Oil<Cr>
+
+"        === Harpoon ===
+
+nnoremap <silent> <C-h> :lua require("harpoon.ui").toggle_quick_menu()<CR>
+
+nnoremap <silent> <C-p> :lua require("harpoon.mark").add_file()<CR>
+
+nnoremap <silent> <leader>j :lua require("harpoon.ui").nav_file(1)<CR>
+nnoremap <silent> <leader>k :lua require("harpoon.ui").nav_file(2)<CR>
+nnoremap <silent> <leader>l :lua require("harpoon.ui").nav_file(3)<CR>
 
 " +-------------------------------+
 " |         Color scheme          |
