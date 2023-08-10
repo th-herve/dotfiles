@@ -54,11 +54,12 @@ autocmd FileType html setlocal foldnestmax=8
 
 "     === terminal ===
 
-" ugly but the one below set it for all buffer
-autocmd TermEnter * setlocal winbar=---------------------------------------------------------------------------------------------------------------------------------------------------------------------------
-" autocmd TermEnter * let &winbar = repeat('-', winwidth(0))
+" function Empty()
+"   return ""
+" endfunction
+" autocmd TermEnter * setlocal winbar=%{%Empty()%}
 
-autocmd TermEnter * setlocal nonumber norelativenumber
+" autocmd TermEnter * setlocal nonumber norelativenumber
 
 "      === Other ===
 
@@ -323,7 +324,7 @@ let g:AutoPairsShortcutBackInsert = ''
 
 "        === Toggle term ===
 
-lua require("toggleterm").setup({open_mapping = [[<c-/>]],shade_terminals = true, highlight = { Normal = { guibg = '#11111b', } }})
+lua require("toggleterm").setup({open_mapping = [[<c-/>]],shade_terminals = true, direction = "float",float_opts = {border = 'single' }, highlight = { Normal = { guibg = '#11111b', } }})
 
 "        === Oil ===
 
