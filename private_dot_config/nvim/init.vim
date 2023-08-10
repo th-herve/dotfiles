@@ -108,8 +108,8 @@ vnoremap <silent>   <C-k>           :m '<-2<CR>gv=gv
 
 
 " NvimTree
-noremap             <Leader>b       :NvimTreeToggle<CR>
-nnoremap            <C-b>           :NvimTreeToggle<CR>
+" noremap             <Leader>b       :NvimTreeToggle<CR>
+" nnoremap            <C-b>           :NvimTreeToggle<CR>
 
 " file navigation/operation
 nnoremap <silent>   <M-l>           :bnext<CR>
@@ -218,7 +218,7 @@ call plug#begin('~/.config/nvim/plugged')
 
     Plug 'mbbill/undotree',
 
-    Plug 'nvim-tree/nvim-tree.lua',
+    " Plug 'nvim-tree/nvim-tree.lua',
 
     Plug 'KabbAmine/vCoolor.vim',
 
@@ -342,8 +342,8 @@ colorscheme catppuccin-macchiato
 
 "         === NvimTree ===
 
-highlight NvimTreeNormal guibg=none
-highlight NvimTreeWinSeparator guifg=#11111b
+" highlight NvimTreeNormal guibg=none
+" highlight NvimTreeWinSeparator guifg=#11111b
 
 " +-------------------------------+
 " |           Function            |

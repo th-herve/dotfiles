@@ -27,28 +27,30 @@ EOF
 
 
 " Nvim tree 
-lua <<EOF
+" lua <<EOF
 
-vim.g.loaded_netrw = 1
-vim.g.loaded_netrwPlugin = 1
+" vim.g.loaded_netrw = 1
+" vim.g.loaded_netrwPlugin = 1
 
-require("nvim-tree").setup({
-  sort_by = "case_sensitive",
-  view = {
-    width = 30,
-  },
-  renderer = {
-    group_empty = true,
-    icons = {
-      show = {
-          git = false,
-          },
-      },
-  },
+" require("nvim-tree").setup({
+"   sort_by = "case_sensitive",
+"   view = {
+"     width = 30,
+"   },
+"   renderer = {
+"     group_empty = true,
+"     icons = {
+"       show = {
+"           git = false,
+"           },
+"       },
+"   },
 
-  filters = {
-    dotfiles = true,
-  },
+"   filters = {
+"     dotfiles = true,
+"   },
+" })
+
 })
 
 EOF
