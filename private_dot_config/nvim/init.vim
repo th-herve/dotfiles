@@ -40,6 +40,8 @@ autocmd FileType css        setlocal shiftwidth=2 tabstop=2
 autocmd FileType json       setlocal shiftwidth=2 tabstop=2
 autocmd FileType javascript setlocal shiftwidth=2 tabstop=2
 autocmd FileType markdown   setlocal shiftwidth=2 tabstop=2
+autocmd FileType text       setlocal shiftwidth=2 tabstop=2
+autocmd FileType vimwiki    setlocal shiftwidth=2 tabstop=2
 
 "       === Fold ===
 
@@ -85,7 +87,7 @@ tnoremap <silent>   jk              <C-\><C-n>
 tnoremap <silent>   jkk             <C-\><C-n>:q!<CR>
 tnoremap <silent>   <Esc>           <C-\><C-n>
 tnoremap <silent>   <Esc><Esc>      <C-\><C-n>:q!<CR>
-nnoremap <silent>   <leader>t       :belowright split<CR>:terminal<CR>:horizontal resize 15<CR>i
+" nnoremap <silent>   <leader>t       :belowright split<CR>:terminal<CR>:horizontal resize 15<CR>i
 
 nnoremap            <leader>e       <C-w>w
 
@@ -174,11 +176,15 @@ cnoremap            <C-b>           <Left>
 cnoremap            <C-f>           <Right>
 cnoremap            <M-b>           <c-left>
 cnoremap            <M-f>           <c-right>
+cnoremap            <C-a>           <Home>
+cnoremap            <C-e>           <End>
 
 inoremap            <C-b>           <Left>
 inoremap            <C-f>           <Right>
 inoremap            <M-b>           <c-left>
 inoremap            <M-f>           <c-right>
+inoremap            <C-a>           <Home>
+inoremap            <C-e>           <End>
 
 nmap                L               $
 nmap                H               ^
@@ -221,6 +227,9 @@ call plug#begin('~/.config/nvim/plugged')
     Plug 'ggandor/leap.nvim',
 
     Plug 'dense-analysis/ale',
+
+    Plug 'akinsho/toggleterm.nvim', {'tag' : '*'}
+
 
 "         == themes ==
     Plug 'catppuccin/nvim', { 'as': 'catppuccin' },
@@ -306,6 +315,12 @@ nmap yww ysiw"
 
 let g:AutoPairsShortcutBackInsert = ''
 
+"        === toggle term ===
+
+lua require("toggleterm").setup({open_mapping = [[<c-/>]],shade_terminals = true, highlight = { Normal = { guibg = '#11111b', } }})
+
+nmap <silent> t :ToggleTerm<CR>
+
 " +-------------------------------+
 " |         Color scheme          |
 " +-------------------------------+
@@ -321,7 +336,7 @@ colorscheme catppuccin-macchiato
 "         === NvimTree ===
 
 highlight NvimTreeNormal guibg=none
-highlight NvimTreeWinSeparator guifg=#181926
+highlight NvimTreeWinSeparator guifg=#11111b
 
 " +-------------------------------+
 " |           Function            |
