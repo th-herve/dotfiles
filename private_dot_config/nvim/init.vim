@@ -254,7 +254,8 @@ lua require'colorizer'.setup()
 
 lua require('leap').add_default_mappings()
 
-lua require("noice").setup()
+
+lua require("oil").setup()
 
 " lua require('color-picker').setup()
 
