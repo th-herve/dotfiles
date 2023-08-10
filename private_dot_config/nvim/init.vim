@@ -230,10 +230,6 @@ call plug#begin('~/.config/nvim/plugged')
 
     Plug 'akinsho/toggleterm.nvim', {'tag' : '*'},
 
-    Plug 'folke/noice.nvim',
-    Plug 'MunifTanjim/nui.nvim',
-    " Plug 'rcarriga/nvim-notify',
-
     Plug 'stevearc/oil.nvim'
 
 "         == themes ==

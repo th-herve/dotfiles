@@ -52,16 +52,3 @@ EOF
 " })
 
 " EOF
-
-lua <<EOF
-require("noice").setup({
-     messages = {
-        enabled = false,
-      },
-    presets = {
-        bottom_search = true, -- use a classic bottom cmdline for search
-        command_palette = false, -- position the cmdline and popupmenu together
-      },
-})
-
-EOF
