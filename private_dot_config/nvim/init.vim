@@ -312,23 +312,28 @@ let g:vcool_ins_hsl_map = '<C-l>'		" Insert hsl color with vcolor
 
 let g:user_emmet_leader_key='<M-,>'
 
-"        === telescope ===
+"        === Telescope ===
 
 lua require('telescope').setup{ defaults = { file_ignore_patterns = {"node_modules"} } } 
 
-"        === surround ===
+"        === Surround ===
 
 nmap yww ysiw"
 
-"        === auto-pairs ===
+"        === Auto-pairs ===
 
 let g:AutoPairsShortcutBackInsert = ''
 
-"        === toggle term ===
+"        === Toggle term ===
 
 lua require("toggleterm").setup({open_mapping = [[<c-/>]],shade_terminals = true, highlight = { Normal = { guibg = '#11111b', } }})
 
 nmap <silent> t :ToggleTerm<CR>
+
+"        === Oil ===
+
+nnoremap <silent> <leader>b :Oil --float<Cr>
+nnoremap <silent> <C-b> :Oil<Cr>
 
 " +-------------------------------+
 " |         Color scheme          |
