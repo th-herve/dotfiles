@@ -2,7 +2,7 @@ XF86Audio{Prev,Next}
 	playerctl {previous,next}
 
 XF86AudioPlay
-	playerctl --player=spotify play-pause
+	playerctl play-pause
 
 XF86Audio{Lower,Raise}Volume
     amixer -c 0 sset Master 2%{-,+}
