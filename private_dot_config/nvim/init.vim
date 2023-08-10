@@ -325,8 +325,6 @@ let g:AutoPairsShortcutBackInsert = ''
 
 lua require("toggleterm").setup({open_mapping = [[<c-/>]],shade_terminals = true, highlight = { Normal = { guibg = '#11111b', } }})
 
-nmap <silent> t :ToggleTerm<CR>
-
 "        === Oil ===
 
 nnoremap <silent> <leader>b :Oil --float<Cr>
