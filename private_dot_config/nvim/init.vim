@@ -232,8 +232,9 @@ call plug#begin('~/.config/nvim/plugged')
 
     Plug 'folke/noice.nvim',
     Plug 'MunifTanjim/nui.nvim',
+    " Plug 'rcarriga/nvim-notify',
 
-    " Plug 'stevearc/oil.nvim'
+    Plug 'stevearc/oil.nvim'
 
 "         == themes ==
     Plug 'catppuccin/nvim', { 'as': 'catppuccin' },
