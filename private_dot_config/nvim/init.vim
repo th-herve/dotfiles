@@ -100,8 +100,8 @@ nnoremap <silent>   <leader>wv      :if bufloaded(expand('~/.config/nvim/init.vi
 
 nnoremap <silent>   <leader>z       :ZenMode<CR>
 
-nnoremap <silent>   <C-k>           :m .-2<CR>==
-nnoremap <silent>   <C-j>           :m .+1<CR>==
+" nnoremap <silent>   <C-k>           :m .-2<CR>==
+" nnoremap <silent>   <C-j>           :m .+1<CR>==
 inoremap <silent>   <C-j>           <Esc>:m .+1<CR>==gi
 inoremap <silent>   <C-k>           <Esc>:m .-2<CR>==gi
 vnoremap <silent>   <C-j>           :m '>+1<CR>gv=gv
@@ -306,7 +306,7 @@ augroup END
 
 let g:cursorword_delay=900
 
-let g:vcool_ins_hsl_map = '<C-l>'		" Insert hsl color with vcolor
+let g:vcool_ins_hsl_map = '<C-]>'		" Insert hsl color with vcolor
 
 "        === Emmet ===
 
@@ -339,9 +339,9 @@ nnoremap <silent> <C-h> :lua require("harpoon.ui").toggle_quick_menu()<CR>
 
 nnoremap <silent> <C-p> :lua require("harpoon.mark").add_file()<CR>
 
-nnoremap <silent> <leader>j :lua require("harpoon.ui").nav_file(1)<CR>
-nnoremap <silent> <leader>k :lua require("harpoon.ui").nav_file(2)<CR>
-nnoremap <silent> <leader>l :lua require("harpoon.ui").nav_file(3)<CR>
+nnoremap <silent> <C-j> :lua require("harpoon.ui").nav_file(1)<CR>
+nnoremap <silent> <C-k> :lua require("harpoon.ui").nav_file(2)<CR>
+nnoremap <silent> <C-l> :lua require("harpoon.ui").nav_file(3)<CR>
 
 " +-------------------------------+
 " |         Color scheme          |
