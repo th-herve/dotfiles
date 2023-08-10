@@ -4,7 +4,7 @@ lua <<EOF
 
 require'nvim-treesitter.configs'.setup {
   -- A list of parser names, or "all" (the five listed parsers should always be installed)
-  ensure_installed = { "c", "lua", "vim", "vimdoc", "query" },
+  ensure_installed = { "c", "lua", "vim", "vimdoc", "query", "regex","bash", "markdown", "markdown_inline"},
 
   -- Install parsers synchronously (only applied to `ensure_installed`)
   sync_install = false,
@@ -27,28 +27,28 @@ EOF
 
 
 " Nvim tree 
-lua <<EOF
+" lua <<EOF
 
-vim.g.loaded_netrw = 1
-vim.g.loaded_netrwPlugin = 1
+" vim.g.loaded_netrw = 1
+" vim.g.loaded_netrwPlugin = 1
 
-require("nvim-tree").setup({
-  sort_by = "case_sensitive",
-  view = {
-    width = 30,
-  },
-  renderer = {
-    group_empty = true,
-    icons = {
-      show = {
-          git = false,
-          },
-      },
-  },
+" require("nvim-tree").setup({
+"   sort_by = "case_sensitive",
+"   view = {
+"     width = 30,
+"   },
+"   renderer = {
+"     group_empty = true,
+"     icons = {
+"       show = {
+"           git = false,
+"           },
+"       },
+"   },
 
-  filters = {
-    dotfiles = true,
-  },
-})
+"   filters = {
+"     dotfiles = true,
+"   },
+" })
 
-EOF
+" EOF
