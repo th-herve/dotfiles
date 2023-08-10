@@ -54,11 +54,12 @@ autocmd FileType html setlocal foldnestmax=8
 
 "     === terminal ===
 
-" ugly but the one below set it for all buffer
-autocmd TermEnter * setlocal winbar=---------------------------------------------------------------------------------------------------------------------------------------------------------------------------
-" autocmd TermEnter * let &winbar = repeat('-', winwidth(0))
+" function Empty()
+"   return ""
+" endfunction
+" autocmd TermEnter * setlocal winbar=%{%Empty()%}
 
-autocmd TermEnter * setlocal nonumber norelativenumber
+" autocmd TermEnter * setlocal nonumber norelativenumber
 
 "      === Other ===
 
@@ -81,12 +82,12 @@ nnoremap            <Space>         <Nop>
 let mapleader = "\<Space>"
 
 
-nnoremap            <leader>v       :vsplit<CR>
+nnoremap <silent>   <leader>v       :vsplit<CR>
 
 tnoremap <silent>   jk              <C-\><C-n>
-tnoremap <silent>   jkk             <C-\><C-n>:q!<CR>
-tnoremap <silent>   <Esc>           <C-\><C-n>
-tnoremap <silent>   <Esc><Esc>      <C-\><C-n>:q!<CR>
+" tnoremap <silent>   jkk             <C-\><C-n>:q!<CR>
+" tnoremap <silent>   <Esc>           <C-\><C-n>
+" tnoremap <silent>   <Esc><Esc>      <C-\><C-n>:q!<CR>
 " nnoremap <silent>   <leader>t       :belowright split<CR>:terminal<CR>:horizontal resize 15<CR>i
 
 nnoremap            <leader>e       <C-w>w
@@ -99,17 +100,17 @@ nnoremap <silent>   <leader>wv      :if bufloaded(expand('~/.config/nvim/init.vi
 
 nnoremap <silent>   <leader>z       :ZenMode<CR>
 
-nnoremap            <C-k>           :m .-2<CR>==
-nnoremap            <C-j>           :m .+1<CR>==
-inoremap            <C-j>           <Esc>:m .+1<CR>==gi
-inoremap            <C-k>           <Esc>:m .-2<CR>==gi
-vnoremap            <C-j>           :m '>+1<CR>gv=gv
-vnoremap            <C-k>           :m '<-2<CR>gv=gv
+nnoremap <silent>   <C-S-J>           :m .+1<CR>==
+nnoremap <silent>   <C-S-k>           :m .-2<CR>==
+inoremap <silent>   <C-j>           <Esc>:m .+1<CR>==gi
+inoremap <silent>   <C-k>           <Esc>:m .-2<CR>==gi
+vnoremap <silent>   <C-j>           :m '>+1<CR>gv=gv
+vnoremap <silent>   <C-k>           :m '<-2<CR>gv=gv
 
 
 " NvimTree
-noremap             <Leader>b       :NvimTreeToggle<CR>
-nnoremap            <C-b>           :NvimTreeToggle<CR>
+" noremap             <Leader>b       :NvimTreeToggle<CR>
+" nnoremap            <C-b>           :NvimTreeToggle<CR>
 
 " file navigation/operation
 nnoremap <silent>   <M-l>           :bnext<CR>
@@ -145,7 +146,7 @@ nnoremap            N               nzzzv
 
 nnoremap <silent>   <leader>u       :UndotreeToggle<CR>
 
-nnoremap            <leader>l       :ls<CR>:b <Space>
+" nnoremap            <leader>l       :ls<CR>:b <Space>
 
 nnoremap            <leader>;       A;<Esc>
 nnoremap            <leader>.       A.<Esc>
@@ -189,6 +190,8 @@ inoremap            <C-e>           <End>
 nmap                L               $
 nmap                H               ^
 
+noremap <C-I> <C-O>
+noremap <C-O> <C-I>
 
 " +-------------------------------+
 " |           Plugins             |
@@ -204,21 +207,21 @@ call plug#begin('~/.config/nvim/plugged')
     Plug 'vimwiki/vimwiki',
     Plug 'ellisonleao/glow.nvim',
     Plug 'tpope/vim-fugitive',
-    Plug 'yamatsum/nvim-cursorline',
-    Plug 'itchyny/vim-cursorword',
+    " Plug 'yamatsum/nvim-cursorline',
+    " Plug 'itchyny/vim-cursorword',
     Plug 'jiangmiao/auto-pairs',
     Plug 'norcalli/nvim-colorizer.lua',
 
     Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'},
     Plug 'nvim-treesitter/playground',
 
-    Plug 'nvim-lua/plenary.nvim',
     Plug 'nvim-telescope/telescope.nvim', { 'tag': '0.1.1' },
+    Plug 'nvim-lua/plenary.nvim',
+    Plug 'nvim-tree/nvim-web-devicons',
 
     Plug 'mbbill/undotree',
 
-    Plug 'nvim-tree/nvim-web-devicons',
-    Plug 'nvim-tree/nvim-tree.lua',
+    " Plug 'nvim-tree/nvim-tree.lua',
 
     Plug 'KabbAmine/vCoolor.vim',
 
@@ -228,8 +231,10 @@ call plug#begin('~/.config/nvim/plugged')
 
     Plug 'dense-analysis/ale',
 
-    Plug 'akinsho/toggleterm.nvim', {'tag' : '*'}
+    Plug 'akinsho/toggleterm.nvim', {'tag' : '*'},
 
+    Plug 'stevearc/oil.nvim',
+    Plug 'ThePrimeagen/harpoon',
 
 "         == themes ==
     Plug 'catppuccin/nvim', { 'as': 'catppuccin' },
@@ -243,11 +248,15 @@ call plug#begin('~/.config/nvim/plugged')
 call plug#end()
 
 
-lua require'colorizer'.setup()
 source   ~/.config/nvim/lua.vim
 source   ~/.config/nvim/ale-linting.vim
 
+lua require'colorizer'.setup()
+
 lua require('leap').add_default_mappings()
+
+
+lua require("oil").setup()
 
 " lua require('color-picker').setup()
 
@@ -297,29 +306,42 @@ augroup END
 
 let g:cursorword_delay=900
 
-let g:vcool_ins_hsl_map = '<C-l>'		" Insert hsl color with vcolor
+let g:vcool_ins_hsl_map = '<C-]>'		" Insert hsl color with vcolor
 
 "        === Emmet ===
 
 let g:user_emmet_leader_key='<M-,>'
 
-"        === telescope ===
+"        === Telescope ===
 
 lua require('telescope').setup{ defaults = { file_ignore_patterns = {"node_modules"} } } 
 
-"        === surround ===
+"        === Surround ===
 
 nmap yww ysiw"
 
-"        === auto-pairs ===
+"        === Auto-pairs ===
 
 let g:AutoPairsShortcutBackInsert = ''
 
-"        === toggle term ===
+"        === Toggle term ===
 
-lua require("toggleterm").setup({open_mapping = [[<c-/>]],shade_terminals = true, highlight = { Normal = { guibg = '#11111b', } }})
+lua require("toggleterm").setup({open_mapping = [[<c-/>]],shade_terminals = true, direction = "float",float_opts = {border = 'single' }, highlight = { Normal = { guibg = '#11111b', } }})
 
-nmap <silent> t :ToggleTerm<CR>
+"        === Oil ===
+
+nnoremap <silent> <leader>b :Oil --float<Cr>
+nnoremap <silent> <C-b> :Oil<Cr>
+
+"        === Harpoon ===
+
+nnoremap <silent> <C-h> :lua require("harpoon.ui").toggle_quick_menu()<CR>
+
+nnoremap <silent> <C-p> :lua require("harpoon.mark").add_file()<CR>
+
+nnoremap <silent> <C-j> :lua require("harpoon.ui").nav_file(1)<CR>
+nnoremap <silent> <C-k> :lua require("harpoon.ui").nav_file(2)<CR>
+nnoremap <silent> <C-l> :lua require("harpoon.ui").nav_file(3)<CR>
 
 " +-------------------------------+
 " |         Color scheme          |
@@ -335,8 +357,8 @@ colorscheme catppuccin-macchiato
 
 "         === NvimTree ===
 
-highlight NvimTreeNormal guibg=none
-highlight NvimTreeWinSeparator guifg=#11111b
+" highlight NvimTreeNormal guibg=none
+" highlight NvimTreeWinSeparator guifg=#11111b
 
 " +-------------------------------+
 " |           Function            |
