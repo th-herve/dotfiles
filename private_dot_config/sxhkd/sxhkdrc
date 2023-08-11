@@ -21,3 +21,4 @@ mod4 + shift + k
 
 mod4 + shift + c
     GTK_THEME=Orchis-Dark-Nord gnome-calculator
+
