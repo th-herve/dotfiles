@@ -52,3 +52,19 @@ EOF
 " })
 
 " EOF
+
+lua <<EOF
+
+require('flash').setup({
+  search = {
+    mode = function(str) -- match only beginning of words
+      return "\\<" .. str
+    end,
+  },
+})
+
+vim.keymap.set("n", "s", function() require("flash").jump() end)
+vim.keymap.set("o", "s", function() require("flash").jump() end)
+vim.keymap.set("x", "s", function() require("flash").jump() end)
+
+EOF

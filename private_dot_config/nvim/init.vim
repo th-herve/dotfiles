@@ -227,7 +227,7 @@ call plug#begin('~/.config/nvim/plugged')
 
     Plug 'mattn/emmet-vim',
     Plug 'tpope/vim-repeat',
-    Plug 'ggandor/leap.nvim',
+    " Plug 'ggandor/leap.nvim',
 
     Plug 'dense-analysis/ale',
 
@@ -235,6 +235,8 @@ call plug#begin('~/.config/nvim/plugged')
 
     Plug 'stevearc/oil.nvim',
     Plug 'ThePrimeagen/harpoon',
+
+    Plug 'folke/flash.nvim',
 
 "         == themes ==
     Plug 'catppuccin/nvim', { 'as': 'catppuccin' },
@@ -253,7 +255,8 @@ source   ~/.config/nvim/ale-linting.vim
 
 lua require'colorizer'.setup()
 
-lua require('leap').add_default_mappings()
+" lua require('leap').add_default_mappings()
+
 
 
 lua require("oil").setup()
