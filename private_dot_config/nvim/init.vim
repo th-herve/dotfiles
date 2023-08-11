@@ -238,6 +238,8 @@ call plug#begin('~/.config/nvim/plugged')
 
     Plug 'folke/flash.nvim',
 
+    Plug 'luckasRanarison/nvim-devdocs',
+
 "         == themes ==
     Plug 'catppuccin/nvim', { 'as': 'catppuccin' },
     Plug 'Mofiqul/dracula.nvim',

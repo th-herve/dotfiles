@@ -67,4 +67,23 @@ vim.keymap.set("n", "s", function() require("flash").jump() end)
 vim.keymap.set("o", "s", function() require("flash").jump() end)
 vim.keymap.set("x", "s", function() require("flash").jump() end)
 
+
+-- Devdocs
+
+vim.defer_fn(function()
+require('nvim-devdocs').setup({
+ float_win = {
+    relative = "editor",
+    height = 40,
+    width = 150,
+    border = "rounded",
+  },
+})
+end, 0)
+
+vim.keymap.set("n", "<leader>dd", ":DevdocsOpenFloat<CR>")
+vim.keymap.set("n", "<leader>dh", ":DevdocsOpenFloat html<CR>")
+vim.keymap.set("n", "<leader>dc", ":DevdocsOpenFloat css<CR>")
+vim.keymap.set("n", "<leader>dj", ":DevdocsOpenFloat javascript<CR>")
+
 EOF
