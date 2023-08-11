@@ -407,6 +407,8 @@ endif
 
 autocmd BufNewFile *.sh exec "normal i#!/usr/bin/env bash\<Esc>"
 
+autocmd FileType markdown set wrap
+
 " +-------------------------------+
 " |         Abbreviations         |
 " +-------------------------------+
