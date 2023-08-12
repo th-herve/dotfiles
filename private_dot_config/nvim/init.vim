@@ -189,6 +189,10 @@ inoremap            <C-e>           <End>
 
 nmap                L               $
 nmap                H               ^
+omap                L               $
+omap                H               ^
+vmap                L               $
+vmap                H               ^
 
 noremap <C-I> <C-O>
 noremap <C-O> <C-I>
