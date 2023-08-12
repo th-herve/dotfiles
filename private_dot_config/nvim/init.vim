@@ -248,7 +248,8 @@ call plug#begin('~/.config/nvim/plugged')
     Plug 'nordtheme/vim',
     Plug 'rebelot/kanagawa.nvim',
     Plug 'sainnhe/everforest',
-    
+    Plug 'frenzyexists/aquarium-vim', { 'branch': 'develop' },
+
 call plug#end()
 
 
