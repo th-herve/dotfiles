@@ -10,7 +10,7 @@
 
 imap <Esc> <Nop>
 
-set relativenumber number hidden nocompatible nowrap splitright showmatch
+set relativenumber number hidden nocompatible wrap splitright showmatch
 
 set guicursor=n:hor25,i:ver20,c:ver20,v:block
 

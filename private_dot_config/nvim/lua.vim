@@ -67,6 +67,8 @@ vim.keymap.set("n", "s", function() require("flash").jump() end)
 vim.keymap.set("o", "s", function() require("flash").jump() end)
 vim.keymap.set("x", "s", function() require("flash").jump() end)
 
+vim.cmd[[highlight FlashLabel guifg=#a6da95 guibg=#24273a gui=bold]]
+vim.cmd[[highlight FlashMatch guifg=#b7bdf8 guibg=#24273a]]
 
 -- Devdocs
 
