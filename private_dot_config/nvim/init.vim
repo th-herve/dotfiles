@@ -134,11 +134,6 @@ vnoremap            >               >gv
 " Map Tab key to trigger completion with coc.vim
 inoremap <expr>     <Tab>           pumvisible() ? "\<C-y>" : "\<Tab>"
 
-nnoremap            <leader>ff      <cmd>Telescope find_files<cr>
-nnoremap            <leader>fg      <cmd>Telescope live_grep<cr>
-nnoremap            <leader>fb      <cmd>Telescope buffers<cr>
-nnoremap            <leader>fh      <cmd>Telescope help_tags<cr>
-
 nnoremap            <C-d>           <C-d>zz
 nnoremap            <C-u>           <C-u>zz
 nnoremap            n               nzzzv
@@ -324,6 +319,13 @@ let g:user_emmet_leader_key='<M-,>'
 "        === Telescope ===
 
 lua require('telescope').setup{ defaults = { file_ignore_patterns = {"node_modules"} } } 
+
+nnoremap            <leader>ff      <cmd>Telescope find_files<cr>
+nnoremap            <leader>fg      <cmd>Telescope live_grep<cr>
+nnoremap            <leader>fb      <cmd>Telescope buffers<cr>
+nnoremap            <leader>fh      <cmd>Telescope help_tags<cr>
+nnoremap            <leader>fc      <cmd>Telescope current_buffer_fuzzy_find<cr>
+
 
 "        === Surround ===
 
