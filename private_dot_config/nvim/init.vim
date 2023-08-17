@@ -340,6 +340,9 @@ let g:AutoPairsShortcutBackInsert = ''
 
 lua require("toggleterm").setup({open_mapping = [[<c-/>]],shade_terminals = true, direction = "float",float_opts = {border = 'single' }, highlight = { Normal = { guibg = '#11111b', } }})
 
+" Add another bind for st terminal (in st C-_ = C-/ for some reasons)
+nnoremap <silent> <C-_> :ToggleTerm<CR>
+
 "        === Oil ===
 
 nnoremap <silent> <leader>b :Oil --float<Cr>
