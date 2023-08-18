@@ -189,8 +189,8 @@ omap                H               ^
 vmap                L               $
 vmap                H               ^
 
-noremap <C-I> <C-O>
-noremap <C-O> <C-I>
+nnoremap            <C-I>           <C-O>
+nnoremap            <C-O>           <C-I>
 
 " +-------------------------------+
 " |           Plugins             |
@@ -220,13 +220,10 @@ call plug#begin('~/.config/nvim/plugged')
 
     Plug 'mbbill/undotree',
 
-    " Plug 'nvim-tree/nvim-tree.lua',
-
     Plug 'KabbAmine/vCoolor.vim',
 
     Plug 'mattn/emmet-vim',
     Plug 'tpope/vim-repeat',
-    " Plug 'ggandor/leap.nvim',
 
     Plug 'dense-analysis/ale',
 
@@ -257,13 +254,7 @@ source   ~/.config/nvim/ale-linting.vim
 
 lua require'colorizer'.setup()
 
-" lua require('leap').add_default_mappings()
-
-
-
 lua require("oil").setup()
-
-" lua require('color-picker').setup()
 
 
 "        === Vimwiki ===
@@ -274,7 +265,6 @@ let g:vimwiki_list = [{'path': '~/.config/nvim/vimwiki/docs',
             \ 'syntax': 'markdown', 'ext': '.md'}]
 let g:vimwiki_path = '~/.config/nvim/vimwiki/docs'
 let g:vimwiki_markdown_link_ext = 1
-" let g:vimwiki_auto_fold = 1
 imap <C-space> <Plug>VimwikiTableNextCell
 
 "        === Undotree ===
@@ -369,11 +359,6 @@ colorscheme catppuccin-macchiato
     highlight CursorLine guibg=none
     highlight Folded guibg=none
     highlight MatchParen guibg=none
-
-"         === NvimTree ===
-
-" highlight NvimTreeNormal guibg=none
-" highlight NvimTreeWinSeparator guifg=#11111b
 
 " +-------------------------------+
 " |           Function            |
