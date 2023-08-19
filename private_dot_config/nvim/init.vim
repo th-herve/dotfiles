@@ -255,7 +255,6 @@ source   ~/.config/nvim/ale-linting.vim
 
 lua require'colorizer'.setup()
 
-lua require("oil").setup()
 
 
 "        === Vimwiki ===
@@ -335,6 +334,8 @@ lua require("toggleterm").setup({open_mapping = [[<c-/>]],shade_terminals = true
 nnoremap <silent> <C-_> :ToggleTerm<CR>
 
 "        === Oil ===
+
+lua require("oil").setup({ keymaps = {["<BS>"] = "actions.parent"} })
 
 nnoremap <silent> <leader>b :Oil --float<Cr>
 nnoremap <silent> <C-b> :Oil<Cr>
