@@ -23,6 +23,8 @@ let g:ale_fixers = {
 \   'css':          ['prettier'],
 \   'json':         ['prettier'],
 \   'html':         ['prettier'],
+\   'cpp':          ['clang'],
+\   'c':            ['clang'],
 \}
 
 let g:ale_fix_on_save = 1
