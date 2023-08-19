@@ -245,6 +245,7 @@ call plug#begin('~/.config/nvim/plugged')
     Plug 'rebelot/kanagawa.nvim',
     Plug 'sainnhe/everforest',
     Plug 'frenzyexists/aquarium-vim', { 'branch': 'develop' },
+    Plug 'ellisonleao/gruvbox.nvim' ,
 
 call plug#end()
 
