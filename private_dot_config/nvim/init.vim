@@ -320,6 +320,8 @@ nnoremap            <leader>fg      <cmd>Telescope live_grep<cr>
 nnoremap            <leader>fb      <cmd>Telescope buffers<cr>
 nnoremap            <leader>fh      <cmd>Telescope help_tags<cr>
 nnoremap            <leader>fc      <cmd>Telescope current_buffer_fuzzy_find<cr>
+nnoremap            <leader>ft      <cmd>Telescope colorscheme<cr>
+nnoremap            <leader>fr      <cmd>Telescope registers<cr>
 
 
 "        === Surround ===
