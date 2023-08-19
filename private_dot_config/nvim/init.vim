@@ -256,11 +256,6 @@ source   ~/.config/nvim/ale-linting.vim
 
 lua require'colorizer'.setup()
 
-" lua require('leap').add_default_mappings()
-
-
-
-lua require("oil").setup()
 
 " lua require('color-picker').setup()
 
@@ -340,6 +335,8 @@ let g:AutoPairsShortcutBackInsert = ''
 lua require("toggleterm").setup({open_mapping = [[<c-/>]],shade_terminals = true, direction = "float",float_opts = {border = 'single' }, highlight = { Normal = { guibg = '#11111b', } }})
 
 "        === Oil ===
+
+lua require("oil").setup({ keymaps = {["<BS>"] = "actions.parent"} })
 
 nnoremap <silent> <leader>b :Oil --float<Cr>
 nnoremap <silent> <C-b> :Oil<Cr>
