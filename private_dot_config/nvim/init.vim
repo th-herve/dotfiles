@@ -356,8 +356,8 @@ nnoremap <silent> <M-f> :lua require("harpoon.ui").nav_file(3)<CR>
 " |         Color scheme          |
 " +-------------------------------+
 
-
-colorscheme catppuccin-macchiato
+let g:everforest_background = 'hard'
+colorscheme everforest
     highlight StatusLine guibg=none
     highlight StatusLineNC guibg=none
     highlight CursorLine guibg=none
