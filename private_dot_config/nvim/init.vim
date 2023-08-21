@@ -131,9 +131,6 @@ map      <silent>   <leader>o       :setlocal spell!<CR>
 vnoremap            <               <gv
 vnoremap            >               >gv
 
-" Map Tab key to trigger completion with coc.vim
-inoremap <expr>     <Tab>           pumvisible() ? "\<C-y>" : "\<Tab>"
-
 nnoremap            <C-d>           <C-d>zz
 nnoremap            <C-u>           <C-u>zz
 nnoremap            n               nzzzv
@@ -198,7 +195,6 @@ noremap <C-O> <C-I>
 
 call plug#begin('~/.config/nvim/plugged')
 
-    Plug 'neoclide/coc.nvim', 
     Plug 'folke/zen-mode.nvim',
     Plug 'tpope/vim-surround',
     Plug 'tpope/vim-commentary',
@@ -239,6 +235,8 @@ call plug#begin('~/.config/nvim/plugged')
 
     Plug 'luckasRanarison/nvim-devdocs',
 
+      " LSP Support
+
 "         == themes ==
     Plug 'catppuccin/nvim', { 'as': 'catppuccin' },
     Plug 'Mofiqul/dracula.nvim',
@@ -248,19 +246,47 @@ call plug#begin('~/.config/nvim/plugged')
     Plug 'rebelot/kanagawa.nvim',
     Plug 'sainnhe/everforest',
     
+    Plug 'frenzyexists/aquarium-vim', { 'branch': 'develop' },
+    Plug 'ellisonleao/gruvbox.nvim' ,
+
+" completion
+  Plug 'hrsh7th/nvim-cmp' ,
+  Plug 'hrsh7th/cmp-buffer' ,
+  Plug 'hrsh7th/cmp-path' ,
+  Plug 'hrsh7th/cmp-cmdline' ,
+  Plug 'saadparwaiz1/cmp_luasnip' ,
+  Plug 'hrsh7th/cmp-nvim-lsp',
+
+" snippet
+  Plug 'L3MON4D3/LuaSnip' ,
+  Plug 'rafamadriz/friendly-snippets' ,
+
+" lsp
+  Plug 'neovim/nvim-lspconfig' ,
+  Plug 'williamboman/mason.nvim' ,
+  Plug 'williamboman/mason-lspconfig.nvim' ,
+  Plug 'jose-elias-alvarez/null-ls.nvim' ,
+
+>>>>>>> e7b691f (Set up)
 call plug#end()
 
 
 source   ~/.config/nvim/lua.vim
 source   ~/.config/nvim/ale-linting.vim
 
+source   ~/.config/nvim/cmp.vim
+
 lua require'colorizer'.setup()
 
+<<<<<<< HEAD
 
 " lua require('color-picker').setup()
 
 
+=======
+>>>>>>> e7b691f (Set up)
 "        === Vimwiki ===
+
 
 filetype plugin on
 syntax on
@@ -277,19 +303,6 @@ set undodir=/home/adiantum/.undodir_combined
 set undofile
 set undolevels=100000
 let g:undotree_SetFocusWhenToggle = 1
-
-"        === Coc.nvim ===
-
-let g:coc_global_extensions = ['coc-pyright',"coc-html", "coc-css","coc-tsserver","coc-clangd"]
-let g:coc_suggest_enable = 1
-let g:coc_suggest_triggerAfterInsertEnter = 0
-let g:coc_suggest_autoTrigger = 'always'
-let g:coc_suggest_enablePreview = 1
-let g:coc_suggest_insertMode = 'inline'
-let g:coc_suggest_insertCompletion = 'always'
-let g:coc_suggest_selectNextOnEnter = 0
-let g:coc_suggest_acceptSuggestionOnCommitCharacter = 0
-
 
 "        === Cursor line/word ===
 
