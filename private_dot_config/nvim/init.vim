@@ -265,28 +265,26 @@ call plug#begin('~/.config/nvim/plugged')
   Plug 'neovim/nvim-lspconfig' ,
   Plug 'williamboman/mason.nvim' ,
   Plug 'williamboman/mason-lspconfig.nvim' ,
-  Plug 'jose-elias-alvarez/null-ls.nvim' ,
+  Plug 'jose-elias-alvarez/null-ls.nvim',
+  Plug 'jayp0521/mason-null-ls.nvim',
+  Plug 'glepnir/lspsaga.nvim',
+  Plug 'jose-elias-alvarez/typescript.nvim',
+  Plug 'onsails/lspkind.nvim',
 
->>>>>>> e7b691f (Set up)
 call plug#end()
+
 
 
 source   ~/.config/nvim/lua.vim
 source   ~/.config/nvim/ale-linting.vim
 
 source   ~/.config/nvim/cmp.vim
+source   ~/.config/nvim/lsp.vim
 
 lua require'colorizer'.setup()
 
-<<<<<<< HEAD
 
-" lua require('color-picker').setup()
-
-
-=======
->>>>>>> e7b691f (Set up)
 "        === Vimwiki ===
-
 
 filetype plugin on
 syntax on
