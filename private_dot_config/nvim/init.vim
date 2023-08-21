@@ -318,6 +318,9 @@ nnoremap            <leader>fh      <cmd>Telescope help_tags<cr>
 nnoremap            <leader>fc      <cmd>Telescope current_buffer_fuzzy_find<cr>
 nnoremap            <leader>ft      <cmd>Telescope colorscheme<cr>
 nnoremap            <leader>fr      <cmd>Telescope registers<cr>
+nnoremap            <leader>fc      <cmd>Telescope command_history<cr>
+nnoremap            <leader>fs      <cmd>Telescope search_history<cr>
+nnoremap            <leader>fk      <cmd>Telescope keymaps<cr>
 
 
 "        === Surround ===
