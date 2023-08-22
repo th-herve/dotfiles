@@ -55,5 +55,9 @@ cmp.setup({
   window = {
     documentation = cmp.config.window.bordered(),
   },
+  experimental = {
+    ghost_text = true,
+    native_menu = false,
+  },
 })
 EOF
