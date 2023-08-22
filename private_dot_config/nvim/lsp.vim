@@ -53,6 +53,10 @@ saga.setup({
       normal_bg = "#022746",
     },
   },
+  symbol_in_winbar = {
+    enable = true,
+    hide_keyword = true;
+  },
 })
 
 
@@ -62,9 +66,6 @@ local lspconfig = require("lspconfig")
 
 -- Import cmp-nvim-lsp plugin without safety check
 local cmp_nvim_lsp = require("cmp_nvim_lsp")
-
--- Import typescript plugin without safety check
-local typescript = require("typescript")
 
 local keymap = vim.keymap -- for conciseness
 
@@ -87,12 +88,6 @@ local on_attach = function(client, bufnr)
   keymap.set("n", "K", "<cmd>Lspsaga hover_doc<CR>", opts) -- show documentation for what is under cursor
   keymap.set("n", "<leader>o", "<cmd>LSoutlineToggle<CR>", opts) -- see outline on right hand side
 
-  -- typescript specific keymaps (e.g. rename file and update imports)
-  if client.name == "tsserver" then
-    keymap.set("n", "<leader>rf", ":TypescriptRenameFile<CR>") -- rename file and update imports
-    keymap.set("n", "<leader>oi", ":TypescriptOrganizeImports<CR>") -- organize imports (not in youtube nvim video)
-    keymap.set("n", "<leader>ru", ":TypescriptRemoveUnused<CR>") -- remove unused variables (not in youtube nvim video)
-  end
 end
 
 -- used to enable autocompletion (assign to every lsp server config)
@@ -112,12 +107,10 @@ lspconfig["html"].setup({
   on_attach = on_attach,
 })
 
--- configure typescript server with plugin
-typescript.setup({
-  server = {
-    capabilities = capabilities,
-    on_attach = on_attach,
-  },
+-- configure css server
+lspconfig["tsserver"].setup({
+  capabilities = capabilities,
+  on_attach = on_attach,
 })
 
 -- configure css server
