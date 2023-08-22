@@ -268,7 +268,6 @@ call plug#begin('~/.config/nvim/plugged')
   Plug 'jose-elias-alvarez/null-ls.nvim',
   Plug 'jayp0521/mason-null-ls.nvim',
   Plug 'glepnir/lspsaga.nvim',
-  Plug 'jose-elias-alvarez/typescript.nvim',
   Plug 'onsails/lspkind.nvim',
 
 call plug#end()
