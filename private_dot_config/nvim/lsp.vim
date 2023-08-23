@@ -208,5 +208,8 @@ null_ls.setup({
     end
   end,
 })
+
+
+require('nvim-ts-autotag').setup()
 EOF
 

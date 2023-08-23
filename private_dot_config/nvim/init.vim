@@ -266,6 +266,7 @@ call plug#begin('~/.config/nvim/plugged')
   Plug 'jayp0521/mason-null-ls.nvim',
   Plug 'glepnir/lspsaga.nvim',
   Plug 'onsails/lspkind.nvim',
+  Plug 'windwp/nvim-ts-autotag',
 
   Plug 'nvim-lualine/lualine.nvim',
 
