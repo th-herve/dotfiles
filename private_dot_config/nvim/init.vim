@@ -42,6 +42,7 @@ autocmd FileType javascript setlocal shiftwidth=2 tabstop=2
 autocmd FileType markdown   setlocal shiftwidth=2 tabstop=2
 autocmd FileType text       setlocal shiftwidth=2 tabstop=2
 autocmd FileType vimwiki    setlocal shiftwidth=2 tabstop=2
+autocmd FileType javascriptreact setlocal shiftwidth=2 tabstop=2
 
 "       === Fold ===
 
