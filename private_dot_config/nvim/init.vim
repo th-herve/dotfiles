@@ -266,6 +266,8 @@ call plug#begin('~/.config/nvim/plugged')
   Plug 'glepnir/lspsaga.nvim',
   Plug 'onsails/lspkind.nvim',
 
+  Plug 'nvim-lualine/lualine.nvim',
+
 call plug#end()
 
 
@@ -277,6 +279,8 @@ source   ~/.config/nvim/cmp.vim
 source   ~/.config/nvim/lsp.vim
 
 lua require'colorizer'.setup()
+
+lua require('lualine').setup()
 
 
 "        === Vimwiki ===
