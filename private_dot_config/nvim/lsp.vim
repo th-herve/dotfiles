@@ -1,12 +1,20 @@
 lua <<EOF
--- Import mason plugin without safety check
-local mason = require("mason")
+local mason_status, mason = pcall(require, "mason")
+if not mason_status then
+  return
+end
 
--- Import mason-lspconfig plugin without safety check
-local mason_lspconfig = require("mason-lspconfig")
+-- import mason-lspconfig plugin safely
+local mason_lspconfig_status, mason_lspconfig = pcall(require, "mason-lspconfig")
+if not mason_lspconfig_status then
+  return
+end
 
--- Import mason-null-ls plugin without safety check
-local mason_null_ls = require("mason-null-ls")
+-- import mason-null-ls plugin safely
+local mason_null_ls_status, mason_null_ls = pcall(require, "mason-null-ls")
+if not mason_null_ls_status then
+  return
+end
 
 -- enable mason
 mason.setup()
@@ -39,7 +47,10 @@ mason_null_ls.setup({
 
 
 
-local saga = require("lspsaga")
+local saga_status, saga = pcall(require, "lspsaga")
+if not saga_status then
+  return
+end
 
 saga.setup({
   -- keybinds for navigation in lspsaga window
@@ -65,11 +76,17 @@ saga.setup({
 
 
 
--- Import lspconfig plugin without safety check
-local lspconfig = require("lspconfig")
+-- import lspconfig plugin safely
+local lspconfig_status, lspconfig = pcall(require, "lspconfig")
+if not lspconfig_status then
+  return
+end
 
--- Import cmp-nvim-lsp plugin without safety check
-local cmp_nvim_lsp = require("cmp_nvim_lsp")
+-- import cmp-nvim-lsp plugin safely
+local cmp_nvim_lsp_status, cmp_nvim_lsp = pcall(require, "cmp_nvim_lsp")
+if not cmp_nvim_lsp_status then
+  return
+end
 
 local keymap = vim.keymap -- for conciseness
 
@@ -169,7 +186,10 @@ lspconfig["lua_ls"].setup({
   },
 })
 
-local null_ls = require("null-ls")
+local setup, null_ls = pcall(require, "null-ls")
+if not setup then
+  return
+end
 
 -- for conciseness
 local formatting = null_ls.builtins.formatting -- to setup formatters
