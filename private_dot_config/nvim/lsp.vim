@@ -49,6 +49,9 @@ saga.setup({
     edit = "<CR>",
   },
   ui = {
+    sign = false,
+    virtual_text = false,
+    code_action = '',
     colors = {
       normal_bg = "#022746",
     },
@@ -57,6 +60,7 @@ saga.setup({
     enable = true,
     hide_keyword = true;
   },
+  code_action_prompt = { enable = false, } -- remove the lightbulb
 })
 
 
@@ -94,7 +98,8 @@ local capabilities = cmp_nvim_lsp.default_capabilities()
 
 -- Change the Diagnostic symbols in the sign column (gutter)
 -- (not in youtube nvim video)
-local signs = { Error = " ", Warn = " ", Hint = "", Info = " " }
+-- local signs = { Error = " ", Warn = " ", Hint = "", Info = " " }
+local signs = { Error = "", Warn = "", Hint = "", Info = "" }
 for type, icon in pairs(signs) do
   local hl = "DiagnosticSign" .. type
   vim.fn.sign_define(hl, { text = icon, texthl = hl, numhl = "" })
