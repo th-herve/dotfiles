@@ -25,8 +25,7 @@ set termguicolors
 set statusline=%=%l/%L 
 set laststatus=2 
 set noshowmode 
-set winbar=%t
-
+set winbar=%t%=%{FugitiveStatusline()}
 
 "       === Tab ===
 
@@ -272,8 +271,6 @@ call plug#begin('~/.config/nvim/plugged')
   Plug 'onsails/lspkind.nvim',
   Plug 'windwp/nvim-ts-autotag',
 
-  Plug 'nvim-lualine/lualine.nvim',
-
 call plug#end()
 
 
@@ -285,8 +282,6 @@ source   ~/.config/nvim/cmp.vim
 source   ~/.config/nvim/lsp.vim
 
 lua require'colorizer'.setup()
-
-lua require('lualine').setup()
 
 
 "        === Vimwiki ===
@@ -455,3 +450,12 @@ autocmd FileType sh iabbrev #!! #!/usr/bin/env bash
 autocmd FileType javascript iabbrev clo console.log();jkhi
 autocmd FileType javascript iabbrev dcel document.createElement("");jkhhi
 autocmd FileType javascript iabbrev dceld document.createElement("div");
+
+lua <<EOF
+function fileIcon()
+    local filename = vim.fn.expand('%:t')
+    local file_type = vim.fn.expand('%:e')
+
+    return require'nvim-web-devicons'.get_icon(filename, file_type, { default = default })
+end
+EOF
