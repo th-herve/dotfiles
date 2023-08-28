@@ -369,7 +369,7 @@ nnoremap <silent> <M-f> :lua require("harpoon.ui").nav_file(3)<CR>
 " |         Color scheme          |
 " +-------------------------------+
 
-let g:everforest_background = 'hard'
+let g:everforest_background = 'medium'
 colorscheme everforest
     highlight StatusLine guibg=none
     highlight StatusLineNC guibg=none
