@@ -10,7 +10,7 @@
 
 imap <Esc> <Nop>
 
-set relativenumber number hidden nocompatible nowrap splitright showmatch
+set relativenumber number hidden nocompatible wrap splitright showmatch
 
 set guicursor=n:hor25,i:ver20,c:ver20,v:block
 
@@ -186,8 +186,8 @@ omap                H               ^
 vmap                L               $
 vmap                H               ^
 
-noremap <C-I> <C-O>
-noremap <C-O> <C-I>
+nnoremap            <C-I>           <C-O>
+nnoremap            <C-O>           <C-I>
 
 " +-------------------------------+
 " |           Plugins             |
@@ -216,13 +216,10 @@ call plug#begin('~/.config/nvim/plugged')
 
     Plug 'mbbill/undotree',
 
-    " Plug 'nvim-tree/nvim-tree.lua',
-
     Plug 'KabbAmine/vCoolor.vim',
 
     Plug 'mattn/emmet-vim',
     Plug 'tpope/vim-repeat',
-    " Plug 'ggandor/leap.nvim',
 
     Plug 'dense-analysis/ale',
 
@@ -245,7 +242,6 @@ call plug#begin('~/.config/nvim/plugged')
     Plug 'nordtheme/vim',
     Plug 'rebelot/kanagawa.nvim',
     Plug 'sainnhe/everforest',
-    
     Plug 'frenzyexists/aquarium-vim', { 'branch': 'develop' },
     Plug 'ellisonleao/gruvbox.nvim' ,
 
@@ -292,7 +288,6 @@ let g:vimwiki_list = [{'path': '~/.config/nvim/vimwiki/docs',
             \ 'syntax': 'markdown', 'ext': '.md'}]
 let g:vimwiki_path = '~/.config/nvim/vimwiki/docs'
 let g:vimwiki_markdown_link_ext = 1
-" let g:vimwiki_auto_fold = 1
 imap <C-space> <Plug>VimwikiTableNextCell
 
 "        === Undotree ===
@@ -350,6 +345,9 @@ let g:AutoPairsShortcutBackInsert = ''
 
 lua require("toggleterm").setup({open_mapping = [[<c-/>]],shade_terminals = true, direction = "float",float_opts = {border = 'single' }, highlight = { Normal = { guibg = '#11111b', } }})
 
+" Add another bind for st terminal (in st C-_ = C-/ for some reasons)
+nnoremap <silent> <C-_> :ToggleTerm<CR>
+
 "        === Oil ===
 
 lua require("oil").setup({ keymaps = {["<BS>"] = "actions.parent"} })
@@ -371,20 +369,13 @@ nnoremap <silent> <M-f> :lua require("harpoon.ui").nav_file(3)<CR>
 " |         Color scheme          |
 " +-------------------------------+
 
-
-let g:everforest_background = 'hard'
-
+let g:everforest_background = 'medium'
 colorscheme catppuccin-macchiato
     highlight StatusLine guibg=none
     highlight StatusLineNC guibg=none
     highlight CursorLine guibg=none
     highlight Folded guibg=none
     highlight MatchParen guibg=none
-
-"         === NvimTree ===
-
-" highlight NvimTreeNormal guibg=none
-" highlight NvimTreeWinSeparator guifg=#11111b
 
 " +-------------------------------+
 " |           Function            |
@@ -427,8 +418,6 @@ if has("autocmd")
 endif
 
 autocmd BufNewFile *.sh exec "normal i#!/usr/bin/env bash\<Esc>"
-
-autocmd FileType markdown set wrap
 
 " +-------------------------------+
 " |         Abbreviations         |

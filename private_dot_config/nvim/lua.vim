@@ -76,7 +76,7 @@ vim.defer_fn(function()
 require('nvim-devdocs').setup({
  float_win = {
     relative = "editor",
-    height = 35,
+    height = 40,
     width = 150,
     border = "rounded",
   },
