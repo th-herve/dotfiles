@@ -51,6 +51,7 @@ set foldignore=
 set foldtext=CustomFoldText()
 set fillchars=fold:\ 
 autocmd FileType html setlocal foldnestmax=8
+autocmd FileType dbui setlocal foldnestmax=0
 
 "     === terminal ===
 
@@ -232,7 +233,32 @@ call plug#begin('~/.config/nvim/plugged')
 
     Plug 'luckasRanarison/nvim-devdocs',
 
-      " LSP Support
+" completion
+    Plug 'hrsh7th/nvim-cmp' ,
+    Plug 'hrsh7th/cmp-buffer' ,
+    Plug 'hrsh7th/cmp-path' ,
+    Plug 'hrsh7th/cmp-cmdline' ,
+    Plug 'saadparwaiz1/cmp_luasnip' ,
+    Plug 'hrsh7th/cmp-nvim-lsp',
+
+" snippet
+    Plug 'L3MON4D3/LuaSnip' ,
+    Plug 'rafamadriz/friendly-snippets' ,
+
+" lsp
+    Plug 'neovim/nvim-lspconfig' ,
+    Plug 'williamboman/mason.nvim' ,
+    Plug 'williamboman/mason-lspconfig.nvim' ,
+    Plug 'jose-elias-alvarez/null-ls.nvim',
+    Plug 'jayp0521/mason-null-ls.nvim',
+    Plug 'glepnir/lspsaga.nvim',
+    Plug 'onsails/lspkind.nvim',
+    Plug 'windwp/nvim-ts-autotag',
+
+" db
+   Plug 'tpope/vim-dadbod',
+   Plug 'kristijanhusak/vim-dadbod-ui',
+   Plug 'kristijanhusak/vim-dadbod-completion',
 
 "         == themes ==
     Plug 'catppuccin/nvim', { 'as': 'catppuccin' },
@@ -244,28 +270,6 @@ call plug#begin('~/.config/nvim/plugged')
     Plug 'sainnhe/everforest',
     Plug 'frenzyexists/aquarium-vim', { 'branch': 'develop' },
     Plug 'ellisonleao/gruvbox.nvim' ,
-
-" completion
-  Plug 'hrsh7th/nvim-cmp' ,
-  Plug 'hrsh7th/cmp-buffer' ,
-  Plug 'hrsh7th/cmp-path' ,
-  Plug 'hrsh7th/cmp-cmdline' ,
-  Plug 'saadparwaiz1/cmp_luasnip' ,
-  Plug 'hrsh7th/cmp-nvim-lsp',
-
-" snippet
-  Plug 'L3MON4D3/LuaSnip' ,
-  Plug 'rafamadriz/friendly-snippets' ,
-
-" lsp
-  Plug 'neovim/nvim-lspconfig' ,
-  Plug 'williamboman/mason.nvim' ,
-  Plug 'williamboman/mason-lspconfig.nvim' ,
-  Plug 'jose-elias-alvarez/null-ls.nvim',
-  Plug 'jayp0521/mason-null-ls.nvim',
-  Plug 'glepnir/lspsaga.nvim',
-  Plug 'onsails/lspkind.nvim',
-  Plug 'windwp/nvim-ts-autotag',
 
 call plug#end()
 
@@ -364,6 +368,11 @@ nnoremap <silent> <C-p> :lua require("harpoon.mark").add_file()<CR>
 nnoremap <silent> <M-a> :lua require("harpoon.ui").nav_file(1)<CR>
 nnoremap <silent> <M-s> :lua require("harpoon.ui").nav_file(2)<CR>
 nnoremap <silent> <M-f> :lua require("harpoon.ui").nav_file(3)<CR>
+
+"        === Harpoon ===
+
+nnoremap <silent> <leader>D :DBUIToggle
+
 
 " +-------------------------------+
 " |         Color scheme          |
