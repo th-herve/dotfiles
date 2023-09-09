@@ -1,9 +1,9 @@
 # dotfiles
 
-### Install chezmoi
+### Install chezmoi and others
 
 ```bash 
-sudo pacman -S chezmoi
+sudo pacman -S chezmoi neovim git
 
 sudo apt install chezmoi
 ```
@@ -11,8 +11,10 @@ sudo apt install chezmoi
 
 ```bash
 chezmoi init --apply th-herve
+// or
+chezmoi init --apply th-herve --branch specific-branch
 ```
-### Install the program
+### Install the programs
 
 ```bash
 sudo pacman -S neovim kitty qtile neofetch dmenu rofi
@@ -20,3 +22,7 @@ sudo pacman -S neovim kitty qtile neofetch dmenu rofi
 # for ubuntu install nvim with .deb to have last version
 sudo apt install kitty qtile neofetch dmenu rofi
 ```
+
+## Install vim plug
+
+https://github.com/junegunn/vim-plug
