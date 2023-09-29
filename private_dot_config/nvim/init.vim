@@ -210,6 +210,7 @@ call plug#begin('~/.config/nvim/plugged')
 
     Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'},
     Plug 'nvim-treesitter/playground',
+    Plug 'nvim-treesitter/nvim-treesitter-textobjects',
 
     Plug 'nvim-telescope/telescope.nvim', { 'tag': '0.1.1' },
     Plug 'nvim-lua/plenary.nvim',
@@ -260,6 +261,7 @@ call plug#begin('~/.config/nvim/plugged')
    Plug 'kristijanhusak/vim-dadbod-ui',
    Plug 'kristijanhusak/vim-dadbod-completion',
 
+
 "         == themes ==
     Plug 'catppuccin/nvim', { 'as': 'catppuccin' },
     Plug 'Mofiqul/dracula.nvim',
@@ -270,6 +272,8 @@ call plug#begin('~/.config/nvim/plugged')
     Plug 'sainnhe/everforest',
     Plug 'frenzyexists/aquarium-vim', { 'branch': 'develop' },
     Plug 'ellisonleao/gruvbox.nvim' ,
+    Plug 'sainnhe/gruvbox-material',
+    Plug 'roobert/palette.nvim',
 
 call plug#end()
 
