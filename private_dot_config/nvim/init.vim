@@ -351,7 +351,7 @@ let g:AutoPairsShortcutBackInsert = ''
 
 "        === Toggle term ===
 
-lua require("toggleterm").setup({open_mapping = [[<c-/>]],shade_terminals = true, direction = "float",float_opts = {border = 'single' }, highlight = { Normal = { guibg = '#11111b', } }})
+lua require("toggleterm").setup({open_mapping = [[<M-m>]],shade_terminals = true, direction = "float",float_opts = {border = 'single' }, highlight = { Normal = { guibg = '#11111b', } }})
 
 " Add another bind for st terminal (in st C-_ = C-/ for some reasons)
 nnoremap <silent> <C-_> :ToggleTerm<CR>
@@ -383,7 +383,8 @@ nnoremap <silent> <leader>D :DBUIToggle
 " +-------------------------------+
 
 let g:everforest_background = 'medium'
-colorscheme everforest
+let g:gruvbox_material_background = 'soft'
+colorscheme gruvbox-material
     highlight StatusLine guibg=none
     highlight StatusLineNC guibg=none
     highlight CursorLine guibg=none
