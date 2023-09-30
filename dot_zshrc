@@ -150,6 +150,35 @@ alias aptrm="sudo apt remove"
 
 alias mkdir="mkdir -pv"
 
+# Define a function for the 'cf' command
+cff() {
+  local dir
+  dir=$(find $HOME -type d | fzf)
+
+  if [ -n "$dir" ]; then
+    cd "$dir"
+  fi
+}
+
+ccf() {
+  local dir
+  dir=$(find -type d | fzf)
+
+  if [ -n "$dir" ]; then
+    cd "$dir"
+  fi
+}
+
+
+vff() {
+  local file
+  file=$(find -type f | fzf)
+
+  if [ -n "$file" ]; then
+    nvim "$file"
+  fi
+}
+
 #        === pluggin ===
 
 # History substring keybind
