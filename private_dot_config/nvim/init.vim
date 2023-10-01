@@ -10,7 +10,7 @@
 
 imap <Esc> <Nop>
 
-set relativenumber number hidden nocompatible wrap splitright showmatch
+set relativenumber number hidden nocompatible nowrap splitright showmatch
 
 set guicursor=n:hor25,i:ver20,c:ver20,v:block
 
@@ -372,6 +372,7 @@ nnoremap <silent> <C-p> :lua require("harpoon.mark").add_file()<CR>
 nnoremap <silent> <M-a> :lua require("harpoon.ui").nav_file(1)<CR>
 nnoremap <silent> <M-s> :lua require("harpoon.ui").nav_file(2)<CR>
 nnoremap <silent> <M-f> :lua require("harpoon.ui").nav_file(3)<CR>
+nnoremap <silent> <M-/> :lua require("harpoon.ui").nav_file(4)<CR>
 
 "        === Harpoon ===
 
@@ -383,7 +384,7 @@ nnoremap <silent> <leader>D :DBUIToggle
 " +-------------------------------+
 
 let g:everforest_background = 'medium'
-let g:gruvbox_material_background = 'soft'
+let g:gruvbox_material_background = 'hard'
 colorscheme gruvbox-material
     highlight StatusLine guibg=none
     highlight StatusLineNC guibg=none
