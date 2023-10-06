@@ -190,6 +190,9 @@ vmap                H               ^
 nnoremap            <C-I>           <C-O>
 nnoremap            <C-O>           <C-I>
 
+" Registers
+nnoremap <leader>p "0p
+
 " +-------------------------------+
 " |           Plugins             |
 " +-------------------------------+
@@ -330,7 +333,7 @@ let g:user_emmet_leader_key='<M-,>'
 lua require('telescope').setup{ defaults = { file_ignore_patterns = {"node_modules"} } } 
 
 nnoremap            <leader>ff      <cmd>Telescope find_files<cr>
-nnoremap            <leader>fg      <cmd>Telescope live_grep<cr>
+nnoremap            <leader>fgg     <cmd>Telescope live_grep<cr>
 nnoremap            <leader>fb      <cmd>Telescope buffers<cr>
 nnoremap            <leader>fh      <cmd>Telescope help_tags<cr>
 nnoremap            <leader>fc      <cmd>Telescope current_buffer_fuzzy_find<cr>
@@ -340,6 +343,10 @@ nnoremap            <leader>fv      <cmd>Telescope command_history<cr>
 nnoremap            <leader>fs      <cmd>Telescope search_history<cr>
 nnoremap            <leader>fk      <cmd>Telescope keymaps<cr>
 
+nnoremap            <leader>fgb     <cmd>Telescope git_branches<cr>
+nnoremap            <leader>fgs     <cmd>Telescope git_status<cr>
+nnoremap            <leader>fgc     <cmd>Telescope git_commits<cr>
+nnoremap            <leader>fgbc    <cmd>Telescope git_bcommits<cr>
 
 "        === Surround ===
 
@@ -397,6 +404,7 @@ colorscheme gruvbox-material
 " +-------------------------------+
 
 
+" display message when recording
 function! Recording()
   if v:register != '*'
     return 'recording at ' . v:register
