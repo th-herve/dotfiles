@@ -14,6 +14,7 @@ zmodload zsh/complist
 
 EDITOR=nvim
 export VISUAL=nvim
+export PATH="$PATH:/home/adiantum/.local/bin"
 
 #        === Prompt ===
 
