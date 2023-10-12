@@ -15,6 +15,7 @@ zmodload zsh/complist
 EDITOR=nvim
 export VISUAL=nvim
 export PATH="$PATH:/home/adiantum/.local/bin"
+export PATH="$PATH:/opt/gradle/gradle-8.4/bin"
 
 #        === Prompt ===
 
@@ -69,12 +70,16 @@ bindkey '^v' edit-command-line
 
 # working temp aliases
 alias odin="cd ~/programming/web/odin"
+alias bts="cd ~/Documents/bts/"
+alias pof="cd ~/programming/project/portfolio/"
 
 # my aliases
 alias python="python3"
 alias r="ranger"
 alias bat="batcat"
 alias ztr="zathura"
+alias tm="tmux"
+alias lzg="lazygit"
 
 # nvim
 alias v="nvim"
