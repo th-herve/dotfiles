@@ -258,12 +258,7 @@ call plug#begin('~/.config/nvim/plugged')
     Plug 'glepnir/lspsaga.nvim',
     Plug 'onsails/lspkind.nvim',
     Plug 'windwp/nvim-ts-autotag',
-
-" db
-   Plug 'tpope/vim-dadbod',
-   Plug 'kristijanhusak/vim-dadbod-ui',
-   Plug 'kristijanhusak/vim-dadbod-completion',
-
+    Plug 'mfussenegger/nvim-jdtls',
 
 "         == themes ==
     Plug 'catppuccin/nvim', { 'as': 'catppuccin' },
