@@ -80,6 +80,7 @@ alias bat="batcat"
 alias ztr="zathura"
 alias tm="tmux"
 alias lzg="lazygit"
+alias fd="fdfind"
 
 # nvim
 alias v="nvim"
@@ -158,18 +159,18 @@ alias aptrm="sudo apt remove"
 alias mkdir="mkdir -pv"
 
 # Define a function for the 'cf' command
-cff() {
+fzc() {
   local dir
-  dir=$(find $HOME -type d | fzf)
+  dir=$(fdfind --search-path $HOME --hidden --exclude .git --type d | fzf)
 
   if [ -n "$dir" ]; then
     cd "$dir"
   fi
 }
 
-ccf() {
+fz.() {
   local dir
-  dir=$(find -type d | fzf)
+  dir=$(fdfind --type d --hidden --exclude .git | fzf)
 
   if [ -n "$dir" ]; then
     cd "$dir"
@@ -177,9 +178,9 @@ ccf() {
 }
 
 
-vff() {
+fzv() {
   local file
-  file=$(find -type f | fzf)
+  file=$(fdfind --type f --hidden --exclude .git | fzf)
 
   if [ -n "$file" ]; then
     nvim "$file"
@@ -201,3 +202,5 @@ source ~/.config/zsh/plug/zsh-sudo/sudo.zsh
 bindkey -M emacs '^P' history-substring-search-up
 bindkey -M emacs '^N' history-substring-search-down
 bindkey '^j' autosuggest-execute
+
+# eval "$(starship init zsh)"
