@@ -1,26 +1,30 @@
 # dotfiles
 
-### Install chezmoi and others
+### Install chezmoi and git (and neovim if not on debian base)
 
-```bash 
+```bash
+# On Arch
 sudo pacman -S chezmoi neovim git
 
-sudo apt install chezmoi
+# On Debian/Ubuntu
+sudo apt install chezmoi git
+sh -c "$(curl -fsLS get.chezmoi.io)"
 ```
 ### Clone the config
 
 ```bash
+# To clone the main branch
 chezmoi init --apply th-herve
-// or
+# or for a specific branch
 chezmoi init --apply th-herve --branch specific-branch
 ```
-### Install the programs
+### Install the others programs
 
 ```bash
-sudo pacman -S neovim kitty qtile neofetch dmenu rofi
+sudo pacman -S neovim kitty qtile dmenu rofi tmux
 
-# for ubuntu install nvim with .deb to have last version
-sudo apt install kitty qtile neofetch dmenu rofi
+# for ubuntu install nvim with .deb to have the last version
+sudo apt install kitty qtile dmenu rofi tmux
 ```
 
 ## Install vim plug
