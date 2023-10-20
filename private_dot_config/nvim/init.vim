@@ -193,6 +193,9 @@ nnoremap            <C-O>           <C-I>
 " Registers
 nnoremap <leader>p "0p
 
+nnoremap j gj
+nnoremap k gk
+
 " +-------------------------------+
 " |           Plugins             |
 " +-------------------------------+
@@ -236,6 +239,8 @@ call plug#begin('~/.config/nvim/plugged')
     Plug 'folke/flash.nvim',
 
     Plug 'luckasRanarison/nvim-devdocs',
+
+    Plug 'junegunn/goyo.vim', { 'for': 'markdown' }
 
 " completion
     Plug 'hrsh7th/nvim-cmp' ,
@@ -380,6 +385,48 @@ nnoremap <silent> <M-/> :lua require("harpoon.ui").nav_file(4)<CR>
 
 nnoremap <silent> <leader>D :DBUIToggle
 
+"        === Goyo ===
+
+function! s:goyo_enter()
+  if executable('tmux') && strlen($TMUX)
+    silent !tmux set status off
+    silent !tmux list-panes -F '\#F' | grep -q Z || tmux resize-pane -Z
+  endif
+  set noshowmode
+  set noshowcmd
+  set scrolloff=999
+
+  " custom
+  set wrap
+  set linebreak
+  set winbar=
+  set fillchars=eob:\ 
+
+  " ...
+endfunction
+
+function! s:goyo_leave()
+  if executable('tmux') && strlen($TMUX)
+    silent !tmux set status on
+    silent !tmux list-panes -F '\#F' | grep -q Z && tmux resize-pane -Z
+  endif
+  set showmode
+  set showcmd
+  set scrolloff=5
+
+  " custom
+  set nowrap
+  set nolinebreak
+  set winbar=%t%=%{FugitiveStatusline()}
+  set fillchars=eob:~
+
+  " ...
+endfunction
+
+autocmd! User GoyoEnter nested call <SID>goyo_enter()
+autocmd! User GoyoLeave nested call <SID>goyo_leave()
+
+nnoremap <leader>gy :Goyo<CR>
 
 " +-------------------------------+
 " |         Color scheme          |
