@@ -75,6 +75,7 @@ alias pof="cd ~/programming/project/portfolio/"
 
 # my aliases
 alias python="python3"
+alias py="python3"
 alias r="ranger"
 alias bat="batcat"
 alias ztr="zathura"
