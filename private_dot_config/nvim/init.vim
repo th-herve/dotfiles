@@ -85,11 +85,10 @@ let mapleader = "\<Space>"
 
 nnoremap <silent>   <leader>v       :vsplit<CR>
 
-tnoremap <silent>   jk              <C-\><C-n>
-" tnoremap <silent>   jkk             <C-\><C-n>:q!<CR>
-" tnoremap <silent>   <Esc>           <C-\><C-n>
-" tnoremap <silent>   <Esc><Esc>      <C-\><C-n>:q!<CR>
-" nnoremap <silent>   <leader>t       :belowright split<CR>:terminal<CR>:horizontal resize 15<CR>i
+inoremap            jk              <Esc>
+cnoremap            jk              <Esc>
+vnoremap            mm              <Esc>
+tnoremap            jk              <C-\><C-n>
 
 nnoremap            <leader>e       <C-w>w
 
@@ -148,11 +147,6 @@ nnoremap            <leader>:       A:<Esc>
 nnoremap            <leader>>       A>
 
 nnoremap            <leader><Space> za
-
-inoremap            jk              <Esc>
-vnoremap            hj              <Esc>
-cnoremap            jk              <Esc>
-" nnoremap hj <Esc> 
 
 nnoremap            <M-d>           <C-d>zz
 nnoremap            <M-u>           <C-u>zz
@@ -412,7 +406,7 @@ function! s:goyo_leave()
   endif
   set showmode
   set showcmd
-  set scrolloff=5
+  set scrolloff=8
 
   " custom
   set nowrap
