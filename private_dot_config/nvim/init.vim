@@ -271,6 +271,7 @@ call plug#begin('~/.config/nvim/plugged')
     Plug 'ellisonleao/gruvbox.nvim' ,
     Plug 'sainnhe/gruvbox-material',
     Plug 'roobert/palette.nvim',
+    Plug 'folke/tokyonight.nvim',
 
 call plug#end()
 
