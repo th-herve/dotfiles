@@ -114,7 +114,7 @@ alias gc="git commit"
 alias gcm="git commit -m "
 alias gp="git push"
 alias gd="git diff"
-alias gg="git graph"
+alias gg="git log --all --graph --decorate --oneline"
 
 # bashrc
 alias bsi="chezmoi edit ~/.bashrc"
