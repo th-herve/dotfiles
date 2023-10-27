@@ -140,9 +140,10 @@ alias fgrep='fgrep --color=auto'
 alias egrep='egrep --color=auto'
 
 # ls aliases
-alias l='ls -l'
-alias la='ls -lAh'
+alias l='exa -l --icons'
+alias la='exa -la'
 alias ll='ls -CF'
+export EXA_COLORS="da=30:uu=0:fi=1;35:di=34"
 
 alias npmt="npm test"
 
