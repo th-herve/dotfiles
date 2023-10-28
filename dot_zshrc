@@ -143,6 +143,7 @@ alias egrep='egrep --color=auto'
 alias l='exa -l --icons'
 alias la='exa -la'
 alias ll='ls -CF'
+alias tree='exa -T --icons'
 export EXA_COLORS="da=30:uu=0:fi=1;35:di=34"
 
 alias npmt="npm test"
@@ -159,6 +160,8 @@ alias aptin="sudo apt install"
 alias aptrm="sudo apt remove"
 
 alias mkdir="mkdir -pv"
+
+alias clip="xclip -selection c"
 
 # Define a function for the 'cf' command
 fzc() {
@@ -188,6 +191,7 @@ fzv() {
     nvim "$file"
   fi
 }
+
 
 #        === pluggin ===
 
