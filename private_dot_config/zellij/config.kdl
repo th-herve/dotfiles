@@ -1,0 +1,92 @@
+simplified_ui true
+pane_frames true
+
+ui {
+    pane_frames {
+        rounded_corners true
+    }
+}
+
+// keybinds
+keybinds {
+    normal clear-defaults=true {
+        bind "Alt g" { SwitchToMode "locked"; }
+        bind "Alt p" { SwitchToMode "pane"; }
+        bind "Alt t" { SwitchToMode "tab"; }
+        bind "Alt x" { SwitchToMode "resize"; }
+        bind "Alt n" { SwitchToMode "move"; }  
+        bind "Alt N" { SwitchToMode "search"; }
+        bind "Alt o" { SwitchToMode "session"; }
+        bind "Alt q" { Quit; }
+
+        bind "Alt n" { NewPane; }
+        bind "Alt i" { FocusNextPane; }
+        bind "Alt I" { FocusPreviousPane; }
+        bind "Alt T" { GoToNextTab; }
+
+        bind "Alt J" { HalfPageScrollDown; }
+        bind "Alt K" { HalfPageScrollUp; }
+
+        bind "Alt [" { NextSwapLayout; }
+
+        bind "Alt w" { ToggleFloatingPanes; }
+        bind "Alt M" { ToggleFocusFullscreen; }
+        bind "Alt A" { TogglePaneFrames; }
+
+    }
+    locked {
+        bind "Alt g" {SwitchToMode "normal";}
+    }
+    pane {
+        bind "Alt p" {SwitchToMode "normal";}
+    }
+    tab {
+        bind "Alt t" {SwitchToMode "normal";}
+    }
+    resize {
+        bind "Alt x" {SwitchToMode "normal";}
+    }
+    move {
+        bind "Alt m" {SwitchToMode "normal";}
+    }
+    search {
+        bind "Alt i" {SwitchToMode "normal";}
+    }
+    session {
+        bind "Alt o" {SwitchToMode "normal";}
+    }
+}
+
+// theme
+theme "gruvbox-material"
+
+themes {
+    gruvbox-material {
+        fg "#d4be98"
+        bg "#1d2021"
+        black "#1d2021"
+        red "#ea6962"
+        green "#a9b665"
+        yellow "#d8a657"
+        blue "#7daea3"
+        magenta "#d3869b"
+        cyan "#89b482"
+        white "#d4be98"
+        orange "#e78a4e"
+    }
+
+    everforest-dark-medium {
+        fg "#d3c6aa"    
+        bg "#2f383e"    
+        black "#4a555b" 
+        red "#d6494d"   
+        green "#a7c080" 
+        yellow "#dbbc7f"
+        blue "#7fbbb3"  
+        magenta "#d699b6"
+        cyan "#83c092"  
+        white "#a7c080" 
+        orange "#e69875"
+    }
+}
+

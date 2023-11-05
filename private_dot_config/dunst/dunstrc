@@ -6,7 +6,8 @@
     # Which monitor should the notifications be displayed on.
     monitor = 0
 
-    frame_color = "#8AADF4"
+    # frame_color = "#8AADF4"
+    frame_color = "#A7C080"
 
     # Display notification on focused monitor.  Possible modes are:
     #   mouse: follow mouse pointer
@@ -307,17 +308,24 @@
 [experimental]
 
 [urgency_low]
-    background = "#303446"
-    foreground = "#CAD3F5"
+    background = "#2D353B"
+    foreground = "#D3C6AA"
+    # background = "#303446"
+    # foreground = "#CAD3F5"
 
 [urgency_normal]
-    background = "#303446"
-    foreground = "#CAD3F5"
+    background = "#2D353B"
+    foreground = "#D3C6AA"
+    # background = "#303446"
+    # foreground = "#CAD3F5"
 
 [urgency_critical]
-    background = "#303446"
-    foreground = "#CAD3F5"
-    frame_color = "#F5A97F"
+    background = "#2D353B"
+    foreground = "#D3C6AA"
+    frame_color = "#E67E80"
+    # background = "#303446"
+    # foreground = "#CAD3F5"
+    # frame_color = "#F5A97F"
 
     # Calculate the dpi to use on a per-monitor basis.
     # If this setting is enabled the Xft.dpi value will be ignored and instead

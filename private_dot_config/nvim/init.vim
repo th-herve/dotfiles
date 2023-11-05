@@ -10,7 +10,9 @@
 
 imap <Esc> <Nop>
 
-set relativenumber number hidden nocompatible wrap splitright showmatch
+lua vim.g.maplocalleader = "|"
+
+set relativenumber number hidden nocompatible nowrap splitright showmatch
 
 set guicursor=n:hor25,i:ver20,c:ver20,v:block
 
@@ -25,8 +27,7 @@ set termguicolors
 set statusline=%=%l/%L 
 set laststatus=2 
 set noshowmode 
-set winbar=%t
-
+set winbar=%t%=%{FugitiveStatusline()}
 
 "       === Tab ===
 
@@ -42,6 +43,7 @@ autocmd FileType javascript setlocal shiftwidth=2 tabstop=2
 autocmd FileType markdown   setlocal shiftwidth=2 tabstop=2
 autocmd FileType text       setlocal shiftwidth=2 tabstop=2
 autocmd FileType vimwiki    setlocal shiftwidth=2 tabstop=2
+autocmd FileType javascriptreact setlocal shiftwidth=2 tabstop=2
 
 "       === Fold ===
 
@@ -51,6 +53,7 @@ set foldignore=
 set foldtext=CustomFoldText()
 set fillchars=fold:\ 
 autocmd FileType html setlocal foldnestmax=8
+autocmd FileType dbui setlocal foldnestmax=0
 
 "     === terminal ===
 
@@ -84,11 +87,10 @@ let mapleader = "\<Space>"
 
 nnoremap <silent>   <leader>v       :vsplit<CR>
 
-tnoremap <silent>   jk              <C-\><C-n>
-" tnoremap <silent>   jkk             <C-\><C-n>:q!<CR>
-" tnoremap <silent>   <Esc>           <C-\><C-n>
-" tnoremap <silent>   <Esc><Esc>      <C-\><C-n>:q!<CR>
-" nnoremap <silent>   <leader>t       :belowright split<CR>:terminal<CR>:horizontal resize 15<CR>i
+inoremap            jk              <Esc>
+cnoremap            jk              <Esc>
+vnoremap            mm              <Esc>
+tnoremap            jk              <C-\><C-n>
 
 nnoremap            <leader>e       <C-w>w
 
@@ -131,9 +133,6 @@ map      <silent>   <leader>o       :setlocal spell!<CR>
 vnoremap            <               <gv
 vnoremap            >               >gv
 
-" Map Tab key to trigger completion with coc.vim
-inoremap <expr>     <Tab>           pumvisible() ? "\<C-y>" : "\<Tab>"
-
 nnoremap            <C-d>           <C-d>zz
 nnoremap            <C-u>           <C-u>zz
 nnoremap            n               nzzzv
@@ -150,11 +149,6 @@ nnoremap            <leader>:       A:<Esc>
 nnoremap            <leader>>       A>
 
 nnoremap            <leader><Space> za
-
-inoremap            jk              <Esc>
-vnoremap            hj              <Esc>
-cnoremap            jk              <Esc>
-" nnoremap hj <Esc> 
 
 nnoremap            <M-d>           <C-d>zz
 nnoremap            <M-u>           <C-u>zz
@@ -192,13 +186,18 @@ vmap                H               ^
 nnoremap            <C-I>           <C-O>
 nnoremap            <C-O>           <C-I>
 
+" Registers
+nnoremap <leader>p "0p
+
+nnoremap j gj
+nnoremap k gk
+
 " +-------------------------------+
 " |           Plugins             |
 " +-------------------------------+
 
 call plug#begin('~/.config/nvim/plugged')
 
-    Plug 'neoclide/coc.nvim', 
     Plug 'folke/zen-mode.nvim',
     Plug 'tpope/vim-surround',
     Plug 'tpope/vim-commentary',
@@ -213,6 +212,7 @@ call plug#begin('~/.config/nvim/plugged')
 
     Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'},
     Plug 'nvim-treesitter/playground',
+    Plug 'nvim-treesitter/nvim-treesitter-textobjects',
 
     Plug 'nvim-telescope/telescope.nvim', { 'tag': '0.1.1' },
     Plug 'nvim-lua/plenary.nvim',
@@ -236,6 +236,33 @@ call plug#begin('~/.config/nvim/plugged')
 
     Plug 'luckasRanarison/nvim-devdocs',
 
+    Plug 'junegunn/goyo.vim', { 'for': 'markdown' }
+
+    Plug 'nvim-neorg/neorg',
+
+" completion
+    Plug 'hrsh7th/nvim-cmp' ,
+    Plug 'hrsh7th/cmp-buffer' ,
+    Plug 'hrsh7th/cmp-path' ,
+    Plug 'hrsh7th/cmp-cmdline' ,
+    Plug 'saadparwaiz1/cmp_luasnip' ,
+    Plug 'hrsh7th/cmp-nvim-lsp',
+
+" snippet
+    Plug 'L3MON4D3/LuaSnip' ,
+    Plug 'rafamadriz/friendly-snippets' ,
+
+" lsp
+    Plug 'neovim/nvim-lspconfig' ,
+    Plug 'williamboman/mason.nvim' ,
+    Plug 'williamboman/mason-lspconfig.nvim' ,
+    Plug 'jose-elias-alvarez/null-ls.nvim',
+    Plug 'jayp0521/mason-null-ls.nvim',
+    Plug 'glepnir/lspsaga.nvim',
+    Plug 'onsails/lspkind.nvim',
+    Plug 'windwp/nvim-ts-autotag',
+    Plug 'mfussenegger/nvim-jdtls',
+
 "         == themes ==
     Plug 'catppuccin/nvim', { 'as': 'catppuccin' },
     Plug 'Mofiqul/dracula.nvim',
@@ -246,15 +273,21 @@ call plug#begin('~/.config/nvim/plugged')
     Plug 'sainnhe/everforest',
     Plug 'frenzyexists/aquarium-vim', { 'branch': 'develop' },
     Plug 'ellisonleao/gruvbox.nvim' ,
+    Plug 'sainnhe/gruvbox-material',
+    Plug 'roobert/palette.nvim',
+    Plug 'folke/tokyonight.nvim',
 
 call plug#end()
+
 
 
 source   ~/.config/nvim/lua.vim
 source   ~/.config/nvim/ale-linting.vim
 
-lua require'colorizer'.setup()
+source   ~/.config/nvim/cmp.vim
+source   ~/.config/nvim/lsp.vim
 
+lua require'colorizer'.setup()
 
 
 "        === Vimwiki ===
@@ -273,19 +306,6 @@ set undodir=/home/adiantum/.undodir_combined
 set undofile
 set undolevels=100000
 let g:undotree_SetFocusWhenToggle = 1
-
-"        === Coc.nvim ===
-
-let g:coc_global_extensions = ['coc-pyright',"coc-html", "coc-css","coc-tsserver","coc-clangd"]
-let g:coc_suggest_enable = 1
-let g:coc_suggest_triggerAfterInsertEnter = 0
-let g:coc_suggest_autoTrigger = 'always'
-let g:coc_suggest_enablePreview = 1
-let g:coc_suggest_insertMode = 'inline'
-let g:coc_suggest_insertCompletion = 'always'
-let g:coc_suggest_selectNextOnEnter = 0
-let g:coc_suggest_acceptSuggestionOnCommitCharacter = 0
-
 
 "        === Cursor line/word ===
 
@@ -312,7 +332,7 @@ let g:user_emmet_leader_key='<M-,>'
 lua require('telescope').setup{ defaults = { file_ignore_patterns = {"node_modules"} } } 
 
 nnoremap            <leader>ff      <cmd>Telescope find_files<cr>
-nnoremap            <leader>fg      <cmd>Telescope live_grep<cr>
+nnoremap            <leader>fgg     <cmd>Telescope live_grep<cr>
 nnoremap            <leader>fb      <cmd>Telescope buffers<cr>
 nnoremap            <leader>fh      <cmd>Telescope help_tags<cr>
 nnoremap            <leader>fc      <cmd>Telescope current_buffer_fuzzy_find<cr>
@@ -322,6 +342,10 @@ nnoremap            <leader>fv      <cmd>Telescope command_history<cr>
 nnoremap            <leader>fs      <cmd>Telescope search_history<cr>
 nnoremap            <leader>fk      <cmd>Telescope keymaps<cr>
 
+nnoremap            <leader>fgb     <cmd>Telescope git_branches<cr>
+nnoremap            <leader>fgs     <cmd>Telescope git_status<cr>
+nnoremap            <leader>fgc     <cmd>Telescope git_commits<cr>
+nnoremap            <leader>fgbc    <cmd>Telescope git_bcommits<cr>
 
 "        === Surround ===
 
@@ -333,7 +357,7 @@ let g:AutoPairsShortcutBackInsert = ''
 
 "        === Toggle term ===
 
-lua require("toggleterm").setup({open_mapping = [[<c-/>]],shade_terminals = true, direction = "float",float_opts = {border = 'single' }, highlight = { Normal = { guibg = '#11111b', } }})
+lua require("toggleterm").setup({open_mapping = [[<M-m>]],shade_terminals = true, direction = "float",float_opts = {border = 'single' }, highlight = { Normal = { guibg = '#11111b', } }})
 
 " Add another bind for st terminal (in st C-_ = C-/ for some reasons)
 nnoremap <silent> <C-_> :ToggleTerm<CR>
@@ -354,13 +378,62 @@ nnoremap <silent> <C-p> :lua require("harpoon.mark").add_file()<CR>
 nnoremap <silent> <M-a> :lua require("harpoon.ui").nav_file(1)<CR>
 nnoremap <silent> <M-s> :lua require("harpoon.ui").nav_file(2)<CR>
 nnoremap <silent> <M-f> :lua require("harpoon.ui").nav_file(3)<CR>
+nnoremap <silent> <M-/> :lua require("harpoon.ui").nav_file(4)<CR>
+
+"        === Harpoon ===
+
+nnoremap <silent> <leader>D :DBUIToggle
+
+"        === Goyo ===
+
+function! s:goyo_enter()
+  if executable('tmux') && strlen($TMUX)
+    silent !tmux set status off
+    silent !tmux list-panes -F '\#F' | grep -q Z || tmux resize-pane -Z
+  endif
+  set noshowmode
+  set noshowcmd
+  set scrolloff=999
+
+  " custom
+  set wrap
+  set linebreak
+  set winbar=
+  set fillchars=eob:\ 
+
+  " ...
+endfunction
+
+function! s:goyo_leave()
+  if executable('tmux') && strlen($TMUX)
+    silent !tmux set status on
+    silent !tmux list-panes -F '\#F' | grep -q Z && tmux resize-pane -Z
+  endif
+  set showmode
+  set showcmd
+  set scrolloff=8
+
+  " custom
+  set nowrap
+  set nolinebreak
+  set winbar=%t%=%{FugitiveStatusline()}
+  set fillchars=eob:~
+
+  " ...
+endfunction
+
+autocmd! User GoyoEnter nested call <SID>goyo_enter()
+autocmd! User GoyoLeave nested call <SID>goyo_leave()
+
+nnoremap <leader>gy :Goyo<CR>
 
 " +-------------------------------+
 " |         Color scheme          |
 " +-------------------------------+
 
-let g:everforest_background = 'hard'
-colorscheme everforest
+let g:everforest_background = 'medium'
+let g:gruvbox_material_background = 'hard'
+colorscheme gruvbox-material
     highlight StatusLine guibg=none
     highlight StatusLineNC guibg=none
     highlight CursorLine guibg=none
@@ -372,6 +445,7 @@ colorscheme everforest
 " +-------------------------------+
 
 
+" display message when recording
 function! Recording()
   if v:register != '*'
     return 'recording at ' . v:register
@@ -431,3 +505,12 @@ autocmd FileType sh iabbrev #!! #!/usr/bin/env bash
 autocmd FileType javascript iabbrev clo console.log();jkhi
 autocmd FileType javascript iabbrev dcel document.createElement("");jkhhi
 autocmd FileType javascript iabbrev dceld document.createElement("div");
+
+lua <<EOF
+function fileIcon()
+    local filename = vim.fn.expand('%:t')
+    local file_type = vim.fn.expand('%:e')
+
+    return require'nvim-web-devicons'.get_icon(filename, file_type, { default = default })
+end
+EOF

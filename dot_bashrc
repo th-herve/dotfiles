@@ -9,6 +9,7 @@ alias odin="cd ~/programming/web/odin"
 alias python="python3"
 alias r="ranger"
 alias bat="batcat"
+alias ztr="zathura"
 
 # nvim
 alias v="nvim"
