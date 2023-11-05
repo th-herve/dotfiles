@@ -169,7 +169,7 @@ fzc() {
   dir=$(fdfind --search-path $HOME --hidden --exclude .git --type d | fzf)
 
   if [ -n "$dir" ]; then
-    cd "$dir"
+    cd "$dir"; l
   fi
 }
 
