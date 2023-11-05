@@ -103,3 +103,27 @@ vim.keymap.set("n", "<leader>dc", ":DevdocsOpenFloat css<CR>")
 vim.keymap.set("n", "<leader>dj", ":DevdocsOpenFloat javascript<CR>")
 
 EOF
+
+lua << EOF
+require('neorg').setup {
+    load = {
+        ["core.defaults"] = {}, -- Loads default behaviour
+        ["core.concealer"] = {}, -- Adds pretty icons to your documents
+        ["core.dirman"] = { -- Manages Neorg workspaces
+            config = {
+                workspaces = {
+                    notes = "~/notes",
+                    dev = "~/notes/dev",
+                    stage = "~/notes/stage",
+                },
+            },
+        },
+    },
+}
+
+-- Fix concealer render problem
+vim.api.nvim_create_autocmd({"BufEnter", "BufWinEnter"}, {
+  pattern = {"*.norg"},
+  command = "set conceallevel=3"
+})
+EOF

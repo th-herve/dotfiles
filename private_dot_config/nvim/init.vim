@@ -10,6 +10,8 @@
 
 imap <Esc> <Nop>
 
+lua vim.g.maplocalleader = "|"
+
 set relativenumber number hidden nocompatible nowrap splitright showmatch
 
 set guicursor=n:hor25,i:ver20,c:ver20,v:block
@@ -235,6 +237,8 @@ call plug#begin('~/.config/nvim/plugged')
     Plug 'luckasRanarison/nvim-devdocs',
 
     Plug 'junegunn/goyo.vim', { 'for': 'markdown' }
+
+    Plug 'nvim-neorg/neorg',
 
 " completion
     Plug 'hrsh7th/nvim-cmp' ,
