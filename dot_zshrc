@@ -87,8 +87,8 @@ alias fd="fdfind"
 alias v="nvim"
 alias nvc="cd ~/.config/nvim"
 alias nvcw="cd ~/.config/nvim/vimwiki/docs"
-alias nvi="chezmoi edit ~/.config/nvim/init.vim"
-alias nvp="cd ~/.config/nvim/plugged"
+alias nvi="chezmoi edit ~/.config/nvim/init.lua"
+# alias nvp="cd ~/.config/nvim/plugged"
 alias wiki="nvim ~/.config/nvim/vimwiki/docs/index.md"
 
 # Kitty
