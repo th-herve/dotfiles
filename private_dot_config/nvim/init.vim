@@ -136,7 +136,7 @@ vnoremap            >               >gv
 nnoremap            <C-d>           <C-d>zz
 nnoremap            <C-u>           <C-u>zz
 nnoremap            n               nzzzv
-nnoremap            N               nzzzv 
+nnoremap            N               Nzzzv 
 
 nnoremap <silent>   <leader>u       :UndotreeToggle<CR>
 
@@ -228,7 +228,6 @@ call plug#begin('~/.config/nvim/plugged')
     Plug 'dense-analysis/ale',
 
     Plug 'akinsho/toggleterm.nvim', {'tag' : '*'},
-
     Plug 'stevearc/oil.nvim',
     Plug 'ThePrimeagen/harpoon',
 
