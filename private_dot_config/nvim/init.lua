@@ -1,3 +1,4 @@
+---@diagnostic disable: undefined-global
 --  _  _  ____  _____  _  _  ____  __  __
 -- ( \( )( ___)(  _  )( \/ )(_  _)(  \/  )
 --  )  (  )__)  )(_)(  \  /  _)(_  )    (
@@ -618,26 +619,26 @@ vim.defer_fn(function()
 				enable = true,
 				set_jumps = true, -- whether to set jumps in the jumplist
 				goto_next_start = {
-					["]m"] = "@function.outer",
-					["]]"] = "@class.outer",
+					["]f"] = "@function.outer",
+					["]c"] = "@class.outer",
 				},
 				goto_next_end = {
-					["]M"] = "@function.outer",
-					["]["] = "@class.outer",
+					["]F"] = "@function.outer",
+					["]C"] = "@class.outer",
 				},
 				goto_previous_start = {
-					["[m"] = "@function.outer",
-					["[["] = "@class.outer",
+					["[f"] = "@function.outer",
+					["[c"] = "@class.outer",
 				},
 				goto_previous_end = {
-					["[M"] = "@function.outer",
-					["[]"] = "@class.outer",
+					["[F"] = "@function.outer",
+					["[C"] = "@class.outer",
 				},
 			},
 			swap = {
 				enable = true,
 				swap_next = {
-					["<leader>a"] = "@parameter.inner",
+					["<leader>S"] = "@parameter.inner",
 				},
 				swap_previous = {
 					["<leader>A"] = "@parameter.inner",
