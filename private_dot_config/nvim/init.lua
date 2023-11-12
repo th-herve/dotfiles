@@ -25,7 +25,6 @@ vim.wo.signcolumn = "yes" -- keep signcolumn space
 -- Status bar
 vim.o.statusline = [[%=%l/%L ]]
 vim.o.laststatus = 2
-vim.o.winbar = [[%t]]
 
 -- Tab
 vim.o.expandtab = true
@@ -473,7 +472,7 @@ require("lazy").setup({
           set scrolloff=8
           set nowrap
           set nolinebreak
-          set winbar=%t%=%{FugitiveStatusline()}
+      # set winbar=lua get_winbar()
           set fillchars=eob:~
         endfunction
 
@@ -860,3 +859,46 @@ vim.cmd([[ highlight StatusLine guibg=none ]])
 vim.cmd([[ highlight StatusLineNC guibg=none ]])
 vim.cmd([[ highlight Folded guibg=none ]])
 vim.cmd([[ highlight MatchParen guibg=none ]])
+
+local function get_winbar()
+	local devicon = require("nvim-web-devicons")
+
+	local filename = vim.fn.expand("%:t")
+	local extension = vim.fn.expand("%:e")
+
+	local dir = vim.fn.expand("%:p:h")
+
+	local split_dir = vim.split(dir, "/") -- break path into all directories
+	dir = split_dir[#split_dir] -- get last dir in the path
+
+	local icon, icon_hl = devicon.get_icon(filename, extension, { default = true })
+	local win_hl = "%#WinBar#"
+
+	local branch = vim.fn.FugitiveStatusline()
+
+	if branch ~= "" then
+		branch = string.match(branch, "%((.*)%)")
+		branch = "%#Green#  " .. win_hl .. branch
+	end
+
+	return "%#Directory#󰉋 "
+		.. win_hl
+		.. dir
+		.. "%#Yellow#"
+		.. " > "
+		.. "%#"
+		.. icon_hl
+		.. "#"
+		.. icon
+		.. win_hl
+		.. " "
+		.. filename
+		.. "%="
+		.. (branch or "")
+end
+
+vim.api.nvim_create_autocmd({ "BufEnter" }, {
+	callback = function()
+		vim.o.winbar = get_winbar()
+	end,
+})
