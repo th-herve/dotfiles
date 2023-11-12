@@ -243,10 +243,12 @@ require("lazy").setup({
 	{
 		"folke/flash.nvim",
 		event = "VeryLazy",
-		search = {
-			mode = function(str) -- match only beginning of words
-				return "\\<" .. str
-			end,
+		opts = {
+			search = {
+				mode = function(str) -- match only beginning of words
+					return "\\<" .. str
+				end,
+			},
 		},
 		key = {
 			key({ "n", "o", "x" }, "s", function()
