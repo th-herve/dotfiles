@@ -16,6 +16,7 @@ vim.o.showmatch = true
 vim.o.ignorecase = true
 vim.o.smartcase = true
 vim.o.incsearch = true
+vim.o.showmode = false
 
 -- Line number
 vim.o.number = true
@@ -31,7 +32,7 @@ vim.o.expandtab = true
 vim.o.tabstop = 4
 vim.o.softtabstop = 4
 vim.o.shiftwidth = 4
-local augroup = vim.api.nvim_create_augroup -- move this
+local augroup = vim.api.nvim_create_augroup
 local autocmd = vim.api.nvim_create_autocmd
 augroup("setIndent", { clear = true })
 autocmd("Filetype", {
@@ -122,6 +123,7 @@ key("n", ld .. "q", ":w<CR>:bd<CR>", { silent = true })
 key({ "n", "o", "v" }, "L", "$")
 key({ "n", "o", "v" }, "H", "^")
 key("n", ld .. "<Space>", "za")
+key("n", ld .. "i", "<S-s>")
 
 -- Scrolling
 key("n", "<A-j>", "<C-e>", { silent = true })
