@@ -51,6 +51,15 @@ autocmd("Filetype", {
 	command = [[setlocal shiftwidth=2 tabstop=2]],
 })
 
+-- Fold
+
+vim.o.foldmethod = "indent"
+vim.o.foldnestmax = 4
+vim.o.foldlevel = 99
+vim.o.foldignore = ""
+vim.cmd([[set fillchars=fold:\ ]])
+-- More fold option at the end
+
 -- Other
 vim.o.spelllang = "en_us"
 vim.o.spellsuggest = 10
@@ -112,6 +121,7 @@ key("n", ld .. "s", ":w<CR>", { silent = true })
 key("n", ld .. "q", ":w<CR>:bd<CR>", { silent = true })
 key({ "n", "o", "v" }, "L", "$")
 key({ "n", "o", "v" }, "H", "^")
+key("n", ld .. "<Space>", "za")
 
 -- Scrolling
 key("n", "<A-j>", "<C-e>", { silent = true })
@@ -902,3 +912,17 @@ vim.api.nvim_create_autocmd({ "BufEnter" }, {
 		vim.o.winbar = get_winbar()
 	end,
 })
+
+vim.cmd([[
+
+set foldtext=CustomFoldText()
+  function! CustomFoldText()
+      let indentation = indent(v:foldstart)
+      let foldSize = 1 + v:foldend - v:foldstart
+      let foldSizeStr = " " . foldSize . " lines "
+      let foldLevelStr = repeat("+--", v:foldlevel)
+      let expansionString = repeat(" ", indentation)
+
+      return expansionString . "\ueb70" . foldSizeStr
+  endfunction
+]])
