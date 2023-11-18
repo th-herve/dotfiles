@@ -102,6 +102,7 @@ alias gcm="git commit -m "
 alias gp="git push"
 alias gd="git diff"
 alias gg="git log --graph --abbrev-commit --oneline --all --decorate"
+alias lzg="lazygit"
 
 # bashrc
 alias bsi="chezmoi edit ~/.bashrc"
@@ -122,9 +123,11 @@ alias rm="rm -i"
 alias cp="cp -i"
 
 # ls aliases
-alias ll='ls -alF'
-alias la='ls -lAh'
-alias l='ls -CF'
+alias l='exa -l --icons'
+alias la='exa -la'
+alias ll='ls -CF'
+alias tree='exa -T --icons'
+export EXA_COLORS="da=30:uu=0:fi=1;35:di=34"
 
 alias ls='ls --color=auto'
 alias grep='grep --color=auto'
@@ -152,6 +155,34 @@ alias aptrm="sudo apt remove"
 
 alias mkdir="mkdir -pv"
 
+# Define a function for the 'cf' command
+fzc() {
+  local dir
+  dir=$(fd --search-path $HOME --hidden --exclude .git --type d | fzf)
+
+  if [ -n "$dir" ]; then
+    cd "$dir"
+  fi
+}
+
+fz.() {
+  local dir
+  dir=$(fd --type d --hidden --exclude .git | fzf)
+
+  if [ -n "$dir" ]; then
+    cd "$dir"
+  fi
+}
+
+
+fzv() {
+  local file
+  file=$(fd --type f --hidden --exclude .git | fzf)
+
+  if [ -n "$file" ]; then
+    nvim "$file"
+  fi
+}
 
 #        === pluggin ===
 
