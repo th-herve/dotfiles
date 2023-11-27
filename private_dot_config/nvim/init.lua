@@ -359,6 +359,7 @@ require("lazy").setup({
 					markdown = { "prettier" },
 					lua = { "stylua" },
 					python = { "isort", "black" },
+					php = { "php-cs-fixer" },
 				},
 				format_on_save = {
 					lsp_fallback = true,
@@ -585,6 +586,7 @@ vim.defer_fn(function()
 			"python",
 			"rust",
 			"tsx",
+			"java",
 			"javascript",
 			"typescript",
 			"vimdoc",
@@ -593,6 +595,7 @@ vim.defer_fn(function()
 			"sql",
 			"regex",
 			"markdown",
+			"php",
 		},
 		autotag = {
 			enable = true,
@@ -732,7 +735,7 @@ local servers = {
 	tsserver = {},
 	html = { filetypes = { "html", "twig", "hbs" } },
 	cssls = {},
-	tailwindcss = {},
+	tailwindcss = { filetypes = { "html", "js", "ts" } },
 	emmet_ls = { "html", "typescriptreact", "javascriptreact", "css", "sass" },
 
 	lua_ls = {
@@ -740,6 +743,10 @@ local servers = {
 			workspace = { checkThirdParty = false },
 			telemetry = { enable = false },
 		},
+
+		intelephense = { filetypes = {
+			"php",
+		} },
 	},
 }
 
@@ -767,6 +774,8 @@ mason_lspconfig.setup_handlers({
 		})
 	end,
 })
+
+require("lspconfig").intelephense.setup({})
 
 -- [[ Configure nvim-cmp ]]
 local cmp = require("cmp")
