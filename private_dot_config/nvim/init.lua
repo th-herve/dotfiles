@@ -47,6 +47,7 @@ autocmd("Filetype", {
 		"markdown",
 		"text",
 		"vimwiki",
+		"java",
 		"javascriptreact",
 	},
 	command = [[setlocal shiftwidth=2 tabstop=2]],
@@ -360,6 +361,7 @@ require("lazy").setup({
 					lua = { "stylua" },
 					python = { "isort", "black" },
 					php = { "php-cs-fixer" },
+					java = { "google-java-format" },
 				},
 				format_on_save = {
 					lsp_fallback = true,
