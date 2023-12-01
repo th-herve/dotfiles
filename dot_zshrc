@@ -80,6 +80,7 @@ alias r="ranger"
 alias bat="batcat"
 alias ztr="zathura"
 alias tm="tmux"
+alias tma="tmux a"
 alias lzg="lazygit"
 alias fd="fdfind"
 
