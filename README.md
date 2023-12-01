@@ -15,10 +15,10 @@ sh -c "$(curl -fsLS get.chezmoi.io)"
 ```bash
 # To clone the main branch
 chezmoi init --apply th-herve
-# or for a specific branch
-chezmoi init --apply th-herve --branch specific-branch
+# laptop branch
+chezmoi init --apply th-herve --laptop-main
 ```
-### Install the others programs
+### Install the other programs
 
 ```bash
 sudo pacman -S neovim kitty qtile dmenu rofi tmux
@@ -26,7 +26,3 @@ sudo pacman -S neovim kitty qtile dmenu rofi tmux
 # for ubuntu install nvim with .deb to have the last version
 sudo apt install kitty qtile dmenu rofi tmux
 ```
-
-## Install vim plug
-
-https://github.com/junegunn/vim-plug
