@@ -115,7 +115,7 @@ key("n", "<leader>df", vim.diagnostic.open_float, { desc = "Open floating diagno
 key("n", "<leader>dq", vim.diagnostic.setloclist, { desc = "Open diagnostics list" })
 
 -- Navigation/operation
-key("n", ld .. "v", ":vplit<CR>", { silent = true })
+key("n", ld .. "v", ":vsplit<CR>", { silent = true })
 key("n", ld .. "e", "<C-w>w")
 key("n", "<M-l>", ":bnext<CR>", { silent = true })
 key("n", "<M-h>", ":bprevious<CR>", { silent = true })
