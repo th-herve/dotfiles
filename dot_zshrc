@@ -193,7 +193,6 @@ fzv() {
   fi
 }
 
-
 #        === pluggin ===
 
 # History substring keybind
