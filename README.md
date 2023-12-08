@@ -21,8 +21,8 @@ chezmoi init --apply th-herve --laptop-main
 ### Install the other programs
 
 ```bash
-sudo pacman -S neovim kitty qtile dmenu rofi tmux zsh
+sudo pacman -S neovim kitty qtile dmenu rofi tmux zsh exa
 
 # for ubuntu install nvim with .deb to have the last version
-sudo apt install kitty qtile dmenu rofi tmux zsh
+sudo apt install kitty qtile dmenu rofi tmux zsh exa
 ```
