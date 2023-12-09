@@ -27,10 +27,10 @@ chezmoi init --apply th-herve --laptop-main
 ### Install the other programs
 
 ```bash
-sudo pacman -S neovim kitty qtile dmenu rofi tmux zsh exa
+sudo pacman -S neovim kitty qtile dmenu rofi tmux zsh exa fzf
 
-# for ubuntu install nvim with .deb to have the last version
-sudo apt install kitty qtile dmenu rofi tmux zsh exa
+# for ubuntu install nvim with .deb to have the lastest version
+sudo apt install kitty qtile dmenu rofi tmux zsh exa fzf
 
 # install nerd fonts
 sudo wget https://github.com/ryanoasis/nerd-fonts/releases/download/v3.1.1/FiraCode.zip && sudo unzip FiraCode.zip -d /usr/share/fonts && rm -f FiraCode.zip
