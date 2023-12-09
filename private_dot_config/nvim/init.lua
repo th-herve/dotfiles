@@ -127,6 +127,9 @@ key({ "n", "o", "v" }, "H", "^")
 key("n", ld .. "<Space>", "za")
 key("n", ld .. "i", "<S-s>")
 
+key("n", "<C-o>", "<C-o>zz")
+key("n", "<C-i>", "<C-i>zz")
+
 -- Scrolling
 key("n", "<A-j>", "<C-e>", { silent = true })
 key("n", "<A-k>", "<C-y>", { silent = true })
