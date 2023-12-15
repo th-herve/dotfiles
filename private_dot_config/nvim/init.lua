@@ -231,6 +231,12 @@ require("lazy").setup({
 			local harpoon = require("harpoon")
 
 			harpoon:setup()
+			harpoon:setup({
+				settings = {
+					save_on_toggle = true,
+					sync_on_ui_close = true,
+				},
+			})
 			vim.keymap.set("n", "<C-p>", function()
 				harpoon:list():append()
 			end)
