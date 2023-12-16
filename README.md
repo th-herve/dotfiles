@@ -69,5 +69,8 @@ Then in a tmux session run: prefix + I
 #### Install zsh pluggins
 
 ```bash
-zshPlugDir="$HOME/.config/zsh/plug/" && git clone https://github.com/zsh-users/zsh-syntax-highlighting.git $zshPlugDir ; git clone https://github.com/zsh-users/zsh-autosuggestions $zshPlugDir ; git clone https://github.com/zsh-users/zsh-history-substring-search $zshPlugDir
+zshPlugDir="$HOME/.config/zsh/plug/"
+git clone https://github.com/zsh-users/zsh-syntax-highlighting.git $zshPlugDir/zsh-syntax-highlighting
+git clone https://github.com/zsh-users/zsh-autosuggestions $zshPlugDir/zsh-autosuggestions
+git clone https://github.com/zsh-users/zsh-history-substring-search $zshPlugDir/zsh-history-substring-search
 ```
