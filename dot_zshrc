@@ -1,6 +1,9 @@
 setopt autocd
 zle_highlight=('paste:none')
 
+# node
+export PATH="$PATH:$HOME/.nvm/versions/node/v20.10.0/bin"
+
 #        === autocomplete ===
 
 autoload -Uz compinit promptinit
@@ -202,7 +205,7 @@ HISTORY_SUBSTRING_SEARCH_HIGHLIGHT_NOT_FOUND="bg=none,fg=red"
 source ~/.config/zsh/plug/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
 source ~/.config/zsh/plug/zsh-history-substring-search/zsh-history-substring-search.zsh
 source ~/.config/zsh/plug/zsh-autosuggestions/zsh-autosuggestions.zsh
-source ~/.config/zsh/plug/zsh-sudo/sudo.zsh
+# source ~/.config/zsh/plug/zsh-sudo/sudo.zsh
 
 
 bindkey -M emacs '^P' history-substring-search-up
