@@ -85,7 +85,6 @@ alias ztr="zathura"
 alias tm="tmux"
 alias tma="tmux a"
 alias lzg="lazygit"
-alias fd="fdfind"
 
 # nvim
 alias v="nvim"
@@ -170,7 +169,7 @@ alias clip="xclip -selection c"
 # Define a function for the 'cf' command
 fzc() {
   local dir
-  dir=$(fdfind --search-path $HOME --hidden --exclude .git --type d | fzf)
+  dir=$(fd --search-path $HOME --hidden --exclude .git --type d | fzf)
 
   if [ -n "$dir" ]; then
     cd "$dir"; l
@@ -179,7 +178,7 @@ fzc() {
 
 fz.() {
   local dir
-  dir=$(fdfind --type d --hidden --exclude .git | fzf)
+  dir=$(fd --type d --hidden --exclude .git | fzf)
 
   if [ -n "$dir" ]; then
     cd "$dir"
@@ -189,7 +188,7 @@ fz.() {
 
 fzv() {
   local file
-  file=$(fdfind --type f --hidden --exclude .git | fzf)
+  file=$(fd --type f --hidden --exclude .git | fzf)
 
   if [ -n "$file" ]; then
     nvim "$file"
