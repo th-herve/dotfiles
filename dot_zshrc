@@ -85,6 +85,7 @@ alias ztr="zathura"
 alias tm="tmux"
 alias tma="tmux a"
 alias lzg="lazygit"
+alias sx="startx"
 
 # nvim
 alias v="nvim"
