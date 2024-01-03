@@ -336,7 +336,13 @@ require("lazy").setup({
     },
   },
 
-  { "folke/which-key.nvim", opts = {} },
+  { "folke/which-key.nvim",
+    opts = {
+      window = {
+          border = "single",
+        }
+    }
+  },
 
   -- Fuzzy Finder
   {
