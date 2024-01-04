@@ -167,7 +167,7 @@ alias mkdir="mkdir -pv"
 
 alias clip="xclip -selection c"
 
-# Define a function for the 'cf' command
+# search directory and cd into it, search in ~
 fzc() {
   local dir
   dir=$(fd --search-path $HOME --hidden --exclude .git --type d | fzf)
@@ -176,7 +176,9 @@ fzc() {
     cd "$dir"; l
   fi
 }
+alias f="fzc"
 
+# search directory and cd into it, search in current dir
 fz.() {
   local dir
   dir=$(fd --type d --hidden --exclude .git | fzf)
@@ -185,8 +187,10 @@ fz.() {
     cd "$dir"
   fi
 }
+alias f.="fz."
 
 
+# search directory and open it in nvim, search in current dir
 fzv() {
   local file
   file=$(fd --type f --hidden --exclude .git | fzf)
@@ -195,6 +199,7 @@ fzv() {
     nvim "$file"
   fi
 }
+alias fv="fzv"
 
 #        === pluggin ===
 
