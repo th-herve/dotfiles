@@ -202,7 +202,13 @@ fzv() {
 }
 alias fv="fzv"
 
-#        === pluggin ===
+
+# start x automatically if on tty1
+if [ "$(tty)" = "/dev/tty1" ]; then
+    startx
+fi
+
+#        === plugin ===
 
 # History substring keybind
 HISTORY_SUBSTRING_SEARCH_HIGHLIGHT_FOUND="bg=none,fg=cyan"
