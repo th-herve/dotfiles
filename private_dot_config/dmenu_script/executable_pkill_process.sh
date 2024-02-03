@@ -3,7 +3,7 @@
 # Note: currently using pkill, using kill might be better?
 
 # Filter out system processes, display it in dmenu 
-process=$(ps -e --format comm -u $USER | grep -vE 'systemd|init|kthreadd|rcu_sched' | sort | uniq | dmenu -fn  'JetBrainsMono Nerd Font:size=10' -nf '#495156'  -nb '#1E2326' -sb '#A7C080' -sf '#1E2326'  -p '󰚌 ')
+process=$(ps -e --format comm -u $USER | grep -vE 'systemd|init|kthreadd|rcu_sched' | sort | uniq | dmenu -fn  'JetBrainsMono Nerd Font:size=10' -nf '#495156'  -nb '#1E2326' -sb '#A7C080' -sf '#1E2326'  -p '󰚌 ' -i)
 
 # Verify that a process was selected before attempting to kill it
 if [ -n "$process" ]; then
