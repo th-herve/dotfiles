@@ -858,6 +858,10 @@ vim.cmd([[
     autocmd FileType javascript iabbrev dceld document.createElement("div");
 
     iabbrev inem if __name__ == "__main__jkA:jko
+
+    autocmd FileType c iabbrev pfd printf("%d\n", );jkhhi
+    autocmd FileType c iabbrev pfs printf("%s\n", );jkhhi
+    autocmd FileType c iabbrev pfc printf("%c\n", );jkhhi
 ]])
 
 vim.cmd.colorscheme(color)
