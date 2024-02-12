@@ -141,12 +141,12 @@ key("n", "n", "nzzzv", { silent = true })
 key("n", "N", "Nzzzv", { silent = true })
 
 -- emacs binding in insert and command mode
-key({ "n", "c" }, "<C-b>", "<left>")
-key({ "n", "c" }, "<C-f>", "<right>")
-key({ "n", "c" }, "<M-b>", "<C-left>")
-key({ "n", "c" }, "<M-f>", "<C-right>")
-key({ "n", "c" }, "<C-a>", "<Home>")
-key({ "n", "c" }, "<C-e>", "<End>")
+key({ "i", "c" }, "<C-b>", "<left>")
+key({ "i", "c" }, "<C-f>", "<right>")
+key({ "i", "c" }, "<M-b>", "<C-left>")
+key({ "i", "c" }, "<M-f>", "<C-right>")
+key({ "i", "c" }, "<C-a>", "<Home>")
+key({ "i", "c" }, "<C-e>", "<End>")
 
 -- Text edit
 key("n", "<C-S-j>", ":m .+1<CR>==", { silent = true })
