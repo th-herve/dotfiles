@@ -336,12 +336,13 @@ require("lazy").setup({
     },
   },
 
-  { "folke/which-key.nvim",
+  {
+    "folke/which-key.nvim",
     opts = {
       window = {
-          border = "single",
-        }
-    }
+        border = "single",
+      },
+    },
   },
 
   -- Fuzzy Finder
@@ -372,24 +373,28 @@ require("lazy").setup({
   },
 
   -- formatter/linter
-  {
-    "nvimtools/none-ls.nvim",
-    config = function()
-      local null_ls = require("null-ls")
+  -- {
+  --   "nvimtools/none-ls.nvim",
+  --   config = function()
+  --     local null_ls = require("null-ls")
 
-      null_ls.setup({
-        sources = {
-          null_ls.builtins.formatting.stylua, -- lua
-          null_ls.builtins.formatting.black,  -- python
-          null_ls.builtins.formatting.prettier,  -- js, html..
-          null_ls.builtins.diagnostics.eslint_d,  -- js, html..
-          null_ls.builtins.diagnostics.pylint,
-          null_ls.builtins.completion.spell,
-        },
-      })
-      vim.keymap.set("n", "<leader>gf", vim.lsp.buf.format, {})
-    end,
-  },
+  --     null_ls.setup({
+  --       sources = {
+  --         null_ls.builtins.formatting.stylua,  -- lua
+  --         null_ls.builtins.formatting.black,   -- python
+  --         null_ls.builtins.formatting.prettier, -- js, html..
+  --         null_ls.builtins.formatting.clang_format, -- c, c++
+  --         null_ls.builtins.diagnostics.eslint_d, -- js, html..
+  --         null_ls.builtins.diagnostics.pylint,
+  --         null_ls.builtins.completion.spell,
+  --         null_ls.builtins.formatting.clang_format.with({
+  --           extra_args = { "-style={BasedOnStyle: llvm, IndentWidth: 2, ColumnLimit: 100}" },
+  --         }),
+  --       },
+  --     })
+  --     vim.keymap.set("n", "<leader>gf", vim.lsp.buf.format, {})
+  --   end,
+  -- },
 
   -- ui
   {
@@ -603,6 +608,8 @@ vim.defer_fn(function()
     textobjects = {
       select = {
 
+        enable = true,
+
         lookahead = true, -- Automatically jump forward to textobj, similar to targets.vim
         keymaps = {
           -- You can use the capture groups defined in textobjects.scm
@@ -711,7 +718,13 @@ require("mason").setup()
 require("mason-lspconfig").setup()
 
 local servers = {
-  clangd = {},
+  clangd = {
+    format = {
+              style = "llvm",  -- You can adjust the style to your preference
+              indentWidth = 4,  -- Set the desired indent width
+              columnLimit = 100 -- Set the desired column limit
+          }
+  },
   -- gopls = {},
   pyright = {},
   -- rust_analyzer = {},
@@ -726,11 +739,11 @@ local servers = {
       workspace = { checkThirdParty = false },
       telemetry = { enable = false },
     },
+  },
 
-    intelephense = {
-      filetypes = {
-        "php",
-      },
+  intelephense = {
+    filetypes = {
+      "php",
     },
   },
 }
@@ -759,8 +772,6 @@ mason_lspconfig.setup_handlers({
     })
   end,
 })
-
-require("lspconfig").intelephense.setup({})
 
 -- [[ Configure nvim-cmp ]]
 local cmp = require("cmp")
