@@ -126,6 +126,8 @@ key({ "n", "o", "v" }, "L", "$")
 key({ "n", "o", "v" }, "H", "^")
 key("n", ld .. "<Space>", "za")
 key("n", ld .. "i", "<S-s>")
+key("n", ld .. "wq", ":wq<cr>")
+key("n", ld .. "<S-q>", ":q!<cr>")
 
 key("n", "<C-o>", "<C-o>zz")
 key("n", "<C-i>", "<C-i>zz")
