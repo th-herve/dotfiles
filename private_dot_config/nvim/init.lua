@@ -848,6 +848,28 @@ end
 
 vim.cmd([[
     autocmd BufNewFile *.sh exec "normal i#!/usr/bin/env bash\<Esc>"
+
+    augroup MarkdownTitle
+        autocmd!
+        autocmd BufNewFile *.md lua SetMarkdownTitle()
+    augroup END
+]])
+
+function SetMarkdownTitle()
+    if vim.fn.expand('%:t') ~= '' then
+        local filename = string.gsub(vim.fn.expand('%:t:r'), '_', ' ')
+        local capitalized = string.gsub(filename, "%a", string.upper, 1)
+        vim.api.nvim_buf_set_lines(0, 0, 0, false, {'# ' .. capitalized})
+        vim.cmd('normal! gg')
+        vim.cmd('normal! zz')
+    end
+end
+
+vim.cmd([[
+    augroup MarkdownTitle
+        autocmd!
+        autocmd BufNewFile *.md lua SetMarkdownTitle()
+    augroup END
 ]])
 
 -- tweak colorscheme
