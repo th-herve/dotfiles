@@ -49,6 +49,7 @@ autocmd("Filetype", {
     "vimwiki",
     "java",
     "javascriptreact",
+    "php",
   },
   command = [[setlocal shiftwidth=2 tabstop=2]],
 })
