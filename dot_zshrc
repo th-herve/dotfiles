@@ -169,6 +169,12 @@ alias mkdir="mkdir -pv"
 
 alias clip="xclip -selection c"
 
+# docker
+
+alias dcu="docker-compose up -d"
+alias dcd="docker-compose down"
+alias dcp="docker-compose ps"
+
 # search directory and cd into it, search in ~
 fzc() {
   local dir
