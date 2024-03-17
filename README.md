@@ -16,7 +16,7 @@ sh -c "$(curl -fsLS get.chezmoi.io)"
 # To clone the main branch
 chezmoi init --apply th-herve
 # laptop branch
-chezmoi init --apply th-herve --laptop-main
+chezmoi init --apply th-herve --branch "laptop-main"
 ```
 ## Install the other programs
 
