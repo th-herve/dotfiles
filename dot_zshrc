@@ -147,7 +147,7 @@ alias egrep='egrep --color=auto'
 
 # ls aliases
 alias l='exa -l --icons'
-alias la='exa -la'
+alias la='exa -la --icons'
 alias ll='ls -CF'
 alias tree='exa -T --icons'
 export EXA_COLORS="da=30:uu=0:fi=1;35:di=34"
@@ -214,6 +214,18 @@ alias fv="fzv"
 if [ "$(tty)" = "/dev/tty1" ]; then
     startx
 fi
+
+# toggle ctrl-z
+ctrlz () {
+  if [[ $#BUFFER -eq 0 ]]; then
+    fg
+    zle redisplay
+  else
+    zle push-input
+  fi
+}
+zle -N ctrlz
+bindkey '^Z' ctrlz
 
 #        === plugin ===
 
