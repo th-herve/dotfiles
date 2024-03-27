@@ -444,6 +444,18 @@ require("lazy").setup({
   },
 
   {
+    "iamcco/markdown-preview.nvim",
+    cmd = { "MarkdownPreviewToggle", "MarkdownPreview", "MarkdownPreviewStop" },
+    build = "cd app && yarn install",
+    init = function()
+      vim.g.mkdp_filetypes = { "markdown" }
+      vim.cmd([[ let g:mkdp_theme = 'dark' ]])
+      vim.cmd([[ let g:mkdp_page_title = '${name}' ]])
+    end,
+    ft = { "markdown" },
+  },
+
+  {
     -- TODO make the goyo config in lua
     "junegunn/goyo.vim",
     key = {
@@ -723,10 +735,10 @@ require("mason-lspconfig").setup()
 local servers = {
   clangd = {
     format = {
-              style = "llvm",  -- You can adjust the style to your preference
-              indentWidth = 4,  -- Set the desired indent width
-              columnLimit = 100 -- Set the desired column limit
-          }
+      style = "llvm",           -- You can adjust the style to your preference
+      indentWidth = 4,          -- Set the desired indent width
+      columnLimit = 100         -- Set the desired column limit
+    }
   },
   -- gopls = {},
   pyright = {},
@@ -857,13 +869,13 @@ vim.cmd([[
 ]])
 
 function SetMarkdownTitle()
-    if vim.fn.expand('%:t') ~= '' then
-        local filename = string.gsub(vim.fn.expand('%:t:r'), '_', ' ')
-        local capitalized = string.gsub(filename, "%a", string.upper, 1)
-        vim.api.nvim_buf_set_lines(0, 0, 0, false, {'# ' .. capitalized})
-        vim.cmd('normal! gg')
-        vim.cmd('normal! zz')
-    end
+  if vim.fn.expand('%:t') ~= '' then
+    local filename = string.gsub(vim.fn.expand('%:t:r'), '_', ' ')
+    local capitalized = string.gsub(filename, "%a", string.upper, 1)
+    vim.api.nvim_buf_set_lines(0, 0, 0, false, { '# ' .. capitalized })
+    vim.cmd('normal! gg')
+    vim.cmd('normal! zz')
+  end
 end
 
 vim.cmd([[
@@ -915,7 +927,7 @@ local function get_winbar()
   local dir = vim.fn.expand("%:p:h")
 
   local split_dir = vim.split(dir, "/") -- break path into all directories
-  dir = split_dir[#split_dir]          -- get last dir in the path
+  dir = split_dir[#split_dir]           -- get last dir in the path
 
   local icon, icon_hl = devicon.get_icon(filename, extension, { default = true })
   local win_hl = "%#WinBar#"
