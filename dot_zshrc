@@ -14,6 +14,11 @@ zstyle ':completion:*' menu select
 zstyle ':completion:*' matcher-list 'm:{a-z}={A-Za-z}'
 zmodload zsh/complist
 
+#        === keybind ===
+
+# Move backward a word with Alt+n
+bindkey "\en" backward-word
+
 #        === editor ===
 
 EDITOR=nvim
@@ -226,6 +231,7 @@ ctrlz () {
 }
 zle -N ctrlz
 bindkey '^Z' ctrlz
+
 
 #        === plugin ===
 
