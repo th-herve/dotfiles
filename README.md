@@ -32,7 +32,7 @@ sudo pacman -S neovim kitty rofi tmux zsh exa fzf
 
 #### Ubuntu
 
-Install nvim with .deb to have the lastest version.
+Install nvim with .deb to have the latest version.
 
 ```bash
 sudo apt install kitty qtile rofi tmux zsh exa fzf
