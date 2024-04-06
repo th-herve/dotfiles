@@ -557,26 +557,22 @@ vim.api.nvim_create_user_command("LiveGrepGitRoot", live_grep_git_root, {})
 
 vim.keymap.set("n", "<leader>?", require("telescope.builtin").oldfiles, { desc = "[?] Find recently opened files" })
 vim.keymap.set("n", "<leader>fb", require("telescope.builtin").buffers, { desc = "[ ] Find existing buffers" })
-
 vim.keymap.set(
   "n",
   "<leader>/",
   require("telescope.builtin").current_buffer_fuzzy_find,
   { desc = "[/] Fuzzily search in current buffer" }
 )
-
 key("n", "<leader>fgf", require("telescope.builtin").git_files, { desc = "Search [G]it [F]iles" })
 key("n", "<leader>ff", require("telescope.builtin").find_files, { desc = "[S]earch [F]iles" }) -- TODO maybe delete
-key("n", "<leader>fsh", require("telescope.builtin").help_tags, { desc = "[S]earch [H]elp" })
-key("n", "<leader>fsw", require("telescope.builtin").grep_string, { desc = "[S]earch current [W]ord" })
 key("n", "<leader>fgg", require("telescope.builtin").live_grep, { desc = "[S]earch by [G]rep" })
 key("n", "<leader>fgG", ":LiveGrepGitRoot<cr>", { desc = "[S]earch by [G]rep on Git Root" })
 key("n", "<leader>fsd", require("telescope.builtin").diagnostics, { desc = "[S]earch [D]iagnostics" })
-key("n", "<leader>fsr", require("telescope.builtin").resume, { desc = "[S]earch [R]esume" })
 key("n", "<leader>ft", require("telescope.builtin").colorscheme, { desc = "Search [T]heme" })
 key("n", "<leader>fr", require("telescope.builtin").registers, { desc = "Search [R]egisters" })
 key("n", "<leader>fv", require("telescope.builtin").command_history, { desc = "[v]Search command history" })
 key("n", "<leader>fk", require("telescope.builtin").keymaps, { desc = "Search [K]eymaps" })
+key("n", "<leader>fgb", require("telescope.builtin").git_branches, { desc = "Search [G]it [B]ranch" })
 
 -- [[ Configure Treesitter ]]
 vim.defer_fn(function()
