@@ -3,7 +3,7 @@ zle_highlight=('paste:none')
 
 source ~/.profile
 
-# node
+# node path
 export PATH="$PATH:$HOME/.nvm/versions/node/v20.10.0/bin"
 
 #        === autocomplete ===

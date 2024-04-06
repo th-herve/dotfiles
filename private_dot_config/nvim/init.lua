@@ -104,7 +104,7 @@ vim.g.maplocalleader = " "
 --key("i", "<Esc>", "<Nop>")
 key({ "i" }, "jk", "<Esc>")
 key("n", "<M-v>", "<C-v>", { silent = true })
-key("t", "<Esc>", "<C-\\><C-n>", { silent = true })
+key("t", "<C-n>", "<C-\\><C-n>", { silent = true })
 
 -- Remap for dealing with word wrap
 key("n", "k", "v:count == 0 ? 'gk' : 'k'", { expr = true, silent = true })
@@ -129,7 +129,7 @@ key("n", ld .. "i", "<S-s>")
 
 -- close buffer
 key("n", ld .. "q", ":bd<CR>", { silent = true }) -- close current buffer without saving
-key("n", ld .. "<S-q>", ":q!<cr>") -- close all without saving
+key("n", ld .. "<S-q>", ":q!<cr>")                -- close all without saving
 key("n", ld .. "wq", ":wq<cr>")
 
 key("n", "<C-o>", "<C-o>zz")
@@ -208,13 +208,41 @@ require("lazy").setup({
 
     "tpope/vim-fugitive",
     config = function()
-      key("n", ld .. "gs", ":Git status<CR>")
-      key("n", ld .. "ga.", ":Git add .<CR>")
-      key("n", ld .. "gaw", ":Gw<CR>")
-      key("n", ld .. "gcm", ':Git commit -m "')
-      key("n", ld .. "gp", ":Git push")
+      key("n", "gs", ":G status<CR>")
+      key("n", "ga.", ":Git add .<CR>")
+      key("n", "gaw", ":Gw<CR>")
+      key("n", "gcm", ":Git commit -m '")
+      key("n", "gco", ":Git checkout ")
+      key("n", "gp", ":Git push<CR>")
+      key("n", "gd", ":Gvdiffsplit!<CR>")
+      key("n", "gh", ":diffget //2<CR>")
+      key("n", "gl", ":diffget //3<CR>")
+
+      -- toggle fugitive status with ld..gs
+      local function showFugitiveGit()
+        if vim.fn.FugitiveHead() ~= '' then
+          vim.cmd [[ tab Git ]]
+          vim.cmd [[ execute ":set nonumber norelativenumber" ]]
+        end
+      end
+
+      local function toggleFugitiveGit()
+        if vim.fn.buflisted(vim.fn.bufname('fugitive:///*/.git//$')) ~= 0 then
+          print("boo")
+          vim.cmd [[ execute ":bdelete" bufname('fugitive:///*/.git//$') ]]
+        else
+          showFugitiveGit()
+        end
+      end
+      key('n', ld .. 'gs', toggleFugitiveGit, opts) -- has to use the leader key, otherwise it won't close
+
+
+      vim.cmd([[
+        autocmd BufNewFile COMMIT_EDITMSG exec set nonumber norelativenumber
+      ]])
     end,
   },
+
   {
     "stevearc/oil.nvim",
     dependencies = { "nvim-tree/nvim-web-devicons" },
@@ -441,6 +469,7 @@ require("lazy").setup({
         let g:vimwiki_path = '~/.config/nvim/vimwiki/docs'
         let g:vimwiki_markdown_link_ext = 1
         imap <C-space> <Plug>VimwikiTableNextCell
+        nmap <Leader>wn <Plug>VimwikiRemoveSingleCB " just here to remove the gl keybind used with fugitive
       ]])
     end,
   },
@@ -733,9 +762,9 @@ require("mason-lspconfig").setup()
 local servers = {
   clangd = {
     format = {
-      style = "llvm",           -- You can adjust the style to your preference
-      indentWidth = 4,          -- Set the desired indent width
-      columnLimit = 100         -- Set the desired column limit
+      style = "llvm",   -- You can adjust the style to your preference
+      indentWidth = 4,  -- Set the desired indent width
+      columnLimit = 100 -- Set the desired column limit
     }
   },
   -- gopls = {},
