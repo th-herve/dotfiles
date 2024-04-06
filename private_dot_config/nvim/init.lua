@@ -101,10 +101,10 @@ vim.g.mapleader = " "
 vim.g.maplocalleader = " "
 
 -- Mode switch
-key("i", "<Esc>", "<Nop>")
-key({ "i", "c" }, "jk", "<Esc>")
+--key("i", "<Esc>", "<Nop>")
+key({ "i" }, "jk", "<Esc>")
 key("n", "<M-v>", "<C-v>", { silent = true })
-key("t", "jk", "<C-\\><C-n>", { silent = true })
+key("t", "<Esc>", "<C-\\><C-n>", { silent = true })
 
 -- Remap for dealing with word wrap
 key("n", "k", "v:count == 0 ? 'gk' : 'k'", { expr = true, silent = true })
