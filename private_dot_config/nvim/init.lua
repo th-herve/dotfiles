@@ -122,13 +122,15 @@ key("n", ld .. "e", "<C-w>w")
 key("n", "<M-l>", ":bnext<CR>", { silent = true })
 key("n", "<M-h>", ":bprevious<CR>", { silent = true })
 key("n", ld .. "s", ":w<CR>", { silent = true })
-key("n", ld .. "q", ":w<CR>:bd<CR>", { silent = true })
 key({ "n", "o", "v" }, "L", "$")
 key({ "n", "o", "v" }, "H", "^")
 key("n", ld .. "<Space>", "za")
 key("n", ld .. "i", "<S-s>")
+
+-- close buffer
+key("n", ld .. "q", ":bd<CR>", { silent = true }) -- close current buffer without saving
+key("n", ld .. "<S-q>", ":q!<cr>") -- close all without saving
 key("n", ld .. "wq", ":wq<cr>")
-key("n", ld .. "<S-q>", ":q!<cr>")
 
 key("n", "<C-o>", "<C-o>zz")
 key("n", "<C-i>", "<C-i>zz")
