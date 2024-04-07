@@ -156,6 +156,8 @@ alias aptrm="sudo apt remove"
 
 alias mkdir="mkdir -pv"
 
+alias xb="xrandr --output eDP-1 --brightness "
+
 # Define a function for the 'cf' command
 fzc() {
   local dir
@@ -187,6 +189,11 @@ fzv() {
   fi
 }
 
+# start x automatically if on tty1
+if [ "$(tty)" = "/dev/tty1" ]; then
+    startx
+fi
+
 #        === pluggin ===
 
 # History substring keybind
@@ -196,7 +203,7 @@ HISTORY_SUBSTRING_SEARCH_HIGHLIGHT_NOT_FOUND="bg=none,fg=red"
 source ~/.config/zsh/plug/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
 source ~/.config/zsh/plug/zsh-history-substring-search/zsh-history-substring-search.zsh
 source ~/.config/zsh/plug/zsh-autosuggestions/zsh-autosuggestions.zsh
-source ~/.config/zsh/plug/zsh-sudo/sudo.zsh
+# source ~/.config/zsh/plug/zsh-sudo/sudo.zsh
 
 
 bindkey -M emacs '^P' history-substring-search-up
@@ -213,3 +220,4 @@ export NVM_DIR="$HOME/.nvm"
 [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
 
 export PATH="$HOME/.yarn/bin:$HOME/.config/yarn/global/node_modules/.bin:$PATH"
+[ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
