@@ -64,8 +64,8 @@ vim.cmd([[set fillchars=fold:\ ]])
 -- More fold option at the end
 
 -- Other
-vim.o.spelllang = "en_us"
-vim.o.spellsuggest = 10
+-- vim.o.spelllang = "en_us"
+-- vim.o.spellsuggest = 10
 
 vim.o.backup = false
 vim.o.swapfile = false
@@ -171,7 +171,10 @@ end
 
 -- Others
 key("n", ld .. "cc", ":nohlsearch<CR> <Esc>", { silent = true })
-key("n", ld .. "o", ":setlocal spell!<CR>", { silent = true })
+key("n", ld .. "oo", ":setlocal spell!<CR>", { silent = true })
+key("n", ld .. "of", ":setlocal spelllang=fr<CR>")
+key("n", ld .. "oe", ":setlocal spelllang=en<CR>")
+
 -- Past 0 register (usefull when deleting something, for pasting last yanked text)
 key("n", ld .. "p", '"0p')
 
