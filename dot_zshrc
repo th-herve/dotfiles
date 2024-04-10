@@ -212,6 +212,16 @@ fzv() {
 }
 alias fv="fzv"
 
+# search directory and open it in nvim, search in current dir
+fzp() {
+  local file
+  file=$(fd --type f .pdf --exclude .git | fzf)
+
+  if [ -n "$file" ]; then
+    sioyek "$file"
+  fi
+}
+alias fp="fzp"
 
 # start x automatically if on tty1
 if [ "$(tty)" = "/dev/tty1" ]; then
