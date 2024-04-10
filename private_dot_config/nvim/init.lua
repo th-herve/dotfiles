@@ -214,7 +214,7 @@ require("lazy").setup({
       key("n", "gcm", ":Git commit -m '")
       key("n", "gco", ":Git checkout ")
       key("n", "gp", ":Git push<CR>")
-      key("n", "gd", ":Gvdiffsplit!<CR>")
+      key("n", ld.."gd", ":Gvdiffsplit!<CR>") -- gd without ld already taken by lsp go to def
       key("n", "gh", ":diffget //2<CR>")
       key("n", "gl", ":diffget //3<CR>")
 
@@ -252,6 +252,10 @@ require("lazy").setup({
         ["<leader>b"] = "actions.close",
       },
     },
+    win_options = {
+    signcolumn = "no",
+    cursorcolumn = false,
+  },
     key = {
       key("n", "<leader>b", ":Oil --float<CR>", { silent = true }),
     },
