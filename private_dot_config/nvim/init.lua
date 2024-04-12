@@ -746,10 +746,10 @@ local on_attach = function(_, bufnr)
     vim.lsp.buf.format()
   end, { desc = "Format current buffer with LSP" })
 
-  vim.lsp.handlers["textDocument/hover"] = vim.lsp.with(vim.lsp.handlers.hover, {
-    border = "single",
-    title = "info",
-  })
+  -- vim.lsp.handlers["textDocument/hover"] = vim.lsp.with(vim.lsp.handlers.hover, {
+  --   border = "single",
+  --   title = "info",
+  -- })
   vim.diagnostic.config({
     float = { border = "rounded" },
   })
@@ -759,15 +759,19 @@ local on_attach = function(_, bufnr)
   }
 end
 
+local signs = { Error = " ", Warn = " ", Hint = "󰌵 ", Info = " " }
+for type, icon in pairs(signs) do
+  local hl = "DiagnosticSign" .. type
+  vim.fn.sign_define(hl, { text = icon, texthl = hl, numhl = hl })
+end
+
 -- document existing key chains
 require("which-key").register({
-  ["<leader>c"] = { name = "[C]ode", _ = "which_key_ignore" },
   ["<leader>d"] = { name = "[D]ocument", _ = "which_key_ignore" },
   ["<leader>g"] = { name = "[G]it", _ = "which_key_ignore" },
-  ["<leader>h"] = { name = "More git", _ = "which_key_ignore" },
   ["<leader>r"] = { name = "[R]ename", _ = "which_key_ignore" },
-  ["<leader>s"] = { name = "[S]earch", _ = "which_key_ignore" },
   ["<leader>w"] = { name = "[W]orkspace", _ = "which_key_ignore" },
+  ["<leader>f"] = { name = "[F]uzzy find", _ = "which_key_ignore" },
 })
 
 -- mason-lspconfig requires that these setup functions are called in this order
@@ -788,7 +792,7 @@ local servers = {
   tsserver = {},
   html = { filetypes = { "html", "twig", "hbs" } },
   cssls = {},
-  tailwindcss = { filetypes = { "html", "js", "ts" } },
+  tailwindcss = { filetypes = { "javascript", "javascriptreact", "typescriptreact" } },
   emmet_ls = { "html", "typescriptreact", "javascriptreact", "css", "sass" },
 
   lua_ls = {
@@ -798,15 +802,12 @@ local servers = {
     },
   },
 
-  intelephense = {
-    filetypes = {
-      "php",
-    },
+  intelephense = { filetypes = { "php" },
   },
 }
 
 -- Setup neovim lua configuration
-require("neodev").setup()
+-- require("neodev").setup()
 
 -- nvim-cmp supports additional completion capabilities, so broadcast that to servers
 local capabilities = vim.lsp.protocol.make_client_capabilities()
@@ -862,6 +863,7 @@ cmp.setup({
         end,
       },
     },
+    { name = 'nvim_lsp_signature_help' },
     { name = "path" },
   },
   window = {
@@ -952,6 +954,7 @@ vim.cmd([[
     autocmd FileType c iabbrev pfd printf("%d\n", );jkhhi
     autocmd FileType c iabbrev pfs printf("%s\n", );jkhhi
     autocmd FileType c iabbrev pfc printf("%c\n", );jkhhi
+
 ]])
 
 vim.cmd.colorscheme(color)
