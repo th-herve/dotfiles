@@ -485,29 +485,29 @@ require("lazy").setup({
         imap <C-space> <Plug>VimwikiTableNextCell
         nmap <Leader>wn <Plug>VimwikiRemoveSingleCB " just here to remove the gl keybind used with fugitive
       ]])
-    end,
-  },
-
-  {
-    "iamcco/markdown-preview.nvim",
-    cmd = { "MarkdownPreviewToggle", "MarkdownPreview", "MarkdownPreviewStop" },
-    build = "cd app && yarn install",
-    init = function()
-      vim.g.mkdp_filetypes = { "markdown" }
-      vim.cmd([[ let g:mkdp_theme = 'dark' ]])
-      vim.cmd([[ let g:mkdp_page_title = '${name}' ]])
-    end,
-    ft = { "markdown" },
-  },
-
-  {
-    -- TODO make the goyo config in lua
-    "junegunn/goyo.vim",
-    key = {
-      key("n", "<leader>z", ":Goyo<CR>", { silent = true }),
+      end,
     },
-    config = function()
-      vim.cmd([[
+
+    {
+      "iamcco/markdown-preview.nvim",
+      cmd = { "MarkdownPreviewToggle", "MarkdownPreview", "MarkdownPreviewStop" },
+      build = "cd app && yarn install",
+      init = function()
+        vim.g.mkdp_filetypes = { "markdown" }
+        vim.cmd([[ let g:mkdp_theme = 'dark' ]])
+        vim.cmd([[ let g:mkdp_page_title = '${name}' ]])
+      end,
+      ft = { "markdown" },
+    },
+
+    {
+      -- TODO make the goyo config in lua
+      "junegunn/goyo.vim",
+      key = {
+        key("n", "<leader>z", ":Goyo<CR>", { silent = true }),
+      },
+      config = function()
+        vim.cmd([[
 
         function! s:goyo_enter()
           if executable('tmux') && strlen($TMUX)
@@ -541,14 +541,15 @@ require("lazy").setup({
         autocmd! User GoyoLeave nested call <SID>goyo_leave()
 
               ]])
-    end,
+      end,
+    },
   },
-}, {
-  -- Lazy config
-  ui = {
-    border = "rounded",
-  },
-})
+  {
+    -- Lazy config
+    ui = {
+      border = "rounded",
+    },
+  })
 
 -- [[ Configure Telescope ]]
 require("telescope").setup({
