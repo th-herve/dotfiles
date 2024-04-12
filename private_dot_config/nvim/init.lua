@@ -169,11 +169,17 @@ for _, c in ipairs({ ";", ".", ",", ":", ">" }) do
   key("n", ld .. c, "A" .. c .. "<Esc>")
 end
 
+-- Quickfix
+key("n", ld .. "cp", ":cp<CR>zz", { desc = "Quickfix [P]revious" })
+key("n", ld .. "cn", ":cn<CR>zz", { desc = "Quickfix [N]ext" })
+
+
 -- Others
 key("n", ld .. "cc", ":nohlsearch<CR> <Esc>", { silent = true })
 key("n", ld .. "oo", ":setlocal spell!<CR>", { silent = true })
 key("n", ld .. "of", ":setlocal spelllang=fr<CR>")
 key("n", ld .. "oe", ":setlocal spelllang=en<CR>")
+key("n", ld .. "F", ":Format<CR>", { desc = "[F]ormat" })
 
 -- Past 0 register (usefull when deleting something, for pasting last yanked text)
 key("n", ld .. "p", '"0p')
