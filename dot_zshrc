@@ -178,6 +178,8 @@ alias dcu="docker-compose up -d"
 alias dcd="docker-compose down"
 alias dcp="docker-compose ps"
 
+alias pandock='docker run --rm -v "$(pwd):/data" -u $(id -u):$(id -g) pandoc/extra' # docker pour utiliser pandoc
+
 # search directory and cd into it, search in ~
 fzc() {
   local dir
@@ -215,7 +217,7 @@ alias fv="fzv"
 # search directory and open it in nvim, search in current dir
 fzp() {
   local file
-  file=$(fd --type f .pdf --exclude .git | fzf)
+  file=$(fd --search-path $HOME --type f .pdf --exclude .git | fzf)
 
   if [ -n "$file" ]; then
     sioyek "$file"
