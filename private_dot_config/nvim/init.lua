@@ -138,8 +138,6 @@ key("n", "<C-i>", "<C-i>zz")
 -- Scrolling
 key("n", "<A-j>", "<C-e>", { silent = true })
 key("n", "<A-k>", "<C-y>", { silent = true })
-key("n", "<M-d>", "<C-d>", { silent = true })
-key("n", "<M-u>", "<C-u>", { silent = true })
 key("n", "<C-d>", "<C-d>zz", { silent = true })
 key("n", "<C-u>", "<C-u>zz", { silent = true })
 key("n", "n", "nzzzv", { silent = true })
@@ -207,274 +205,277 @@ vim.opt.rtp:prepend(lazypath)
 
 require("lazy").setup({
 
-  "tpope/vim-commentary",
-  "tpope/vim-surround",
-  "jiangmiao/auto-pairs",
-  "tpope/vim-repeat",
-  "mg979/vim-visual-multi",
+    "tpope/vim-commentary",
+    "tpope/vim-surround",
+    "jiangmiao/auto-pairs",
+    "tpope/vim-repeat",
+    "mg979/vim-visual-multi",
 
-  {
+    {
 
-    "tpope/vim-fugitive",
-    config = function()
-      key("n", "gs", ":G status<CR>")
-      key("n", "ga.", ":Git add .<CR>")
-      key("n", "gaw", ":Gw<CR>")
-      key("n", "gcm", ":Git commit -m '")
-      key("n", "gco", ":Git checkout ")
-      key("n", "gp", ":Git push<CR>")
-      key("n", ld.."gd", ":Gvdiffsplit!<CR>") -- gd without ld already taken by lsp go to def
-      key("n", "gh", ":diffget //2<CR>")
-      key("n", "gl", ":diffget //3<CR>")
+      "tpope/vim-fugitive",
+      config = function()
+        key("n", "gs", ":G status<CR>")
+        key("n", "ga.", ":Git add .<CR>")
+        key("n", "gaw", ":Gw<CR>")
+        key("n", "gcm", ":Git commit -m '")
+        key("n", "gco", ":Git checkout ")
+        key("n", "gp", ":Git push<CR>")
+        key("n", ld .. "gd", ":Gvdiffsplit!<CR>") -- gd without ld already taken by lsp go to def
+        key("n", "gh", ":diffget //2<CR>")
+        key("n", "gl", ":diffget //3<CR>")
 
-      -- toggle fugitive status with ld..gs
-      local function showFugitiveGit()
-        if vim.fn.FugitiveHead() ~= '' then
-          vim.cmd [[ tab Git ]]
-          vim.cmd [[ execute ":set nonumber norelativenumber" ]]
+        -- toggle fugitive status with ld..gs
+        local function showFugitiveGit()
+          if vim.fn.FugitiveHead() ~= '' then
+            vim.cmd [[ tab Git ]]
+            vim.cmd [[ execute ":set nonumber norelativenumber" ]]
+          end
         end
-      end
 
-      local function toggleFugitiveGit()
-        if vim.fn.buflisted(vim.fn.bufname('fugitive:///*/.git//$')) ~= 0 then
-          print("boo")
-          vim.cmd [[ execute ":bdelete" bufname('fugitive:///*/.git//$') ]]
-        else
-          showFugitiveGit()
+        local function toggleFugitiveGit()
+          if vim.fn.buflisted(vim.fn.bufname('fugitive:///*/.git//$')) ~= 0 then
+            print("boo")
+            vim.cmd [[ execute ":bdelete" bufname('fugitive:///*/.git//$') ]]
+          else
+            showFugitiveGit()
+          end
         end
-      end
-      key('n', ld .. 'gs', toggleFugitiveGit, opts) -- has to use the leader key, otherwise it won't close
+        key('n', ld .. 'gs', toggleFugitiveGit, opts) -- has to use the leader key, otherwise it won't close
 
 
-      vim.cmd([[
+        vim.cmd([[
         autocmd BufNewFile COMMIT_EDITMSG exec set nonumber norelativenumber
       ]])
-    end,
-  },
-
-  {
-    "stevearc/oil.nvim",
-    dependencies = { "nvim-tree/nvim-web-devicons" },
-    opts = {
-      keymaps = {
-        ["<BS>"] = "actions.parent",
-        ["<leader>b"] = "actions.close",
-      },
+      end,
     },
-    win_options = {
-    signcolumn = "no",
-    cursorcolumn = false,
-  },
-    key = {
-      key("n", "<leader>b", ":Oil --float<CR>", { silent = true }),
-    },
-  },
 
-  {
-    "ThePrimeagen/harpoon",
-    branch = "harpoon2",
-    config = function()
-      local harpoon = require("harpoon")
-
-      harpoon:setup()
-      harpoon:setup({
-        settings = {
-          save_on_toggle = true,
-          sync_on_ui_close = true,
+    -- lazy.nvim
+    {
+      "folke/noice.nvim",
+      event = "VeryLazy",
+      opts = {
+        presets = {
+          bottom_search = true,         -- use a classic bottom cmdline for search
+          command_palette = true,       -- position the cmdline and popupmenu together
+          long_message_to_split = true, -- long messages will be sent to a split
+          inc_rename = false,           -- enables an input dialog for inc-rename.nvim
+          lsp_doc_border = true,        -- add a border to hover docs and signature help
         },
-      })
-      vim.keymap.set("n", "<C-p>", function()
-        harpoon:list():append()
-      end)
-      vim.keymap.set("n", "<C-h>", function()
-        harpoon.ui:toggle_quick_menu(harpoon:list())
-      end)
-
-      vim.keymap.set("n", "<M-a>", function()
-        harpoon:list():select(1)
-      end)
-      vim.keymap.set("n", "<M-s>", function()
-        harpoon:list():select(2)
-      end)
-      vim.keymap.set("n", "<M-f>", function()
-        harpoon:list():select(3)
-      end)
-      vim.keymap.set("n", "<M-/>", function()
-        harpoon:list():select(4)
-      end)
-    end,
-  },
-
-  {
-    "akinsho/toggleterm.nvim",
-    version = "*",
-    opts = {
-      open_mapping = [[<M-m>]],
-      shade_terminals = true,
-      direction = "float",
-      float_opts = { border = "single" },
-      highlight = { Normal = { guibg = "#11111b" } },
+        notify = {
+          enabled = false,
+        },
+        messages = {
+          enabled = false,
+        },
+      },
+      dependencies = {
+        -- if you lazy-load any plugin below, make sure to add proper `module="..."` entries
+        "MunifTanjim/nui.nvim",
+        -- OPTIONAL:
+        --   `nvim-notify` is only needed, if you want to use the notification view.
+        --   If not available, we use `mini` as the fallback
+        "rcarriga/nvim-notify",
+      }
     },
-  },
 
-  {
-    "mattn/emmet-vim",
-    init = function()
-      vim.cmd([[ let g:user_emmet_leader_key='<M-,>' ]])
-    end,
-  },
-
-  {
-    "folke/flash.nvim",
-    event = "VeryLazy",
-    opts = {
-      search = {
-        mode = function(str) -- match only beginning of words
-          return "\\<" .. str
-        end,
+    {
+      "stevearc/oil.nvim",
+      dependencies = { "nvim-tree/nvim-web-devicons" },
+      opts = {
+        keymaps = {
+          ["<BS>"] = "actions.parent",
+          ["<leader>b"] = "actions.close",
+        },
+      },
+      key = {
+        key("n", "<leader>b",
+          ":Oil --float<CR>:set nonumber norelativenumber<CR>:highlight EndOfBuffer guifg=#1D2021<CR>",
+          { silent = true }),
       },
     },
-    key = {
-      key({ "n", "o", "x" }, "s", function()
-        require("flash").jump()
-      end),
+
+    {
+      "ThePrimeagen/harpoon",
+      branch = "harpoon2",
+      config = function()
+        local harpoon = require("harpoon")
+
+        harpoon:setup()
+        harpoon:setup({
+          settings = {
+            save_on_toggle = true,
+            sync_on_ui_close = true,
+          },
+        })
+        vim.keymap.set("n", "<C-p>", function()
+          harpoon:list():append()
+        end)
+        vim.keymap.set("n", "<C-h>", function()
+          harpoon.ui:toggle_quick_menu(harpoon:list())
+        end)
+
+        vim.keymap.set("n", "<M-a>", function()
+          harpoon:list():select(1)
+        end)
+        vim.keymap.set("n", "<M-s>", function()
+          harpoon:list():select(2)
+        end)
+        vim.keymap.set("n", "<M-f>", function()
+          harpoon:list():select(3)
+        end)
+        vim.keymap.set("n", "<M-/>", function()
+          harpoon:list():select(4)
+        end)
+      end,
     },
-  },
 
-  {
-    "mbbill/undotree",
-    key = {
-      vim.keymap.set({ "n", "o", "x" }, "<leader>u", "<cmd>UndotreeToggle<CR>"),
-    },
-    config = function()
-      vim.cmd([[ set undodir=~/.undodir_combined ]])
-      vim.cmd([[ set undofile ]])
-      vim.cmd([[ set undolevels=100000 ]])
-      vim.cmd([[ let g:undotree_SetFocusWhenToggle = 1 ]])
-    end,
-  },
-
-  {
-    -- LSP Configuration & Plugins
-    "neovim/nvim-lspconfig",
-    dependencies = {
-      "williamboman/mason.nvim",
-      "williamboman/mason-lspconfig.nvim",
-      "folke/neodev.nvim",
-    },
-  },
-
-  {
-    -- Autocompletion
-    "hrsh7th/nvim-cmp",
-    dependencies = {
-      "L3MON4D3/LuaSnip",
-      "saadparwaiz1/cmp_luasnip",
-
-      "hrsh7th/cmp-nvim-lsp",
-      "hrsh7th/cmp-buffer",
-      "hrsh7th/cmp-path",
-      "hrsh7th/cmp-cmdline",
-
-      "rafamadriz/friendly-snippets",
-
-      "onsails/lspkind.nvim",
-    },
-  },
-
-  {
-    "folke/which-key.nvim",
-    opts = {
-      window = {
-        border = "single",
+    {
+      "akinsho/toggleterm.nvim",
+      version = "*",
+      opts = {
+        open_mapping = [[<M-m>]],
+        shade_terminals = true,
+        direction = "float",
+        float_opts = { border = "single" },
+        highlight = { Normal = { guibg = "#11111b" } },
       },
     },
-  },
 
-  -- Fuzzy Finder
-  {
-    "nvim-telescope/telescope.nvim",
-    branch = "0.1.x",
-    dependencies = {
-      "nvim-lua/plenary.nvim",
-      "nvim-tree/nvim-web-devicons",
-      {
-        "nvim-telescope/telescope-fzf-native.nvim",
-        build = "make",
-        cond = function()
-          return vim.fn.executable("make") == 1
-        end,
+    {
+      "mattn/emmet-vim",
+      init = function()
+        vim.cmd([[ let g:user_emmet_leader_key='<M-,>' ]])
+      end,
+    },
+
+    {
+      "folke/flash.nvim",
+      event = "VeryLazy",
+      opts = {
+        search = {
+          mode = function(str) -- match only beginning of words
+            return "\\<" .. str
+          end,
+        },
+      },
+      key = {
+        key({ "n", "o", "x" }, "s", function()
+          require("flash").jump()
+        end),
       },
     },
-  },
 
-  {
-    -- Highlight, edit, and navigate code
-    "nvim-treesitter/nvim-treesitter",
-    dependencies = {
-      "nvim-treesitter/nvim-treesitter-textobjects",
-      "windwp/nvim-ts-autotag",
+    {
+      "mbbill/undotree",
+      key = {
+        vim.keymap.set({ "n", "o", "x" }, "<leader>u", "<cmd>UndotreeToggle<CR>"),
+      },
+      config = function()
+        vim.cmd([[ set undodir=~/.undodir_combined ]])
+        vim.cmd([[ set undofile ]])
+        vim.cmd([[ set undolevels=100000 ]])
+        vim.cmd([[ let g:undotree_SetFocusWhenToggle = 1 ]])
+      end,
     },
-    build = ":TSUpdate",
-  },
 
-  -- formatter/linter
-  -- {
-  --   "nvimtools/none-ls.nvim",
-  --   config = function()
-  --     local null_ls = require("null-ls")
+    {
+      -- LSP Configuration & Plugins
+      "neovim/nvim-lspconfig",
+      dependencies = {
+        "williamboman/mason.nvim",
+        "williamboman/mason-lspconfig.nvim",
+        "folke/neodev.nvim",
+      },
+    },
 
-  --     null_ls.setup({
-  --       sources = {
-  --         null_ls.builtins.formatting.stylua,  -- lua
-  --         null_ls.builtins.formatting.black,   -- python
-  --         null_ls.builtins.formatting.prettier, -- js, html..
-  --         null_ls.builtins.formatting.clang_format, -- c, c++
-  --         null_ls.builtins.diagnostics.eslint_d, -- js, html..
-  --         null_ls.builtins.diagnostics.pylint,
-  --         null_ls.builtins.completion.spell,
-  --         null_ls.builtins.formatting.clang_format.with({
-  --           extra_args = { "-style={BasedOnStyle: llvm, IndentWidth: 2, ColumnLimit: 100}" },
-  --         }),
-  --       },
-  --     })
-  --     vim.keymap.set("n", "<leader>gf", vim.lsp.buf.format, {})
-  --   end,
-  -- },
+    {
+      -- Autocompletion
+      "hrsh7th/nvim-cmp",
+      dependencies = {
+        "L3MON4D3/LuaSnip",
+        "saadparwaiz1/cmp_luasnip",
 
-  -- ui
-  {
-    "stevearc/dressing.nvim",
-    event = "VeryLazy",
-    config = function()
-      vim.api.nvim_set_hl(0, "FloatTitle", { link = "Title" })
-      vim.cmd([[ highlight FloatBorder guibg=none
+        "hrsh7th/cmp-nvim-lsp",
+        "hrsh7th/cmp-buffer",
+        "hrsh7th/cmp-path",
+        "hrsh7th/cmp-cmdline",
+
+        "rafamadriz/friendly-snippets",
+
+        "onsails/lspkind.nvim",
+      },
+    },
+
+    {
+      "folke/which-key.nvim",
+      opts = {
+        window = {
+          border = "single",
+        },
+      },
+    },
+
+    -- Fuzzy Finder
+    {
+      "nvim-telescope/telescope.nvim",
+      branch = "0.1.x",
+      dependencies = {
+        "nvim-lua/plenary.nvim",
+        "nvim-tree/nvim-web-devicons",
+        {
+          "nvim-telescope/telescope-fzf-native.nvim",
+          build = "make",
+          cond = function()
+            return vim.fn.executable("make") == 1
+          end,
+        },
+      },
+    },
+
+    {
+      -- Highlight, edit, and navigate code
+      "nvim-treesitter/nvim-treesitter",
+      dependencies = {
+        "nvim-treesitter/nvim-treesitter-textobjects",
+        "windwp/nvim-ts-autotag",
+      },
+      build = ":TSUpdate",
+    },
+
+    -- ui
+    {
+      "stevearc/dressing.nvim",
+      event = "VeryLazy",
+      config = function()
+        vim.api.nvim_set_hl(0, "FloatTitle", { link = "Title" })
+        vim.cmd([[ highlight FloatBorder guibg=none
        highlight NormalFloat guibg=none
       ]])
-    end,
-  },
+      end,
+    },
 
-  {
-    "sainnhe/gruvbox-material",
-    priority = 1000,
-    config = function()
-      vim.g.gruvbox_material_background = "hard"
-    end,
-  },
+    {
+      "sainnhe/gruvbox-material",
+      priority = 1000,
+      config = function()
+        vim.g.gruvbox_material_background = "hard"
+      end,
+    },
 
-  {
-    "rose-pine/neovim",
-    priority = 1000,
-  },
-  {
-    "catppuccin/nvim",
-    priority = 1000,
-  },
+    {
+      "rose-pine/neovim",
+      priority = 1000,
+    },
+    {
+      "catppuccin/nvim",
+      priority = 1000,
+    },
 
-  {
-    "vimwiki/vimwiki",
-    init = function()
-      vim.cmd([[
+    {
+      "vimwiki/vimwiki",
+      init = function()
+        vim.cmd([[
         filetype plugin on
         syntax on
         let g:vimwiki_list = [{'path': '~/.config/nvim/vimwiki/docs',
