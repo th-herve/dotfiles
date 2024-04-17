@@ -140,6 +140,8 @@ key("n", "<A-j>", "<C-e>", { silent = true })
 key("n", "<A-k>", "<C-y>", { silent = true })
 key("n", "<C-d>", "<C-d>zz", { silent = true })
 key("n", "<C-u>", "<C-u>zz", { silent = true })
+key("n", "<M-d>", "<C-d>", { silent = true })
+key("n", "<M-u>", "<C-u>", { silent = true })
 key("n", "n", "nzzzv", { silent = true })
 key("n", "N", "Nzzzv", { silent = true })
 
@@ -214,6 +216,11 @@ require("lazy").setup({
     {
 
       "tpope/vim-fugitive",
+
+      dependencies = {
+        "sindrets/diffview.nvim",
+      },
+
       config = function()
         key("n", "gs", ":G status<CR>")
         key("n", "ga.", ":Git add .<CR>")
@@ -221,9 +228,27 @@ require("lazy").setup({
         key("n", "gcm", ":Git commit -m '")
         key("n", "gco", ":Git checkout ")
         key("n", "gp", ":Git push<CR>")
-        key("n", ld .. "gd", ":Gvdiffsplit!<CR>") -- gd without ld already taken by lsp go to def
-        key("n", "gh", ":diffget //2<CR>")
-        key("n", "gl", ":diffget //3<CR>")
+        -- key("n", "gh", ":diffget //2<CR>")
+        -- key("n", "gl", ":diffget //3<CR>")
+
+
+        local actions = require("diffview.actions")
+
+        require("diffview").setup({
+          view = {
+            merge_tool = {
+              layout = "diff3_mixed",
+            },
+          },
+          keymaps = {
+            view = {
+              { "n", "gh", actions.conflict_choose("ours"),   { desc = "Choose the OURS version of a conflict" } },
+              { "n", "gl", actions.conflict_choose("theirs"), { desc = "Choose the THEIRS version of a conflict" } },
+            }
+          }
+        })
+        key("n", ld .. "gdo", ":DiffviewOpen<CR>")
+        key("n", ld .. "gdc", ":DiffviewClose<CR>")
 
         -- toggle fugitive status with ld..gs
         local function showFugitiveGit()
