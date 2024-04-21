@@ -84,7 +84,6 @@ alias pof="cd ~/programming/project/portfolio/"
 alias python="python3"
 alias py="python3"
 alias r="ranger"
-alias bat="batcat"
 alias ztr="zathura"
 alias tm="tmux"
 alias tma="tmux a"
@@ -180,6 +179,31 @@ alias dcp="docker-compose ps"
 
 alias pandock='docker run --rm -v "$(pwd):/data" -u $(id -u):$(id -g) pandoc/extra' # docker pour utiliser pandoc
 
+#        === fzf ===
+
+eval "$(fzf --zsh)"
+export FZF_DEFAULT_COMMAND="fd --hidden --strip-cwd-prefix --exclude .git"
+export FZF_CTRL_T_COMMAND="$FZF_DEFAULT_COMMAND"
+export FZF_ALT_C_COMMAND="fd --type=d --hidden --strip-cwd-prefix --exclude .git"
+
+
+# Use fd to generate the list for file and directory completion
+_fzf_compgen_path() {
+  fd --hidden --exclude .git . "$1"
+}
+
+# Use fd to generate the list for directory completion
+_fzf_compgen_dir() {
+  fd --type=d --hidden --exclude .git . "$1"
+}
+
+# --- setup fzf theme ---
+export FZF_DEFAULT_OPTS=$FZF_DEFAULT_OPTS'
+ --color=fg:#a89984,bg:#1d2021,hl:#89b482
+ --color=fg+:#cfcfcf,bg+:#1d2021,hl+:#7daea3
+ --color=info:#89b482,prompt:#89b482,pointer:#e78a4e
+ --color=marker:#89b482,spinner:#89b482,header:#87afaf'
+
 # search directory and cd into it, search in ~
 fzc() {
   local dir
@@ -241,6 +265,10 @@ ctrlz () {
 }
 zle -N ctrlz
 bindkey '^Z' ctrlz
+
+export BAT_THEME="ansi"
+
+eval "$(zoxide init zsh)"
 
 #        === keybind ===
 
