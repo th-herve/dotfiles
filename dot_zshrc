@@ -2,6 +2,7 @@ setopt autocd
 zle_highlight=('paste:none')
 
 source ~/.profile
+setopt HIST_IGNORE_SPACE
 
 # node path
 export PATH="$PATH:$HOME/.nvm/versions/node/v20.10.0/bin"
