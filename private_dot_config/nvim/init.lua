@@ -411,6 +411,7 @@ require("lazy").setup({
         "williamboman/mason.nvim",
         "williamboman/mason-lspconfig.nvim",
         "folke/neodev.nvim",
+        "prettier/vim-prettier"
       },
     },
 
@@ -650,13 +651,8 @@ vim.defer_fn(function()
   require("nvim-treesitter.configs").setup({
     ensure_installed = {
       "c",
-      "cpp",
-      "go",
       "lua",
       "python",
-      "rust",
-      "tsx",
-      "java",
       "javascript",
       "typescript",
       "vimdoc",
