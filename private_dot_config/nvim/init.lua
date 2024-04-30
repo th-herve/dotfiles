@@ -49,7 +49,6 @@ autocmd("Filetype", {
     "vimwiki",
     "java",
     "javascriptreact",
-    "php",
   },
   command = [[setlocal shiftwidth=2 tabstop=2]],
 })
@@ -162,6 +161,7 @@ key("v", "<C-k>", ":m '>+1<CR>gv=gv", { silent = true })
 key("v", "<C-j>", ":m '<-1<CR>gv=gv", { silent = true })
 key("n", ld .. "a", "ggVG")
 key("v", ld .. "a", "<Esc>")
+key("n", "yaa", ":%y<Esc>", { silent = true })
 key("v", "<", "<gv", { silent = true })
 key("v", ">", ">gv", { silent = true })
 -- ld+char to add it at the end of the line
