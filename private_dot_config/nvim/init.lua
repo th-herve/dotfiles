@@ -964,8 +964,6 @@ vim.cmd([[
 -- abbrev
 vim.cmd([[
 
-    cabbrev fi !firefox index.html
-
     autocmd FileType javascript iabbrev clo console.log();jkhi
     autocmd FileType javascript iabbrev dcel document.createElement("");jkhhi
     autocmd FileType javascript iabbrev dceld document.createElement("div");
