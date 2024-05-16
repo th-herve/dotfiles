@@ -24,3 +24,6 @@ mod4 + shift + k
 
 mod4 + shift + c
     gnome-calculator
+
+mod4 + shift + i
+    $HOME/programming/script/url_launcher.sh
