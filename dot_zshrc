@@ -119,11 +119,12 @@ alias cma="chezmoi -v apply"
 alias gs="git status"
 alias ga="git add"
 alias ga.="git add ."
-alias gc="git commit"
 alias gcm="git commit -m "
 alias gp="git push"
 alias gd="git diff"
 alias gg="git log --all --graph --decorate --oneline"
+alias gc="git checkout"
+alias gcb="git checkout -b"
 
 # bashrc
 alias bsi="chezmoi edit ~/.bashrc"
