@@ -80,7 +80,6 @@ vim.o.updatetime = 250
 vim.o.timeoutlen = 300
 vim.o.completeopt = "menuone,noselect,menu"
 vim.o.termguicolors = true
-vim.o.nocompatible = true
 
 -- remove auto comment on new line
 vim.cmd([[
@@ -237,7 +236,7 @@ require("lazy").setup({
         require("diffview").setup({
           view = {
             merge_tool = {
-              layout = "diff3_mixed",
+              layout = "diff1_plain",
             },
           },
           keymaps = {
@@ -958,6 +957,7 @@ vim.cmd([[
     autocmd ColorScheme * highlight Folded guibg=none
     autocmd ColorScheme * highlight FloatBorder guibg=none
     autocmd ColorScheme * highlight NormalFloat guibg=none
+    autocmd ColorScheme * highlight WinBar guibg=none
 
 ]])
 
