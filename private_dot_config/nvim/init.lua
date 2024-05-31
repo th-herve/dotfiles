@@ -10,6 +10,11 @@
 
 local color = "gruvbox-material"
 
+local augroup = vim.api.nvim_create_augroup
+local autocmd = vim.api.nvim_create_autocmd
+local key = vim.keymap.set
+local ld = "<leader>"
+
 -- search option
 vim.o.hlsearch = true
 vim.o.showmatch = true
@@ -32,8 +37,6 @@ vim.o.expandtab = true
 vim.o.tabstop = 4
 vim.o.softtabstop = 4
 vim.o.shiftwidth = 4
-local augroup = vim.api.nvim_create_augroup
-local autocmd = vim.api.nvim_create_autocmd
 augroup("setIndent", { clear = true })
 autocmd("Filetype", {
   group = "setIndent",
@@ -52,19 +55,6 @@ autocmd("Filetype", {
   },
   command = [[setlocal shiftwidth=2 tabstop=2]],
 })
-
--- Fold
-
-vim.o.foldmethod = "indent"
-vim.o.foldnestmax = 4
-vim.o.foldlevel = 99
-vim.o.foldignore = ""
-vim.cmd([[set fillchars=fold:\ ]])
--- More fold option at the end
-
--- Other
--- vim.o.spelllang = "en_us"
--- vim.o.spellsuggest = 10
 
 vim.o.backup = false
 vim.o.swapfile = false
@@ -90,8 +80,6 @@ vim.cmd([[
 -- |           Keybinds            |
 -- +-------------------------------+
 
-local key = vim.keymap.set
-local ld = "<leader>"
 key({ "n", "v" }, "<Space>", "<Nop>", { silent = true })
 
 --  NOTE: Must happen before plugins are required (otherwise wrong leader will be used)
@@ -296,10 +284,6 @@ require("lazy").setup({
       dependencies = {
         -- if you lazy-load any plugin below, make sure to add proper `module="..."` entries
         "MunifTanjim/nui.nvim",
-        -- OPTIONAL:
-        --   `nvim-notify` is only needed, if you want to use the notification view.
-        --   If not available, we use `mini` as the fallback
-        "rcarriga/nvim-notify",
       }
     },
 
@@ -333,7 +317,7 @@ require("lazy").setup({
           },
         })
         vim.keymap.set("n", "<C-p>", function()
-          harpoon:list():append()
+          harpoon:list():add()
         end)
         vim.keymap.set("n", "<C-h>", function()
           harpoon.ui:toggle_quick_menu(harpoon:list())
@@ -441,7 +425,7 @@ require("lazy").setup({
       },
     },
 
-    -- Fuzzy Finder
+    -- Telescope
     {
       "nvim-telescope/telescope.nvim",
       branch = "0.1.x",
@@ -459,7 +443,6 @@ require("lazy").setup({
     },
 
     {
-      -- Highlight, edit, and navigate code
       "nvim-treesitter/nvim-treesitter",
       dependencies = {
         "nvim-treesitter/nvim-treesitter-textobjects",
@@ -524,51 +507,8 @@ require("lazy").setup({
       end,
       ft = { "markdown" },
     },
-
-    {
-      -- TODO make the goyo config in lua
-      "junegunn/goyo.vim",
-      key = {
-        key("n", "<leader>z", ":Goyo<CR>", { silent = true }),
-      },
-      config = function()
-        vim.cmd([[
-
-        function! s:goyo_enter()
-          if executable('tmux') && strlen($TMUX)
-            silent !tmux set status off
-            silent !tmux list-panes -F '\#F' | grep -q Z || tmux resize-pane -Z
-          endif
-          set noshowmode
-          set noshowcmd
-          set scrolloff=999
-          set wrap
-          set linebreak
-          set winbar=
-          set fillchars=eob:\
-        endfunction
-
-        function! s:goyo_leave()
-          if executable('tmux') && strlen($TMUX)
-            silent !tmux set status on
-            silent !tmux list-panes -F '\#F' | grep -q Z && tmux resize-pane -Z
-          endif
-          set showmode
-          set showcmd
-          set scrolloff=8
-          set nowrap
-          set nolinebreak
-      # set winbar=lua get_winbar()
-          set fillchars=eob:~
-        endfunction
-
-        autocmd! User GoyoEnter nested call <SID>goyo_enter()
-        autocmd! User GoyoLeave nested call <SID>goyo_leave()
-
-              ]])
-      end,
-    },
   },
+
   {
     -- Lazy config
     ui = {
@@ -626,23 +566,17 @@ end
 
 vim.api.nvim_create_user_command("LiveGrepGitRoot", live_grep_git_root, {})
 
-vim.keymap.set("n", "<leader>?", require("telescope.builtin").oldfiles, { desc = "[?] Find recently opened files" })
 vim.keymap.set("n", "<leader>fb", require("telescope.builtin").buffers, { desc = "[F]ind buffers" })
-vim.keymap.set(
-  "n",
-  "<leader>/",
-  require("telescope.builtin").current_buffer_fuzzy_find,
-  { desc = "[/] Fuzzily search in current buffer" }
+vim.keymap.set( "n", "<leader>/", require("telescope.builtin").current_buffer_fuzzy_find, { desc = "[/] Fuzzily search in current buffer" }
 )
 key("n", "<leader>fgf", require("telescope.builtin").git_files, { desc = "[F]ind [G]it [F]iles" })
-key("n", "<leader>ff", require("telescope.builtin").find_files, { desc = "[F]ind [F]iles" }) -- TODO maybe delete
+key("n", "<leader>ff", require("telescope.builtin").find_files, { desc = "[F]ind [F]iles" })
 key("n", "<leader>fgg", require("telescope.builtin").live_grep, { desc = "[F]ind [G]rep" })
 key("n", "<leader>fgG", ":LiveGrepGitRoot<cr>", { desc = "[F]ind by [G]rep on [G]it Root" })
 key("n", "<leader>fd", require("telescope.builtin").diagnostics, { desc = "[F]ind [D]iagnostics" })
 key("n", "<leader>ft", require("telescope.builtin").colorscheme, { desc = "[F]ind [T]heme" })
 key("n", "<leader>fr", require("telescope.builtin").registers, { desc = "[F]ind [R]egisters" })
 key("n", "<leader>fc", require("telescope.builtin").command_history, { desc = "[F]ind [c]ommand history" })
-key("n", "<leader>fk", require("telescope.builtin").keymaps, { desc = "[F]ind [K]eymaps" })
 key("n", "<leader>fgb", require("telescope.builtin").git_branches, { desc = "[F]ind [G]it [B]ranch" })
 
 -- [[ Configure Treesitter ]]
@@ -756,20 +690,11 @@ local on_attach = function(_, bufnr)
   nmap("<C-k>", vim.lsp.buf.signature_help, "Signature Documentation")
 
   nmap("gD", vim.lsp.buf.declaration, "[G]oto [D]eclaration")
-  nmap("<leader>wa", vim.lsp.buf.add_workspace_folder, "[W]orkspace [A]dd Folder")
-  nmap("<leader>wr", vim.lsp.buf.remove_workspace_folder, "[W]orkspace [R]emove Folder")
-  nmap("<leader>wl", function()
-    print(vim.inspect(vim.lsp.buf.list_workspace_folders()))
-  end, "[W]orkspace [L]ist Folders")
 
   vim.api.nvim_buf_create_user_command(bufnr, "Format", function(_)
     vim.lsp.buf.format()
   end, { desc = "Format current buffer with LSP" })
 
-  -- vim.lsp.handlers["textDocument/hover"] = vim.lsp.with(vim.lsp.handlers.hover, {
-  --   border = "single",
-  --   title = "info",
-  -- })
   vim.diagnostic.config({
     float = { border = "rounded" },
   })
@@ -801,9 +726,9 @@ require("mason-lspconfig").setup()
 local servers = {
   clangd = {
     format = {
-      style = "llvm",   -- You can adjust the style to your preference
-      indentWidth = 4,  -- Set the desired indent width
-      columnLimit = 100 -- Set the desired column limit
+      style = "llvm",
+      indentWidth = 4,
+      columnLimit = 100
     }
   },
   -- gopls = {},
@@ -915,14 +840,6 @@ vim.cmd([[
   endif
 ]])
 
--- Display message when recording
-function Recording()
-  if vim.fn.getreg("*") ~= "" then
-    return "recording at " .. vim.fn.getreg("*")
-  end
-  return ""
-end
-
 vim.cmd([[
     autocmd BufNewFile *.sh exec "normal i#!/usr/bin/env bash\<Esc>"
 
@@ -958,29 +875,20 @@ vim.cmd([[
     autocmd ColorScheme * highlight FloatBorder guibg=none
     autocmd ColorScheme * highlight NormalFloat guibg=none
     autocmd ColorScheme * highlight WinBar guibg=none
-
+    autocmd ColorScheme * highlight MatchParen guibg=none
 ]])
+vim.cmd.colorscheme(color)
 
 -- abbrev
 vim.cmd([[
 
     autocmd FileType javascript iabbrev clo console.log();jkhi
-    autocmd FileType javascript iabbrev dcel document.createElement("");jkhhi
-    autocmd FileType javascript iabbrev dceld document.createElement("div");
-
-    iabbrev inem if __name__ == "__main__jkA:jko
 
     autocmd FileType c iabbrev pfd printf("%d\n", );jkhhi
     autocmd FileType c iabbrev pfs printf("%s\n", );jkhhi
     autocmd FileType c iabbrev pfc printf("%c\n", );jkhhi
 
 ]])
-
-vim.cmd.colorscheme(color)
-vim.cmd([[ highlight StatusLine guibg=none ]])
-vim.cmd([[ highlight StatusLineNC guibg=none ]])
-vim.cmd([[ highlight Folded guibg=none ]])
-vim.cmd([[ highlight MatchParen guibg=none ]])
 
 local function get_winbar()
   local devicon = require("nvim-web-devicons")
@@ -1024,17 +932,3 @@ vim.api.nvim_create_autocmd({ "BufEnter" }, {
     vim.o.winbar = get_winbar()
   end,
 })
-
-vim.cmd([[
-
-set foldtext=CustomFoldText()
-  function! CustomFoldText()
-      let indentation = indent(v:foldstart)
-      let foldSize = 1 + v:foldend - v:foldstart
-      let foldSizeStr = " " . foldSize . " lines "
-      let foldLevelStr = repeat("+--", v:foldlevel)
-      let expansionString = repeat(" ", indentation)
-
-      return expansionString . "\ueb70" . foldSizeStr
-  endfunction
-]])
