@@ -81,7 +81,6 @@ vim.o.updatetime = 250
 vim.o.timeoutlen = 300
 vim.o.completeopt = "menuone,noselect,menu"
 vim.o.termguicolors = true
-vim.o.nocompatible = true
 
 -- remove auto comment on new line
 vim.cmd([[
