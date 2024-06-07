@@ -559,50 +559,6 @@ require("lazy").setup({
         },
       },
     },
-
-    {
-      -- TODO make the goyo config in lua
-      "junegunn/goyo.vim",
-      key = {
-        key("n", "<leader>z", ":Goyo<CR>", { silent = true }),
-      },
-      config = function()
-        vim.cmd([[
-
-        function! s:goyo_enter()
-          if executable('tmux') && strlen($TMUX)
-            silent !tmux set status off
-            silent !tmux list-panes -F '\#F' | grep -q Z || tmux resize-pane -Z
-          endif
-          set noshowmode
-          set noshowcmd
-          set scrolloff=999
-          set wrap
-          set linebreak
-          set winbar=
-          set fillchars=eob:\
-        endfunction
-
-        function! s:goyo_leave()
-          if executable('tmux') && strlen($TMUX)
-            silent !tmux set status on
-            silent !tmux list-panes -F '\#F' | grep -q Z && tmux resize-pane -Z
-          endif
-          set showmode
-          set showcmd
-          set scrolloff=8
-          set nowrap
-          set nolinebreak
-      # set winbar=lua get_winbar()
-          set fillchars=eob:~
-        endfunction
-
-        autocmd! User GoyoEnter nested call <SID>goyo_enter()
-        autocmd! User GoyoLeave nested call <SID>goyo_leave()
-
-              ]])
-      end,
-    },
   },
   {
     -- Lazy config
