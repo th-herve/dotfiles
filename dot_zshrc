@@ -232,7 +232,7 @@ alias f.="fz."
 # search directory and open it in nvim, search in current dir
 fzv() {
   local file
-  file=$(fd --type f --hidden --exclude .git | fzf)
+  file=$(fd --search-path $HOME --type f --hidden --exclude .git | fzf)
 
   if [ -n "$file" ]; then
     nvim "$file"
