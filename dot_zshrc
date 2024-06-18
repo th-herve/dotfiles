@@ -48,6 +48,12 @@ function git_branch_name()
 setopt prompt_subst
 RPROMPT='$(git_branch_name)'
 
+# change prompt if in a nix shell
+if [ -n "$IN_NIX_SHELL" ]; then
+  export PS1="%F{blue} $PS1"
+fi
+alias nsz="nix-shell --command 'zsh'"
+
 
 #        === History ===
 
