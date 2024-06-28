@@ -52,6 +52,7 @@ autocmd('Filetype', {
     'vimwiki',
     'java',
     'javascriptreact',
+    'nix',
   },
   command = [[setlocal shiftwidth=2 tabstop=2]],
 })
@@ -287,6 +288,7 @@ require('lazy').setup({
       messages = {
         enabled = false,
       },
+      lsp_progress = false,
     },
     dependencies = {
       -- if you lazy-load any plugin below, make sure to add proper `module="..."` entries
@@ -364,7 +366,7 @@ require('lazy').setup({
 
   {
     'mattn/emmet-vim',
-    lazy = true,
+    -- lazy = true,
     init = function()
       vim.cmd [[ let g:user_emmet_leader_key='<M-,>' ]]
     end,
@@ -536,6 +538,9 @@ require('lazy').setup({
       end,
       formatters_by_ft = {
         lua = { 'stylua' },
+        php = { { 'pint', 'php-cs-fixer', 'intelephense' } },
+        blade = { 'blade-formatter' },
+
         -- Conform can also run multiple formatters sequentially
         -- python = { "isort", "black" },
         --
@@ -792,7 +797,7 @@ local servers = {
   tsserver = {},
   html = { filetypes = { 'html', 'twig', 'hbs' } },
   cssls = {},
-  tailwindcss = { filetypes = { 'javascript', 'javascriptreact', 'typescriptreact' } },
+  tailwindcss = { filetypes = { 'javascript', 'javascriptreact', 'typescriptreact', 'php', 'blade' } },
   emmet_ls = { 'html', 'typescriptreact', 'javascriptreact', 'css', 'sass' },
 
   lua_ls = {
@@ -802,7 +807,7 @@ local servers = {
     },
   },
 
-  intelephense = { filetypes = { 'php' } },
+  intelephense = { filetypes = { 'php', 'blade' } },
 
   nil_ls = {},
 }
@@ -939,11 +944,30 @@ vim.cmd.colorscheme(color)
 vim.cmd [[
 
     autocmd FileType javascript iabbrev clo console.log();jkhi
+    autocmd FileType php        iabbrev clo console.log();jkhi
+    autocmd FileType html       iabbrev clo console.log();jkhi
 
     autocmd FileType c iabbrev pfd printf("%d\n", );jkhhi
     autocmd FileType c iabbrev pfs printf("%s\n", );jkhhi
     autocmd FileType c iabbrev pfc printf("%c\n", );jkhhi
 
+
+]]
+
+local parser_config = require('nvim-treesitter.parsers').get_parser_configs()
+parser_config.blade = {
+  install_info = {
+    url = 'https://github.com/EmranMR/tree-sitter-blade',
+    files = { 'src/parser.c' },
+    branch = 'main',
+  },
+  filetype = 'blade',
+}
+
+vim.cmd [[
+augroup BladeFiltypeRelated
+  au BufNewFile,BufRead *.blade.php set ft=blade
+augroup END
 ]]
 
 local function get_winbar()

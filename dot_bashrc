@@ -215,4 +215,9 @@ export NVM_DIR="$HOME/.nvm"
 [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
 [ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
 
+# change prompt if in a nix shell
+if [ -n "$IN_NIX_SHELL" ]; then
+  export PS1 " $PS1"
+fi
+
 # neofetch

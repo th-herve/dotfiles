@@ -26,6 +26,7 @@ export PATH="$PATH:/home/adiantum/.local/bin"
 export PATH="$PATH:/opt/gradle/gradle-8.4/bin"
 
 #        === Prompt ===
+setopt autocd
 
 PROMPT="%(?.%F{cyan}[茶雨].%F{cyan}[%F{red}茶雨%F{cyan}]) %F{green}%n:%F{cyan}%1~%f%# "
 PS2="%{[0;1;95m%}> %{[0m%}"
@@ -83,9 +84,10 @@ bindkey '^v' edit-command-line
 #        === Alias ===
 
 # working temp aliases
-alias odin="cd ~/programming/web/odin"
 alias bts="cd ~/Documents/bts/"
 alias pof="cd ~/programming/project/portfolio/"
+alias sail='sh $([ -f sail ] && echo sail || echo vendor/bin/sail)'
+alias spa='sail php artisan'
 
 # my aliases
 alias python="python3"
