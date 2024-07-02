@@ -179,6 +179,11 @@ vim.opt.rtp:prepend(lazypath)
 -- |        Plugins config         |
 -- +-------------------------------+
 
+local config_path = vim.fn.stdpath 'config'
+
+-- Add the configuration directory to the Lua package path
+package.path = package.path .. ';' .. config_path .. '/?.lua;' .. config_path .. '/?/init.lua'
+
 require('lazy').setup({
 
   'tpope/vim-commentary',
@@ -275,7 +280,6 @@ require('lazy').setup({
       messages = {
         enabled = false,
       },
-      lsp_progress = false,
     },
     dependencies = {
       -- if you lazy-load any plugin below, make sure to add proper `module="..."` entries
@@ -339,17 +343,17 @@ require('lazy').setup({
     end,
   },
 
-  {
-    'akinsho/toggleterm.nvim',
-    version = '*',
-    opts = {
-      open_mapping = [[<M-m>]],
-      shade_terminals = true,
-      direction = 'float',
-      float_opts = { border = 'single' },
-      highlight = { Normal = { guibg = '#11111b' } },
-    },
-  },
+  -- {
+  --   'akinsho/toggleterm.nvim',
+  --   version = '*',
+  --   opts = {
+  --     open_mapping = [[<M-m>]],
+  --     shade_terminals = true,
+  --     direction = 'float',
+  --     float_opts = { border = 'single' },
+  --     highlight = { Normal = { guibg = '#11111b' } },
+  --   },
+  -- },
 
   {
     'mattn/emmet-vim',
@@ -395,8 +399,6 @@ require('lazy').setup({
     dependencies = {
       'williamboman/mason.nvim',
       'williamboman/mason-lspconfig.nvim',
-      'folke/neodev.nvim',
-      'prettier/vim-prettier',
     },
   },
 
@@ -415,15 +417,6 @@ require('lazy').setup({
       'rafamadriz/friendly-snippets',
 
       'onsails/lspkind.nvim',
-    },
-  },
-
-  {
-    'folke/which-key.nvim',
-    opts = {
-      window = {
-        border = 'single',
-      },
     },
   },
 
@@ -459,8 +452,9 @@ require('lazy').setup({
     event = 'VeryLazy',
     config = function()
       vim.api.nvim_set_hl(0, 'FloatTitle', { link = 'Title' })
-      vim.cmd [[ highlight FloatBorder guibg=none
-       highlight NormalFloat guibg=none
+      vim.cmd [[
+        highlight FloatBorder guibg=none
+        highlight NormalFloat guibg=none
       ]]
     end,
   },
@@ -481,6 +475,10 @@ require('lazy').setup({
     'catppuccin/nvim',
     priority = 1000,
   },
+  {
+    'folke/tokyonight.nvim',
+    priority = 1000,
+  },
 
   {
     'vimwiki/vimwiki',
@@ -496,6 +494,15 @@ require('lazy').setup({
         nmap <Leader>wn <Plug>VimwikiRemoveSingleCB " just here to remove the gl keybind used with fugitive
       ]]
     end,
+  },
+
+  {
+    'folke/which-key.nvim',
+    opts = {
+      window = {
+        border = 'single',
+      },
+    },
   },
 
   { -- Autoformat
@@ -541,18 +548,24 @@ require('lazy').setup({
       },
     },
   },
-
   {
-    'iamcco/markdown-preview.nvim',
-    cmd = { 'MarkdownPreviewToggle', 'MarkdownPreview', 'MarkdownPreviewStop' },
-    build = 'cd app && yarn install',
-    init = function()
-      vim.g.mkdp_filetypes = { 'markdown' }
-      vim.cmd [[ let g:mkdp_theme = 'dark' ]]
-      vim.cmd [[ let g:mkdp_page_title = '${name}' ]]
-    end,
-    ft = { 'markdown' },
+    'folke/lazydev.nvim',
+    ft = 'lua',
   },
+
+  -- {
+  --   dir = '~/programming/project/sline-nvim/', -- Your path
+  --   name = 'sline',
+  --   opts = {
+  --     depth = 1,
+  --     status_line = false,
+  --     unamed_buffer_label = 'new',
+  --   },
+  --   -- config = function()
+  --   --   require('winbar')
+  --   -- end
+  -- },
+  require 'plugins.debug',
 }, {
   -- Lazy config
   ui = {
@@ -572,43 +585,15 @@ require('telescope').setup {
   },
 }
 
+require('lazydev').setup()
+
 -- Enable telescope fzf native, if installed
 pcall(require('telescope').load_extension, 'fzf')
 
 -- Telescope live_grep in git root
 -- Function to find the git root directory based on the current buffer's path
-local function find_git_root()
-  local current_file = vim.api.nvim_buf_get_name(0)
-  local current_dir
-  local cwd = vim.fn.getcwd()
-  -- If the buffer is not associated with a file, return nil
-  if current_file == '' then
-    current_dir = cwd
-  else
-    -- Extract the directory from the current file's path
-    current_dir = vim.fn.fnamemodify(current_file, ':h')
-  end
-
-  -- Find the Git root directory from the current file's path
-  local git_root = vim.fn.systemlist('git -C ' .. vim.fn.escape(current_dir, ' ') .. ' rev-parse --show-toplevel')[1]
-  if vim.v.shell_error ~= 0 then
-    print 'Not a git repository. Searching on current working directory'
-    return cwd
-  end
-  return git_root
-end
 
 -- Custom live_grep function to search in git root
-local function live_grep_git_root()
-  local git_root = find_git_root()
-  if git_root then
-    require('telescope.builtin').live_grep {
-      search_dirs = { git_root },
-    }
-  end
-end
-
-vim.api.nvim_create_user_command('LiveGrepGitRoot', live_grep_git_root, {})
 
 vim.keymap.set('n', '<leader>fb', require('telescope.builtin').buffers, { desc = '[F]ind buffers' })
 vim.keymap.set(
@@ -620,7 +605,6 @@ vim.keymap.set(
 key('n', '<leader>fgf', require('telescope.builtin').git_files, { desc = '[F]ind [G]it [F]iles' })
 key('n', '<leader>ff', require('telescope.builtin').find_files, { desc = '[F]ind [F]iles' })
 key('n', '<leader>fgg', require('telescope.builtin').live_grep, { desc = '[F]ind [G]rep' })
-key('n', '<leader>fgG', ':LiveGrepGitRoot<cr>', { desc = '[F]ind by [G]rep on [G]it Root' })
 key('n', '<leader>fd', require('telescope.builtin').diagnostics, { desc = '[F]ind [D]iagnostics' })
 key('n', '<leader>ft', require('telescope.builtin').colorscheme, { desc = '[F]ind [T]heme' })
 key('n', '<leader>fr', require('telescope.builtin').registers, { desc = '[F]ind [R]egisters' })
@@ -678,26 +662,6 @@ vim.defer_fn(function()
           ['if'] = '@function.inner',
           ['ac'] = '@class.outer',
           ['ic'] = '@class.inner',
-        },
-      },
-      move = {
-        enable = true,
-        set_jumps = true, -- whether to set jumps in the jumplist
-        goto_next_start = {
-          [']f'] = '@function.outer',
-          [']c'] = '@class.outer',
-        },
-        goto_next_end = {
-          [']F'] = '@function.outer',
-          [']C'] = '@class.outer',
-        },
-        goto_previous_start = {
-          ['[f'] = '@function.outer',
-          ['[c'] = '@class.outer',
-        },
-        goto_previous_end = {
-          ['[F'] = '@function.outer',
-          ['[C'] = '@class.outer',
         },
       },
       swap = {
@@ -761,15 +725,6 @@ for type, icon in pairs(signs) do
   vim.fn.sign_define(hl, { text = icon, texthl = hl, numhl = hl })
 end
 
--- document existing key chains
-require('which-key').register {
-  ['<leader>d'] = { name = '[D]ocument', _ = 'which_key_ignore' },
-  ['<leader>g'] = { name = '[G]it', _ = 'which_key_ignore' },
-  ['<leader>r'] = { name = '[R]ename', _ = 'which_key_ignore' },
-  ['<leader>w'] = { name = '[W]orkspace', _ = 'which_key_ignore' },
-  ['<leader>f'] = { name = '[F]uzzy find', _ = 'which_key_ignore' },
-}
-
 -- mason-lspconfig requires that these setup functions are called in this order
 require('mason').setup()
 require('mason-lspconfig').setup()
@@ -799,12 +754,7 @@ local servers = {
   },
 
   intelephense = { filetypes = { 'php', 'blade' } },
-
-  nil_ls = {},
 }
-
--- Setup neovim lua configuration
-require('neodev').setup()
 
 -- nvim-cmp supports additional completion capabilities, so broadcast that to servers
 local capabilities = vim.lsp.protocol.make_client_capabilities()
@@ -834,7 +784,6 @@ local luasnip = require 'luasnip'
 require('luasnip.loaders.from_vscode').lazy_load()
 luasnip.config.setup {}
 
----@diagnostic disable-next-line: missing-fields
 cmp.setup {
   snippet = {
     expand = function(args)
@@ -847,7 +796,8 @@ cmp.setup {
     ['<C-d>'] = cmp.mapping.scroll_docs(-4),
     ['<C-f>'] = cmp.mapping.scroll_docs(4),
     ['<C-Space>'] = cmp.mapping.complete {},
-    ['<Tab>'] = cmp.mapping.confirm { select = true },
+    -- ['<Tab>'] = cmp.mapping.confirm { select = true }, -- delete
+    ['<CR>'] = cmp.mapping.confirm { select = true },
   },
   sources = {
     { name = 'nvim_lsp' },
@@ -871,7 +821,6 @@ cmp.setup {
     ghost_text = true,
     native_menu = false,
   },
-  ---@diagnostic disable-next-line: missing-fields
   formatting = {
     format = require('lspkind').cmp_format {
       maxwidth = 50,
@@ -910,13 +859,6 @@ function SetMarkdownTitle()
     vim.cmd 'normal! zz'
   end
 end
-
-vim.cmd [[
-    augroup MarkdownTitle
-        autocmd!
-        autocmd BufNewFile *.md lua SetMarkdownTitle()
-    augroup END
-]]
 
 -- tweak colorscheme
 vim.cmd [[
