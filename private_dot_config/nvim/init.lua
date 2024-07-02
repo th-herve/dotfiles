@@ -53,6 +53,7 @@ autocmd('Filetype', {
     'java',
     'javascriptreact',
     'nix',
+    'blade',
   },
   command = [[setlocal shiftwidth=2 tabstop=2]],
 })
@@ -539,7 +540,11 @@ require('lazy').setup({
       formatters_by_ft = {
         lua = { 'stylua' },
         php = { { 'pint', 'php-cs-fixer', 'intelephense' } },
-        blade = { 'blade-formatter' },
+        blade = { 'blade-formatter', 'prettierd', 'prettier' },
+        javascript = { { 'prettierd', 'prettier' } },
+        html = { { 'prettierd', 'prettier' } },
+        css = { { 'prettierd', 'prettier' } },
+        python = { 'isort', 'black' },
 
         -- Conform can also run multiple formatters sequentially
         -- python = { "isort", "black" },
@@ -795,7 +800,7 @@ local servers = {
   pyright = {},
   -- rust_analyzer = {},
   tsserver = {},
-  html = { filetypes = { 'html', 'twig', 'hbs' } },
+  html = { filetypes = { 'html', 'twig', 'hbs', 'blade' } },
   cssls = {},
   tailwindcss = { filetypes = { 'javascript', 'javascriptreact', 'typescriptreact', 'php', 'blade' } },
   emmet_ls = { 'html', 'typescriptreact', 'javascriptreact', 'css', 'sass' },
