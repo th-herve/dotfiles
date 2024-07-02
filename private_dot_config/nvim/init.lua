@@ -91,8 +91,6 @@ vim.g.maplocalleader = ' '
 -- Mode switch
 --key("i", "<Esc>", "<Nop>")
 key({ 'i' }, 'jk', '<Esc>')
-key('n', '<M-v>', '<C-v>', { silent = true })
-key('t', '<C-n>', '<C-\\><C-n>', { silent = true })
 
 -- Remap for dealing with word wrap
 key('n', 'k', "v:count == 0 ? 'gk' : 'k'", { expr = true, silent = true })
@@ -101,24 +99,18 @@ key('n', 'j', "v:count == 0 ? 'gj' : 'j'", { expr = true, silent = true })
 -- Diagnostic keymaps
 key('n', '[d', vim.diagnostic.goto_prev, { desc = 'Go to previous diagnostic message' })
 key('n', ']d', vim.diagnostic.goto_next, { desc = 'Go to next diagnostic message' })
-key('n', '<leader>df', vim.diagnostic.open_float, { desc = 'Open floating diagnostic message' })
 key('n', '<leader>dq', vim.diagnostic.setloclist, { desc = 'Open diagnostics list' })
 
 -- Navigation/operation
 key('n', ld .. 'v', ':vsplit<CR>', { silent = true })
-key('n', ld .. 'e', '<C-w>w')
 key('n', '<M-l>', ':bnext<CR>', { silent = true })
 key('n', '<M-h>', ':bprevious<CR>', { silent = true })
 key('n', ld .. 's', ':w<CR>', { silent = true })
 key({ 'n', 'o', 'v' }, 'L', '$')
 key({ 'n', 'o', 'v' }, 'H', '^')
-key('n', ld .. '<Space>', 'za')
-key('n', ld .. 'i', '<S-s>')
 
 -- close buffer
 key('n', ld .. 'q', ':bd<CR>', { silent = true }) -- close current buffer without saving
-key('n', ld .. '<S-q>', ':q!<cr>') -- close all without saving
-key('n', ld .. 'wq', ':wq<cr>')
 
 key('n', '<C-o>', '<C-o>zz')
 key('n', '<C-i>', '<C-i>zz')
@@ -142,12 +134,6 @@ key({ 'i', 'c' }, '<C-a>', '<Home>')
 key({ 'i', 'c' }, '<C-e>', '<End>')
 
 -- Text edit
-key('n', '<C-S-j>', ':m .+1<CR>==', { silent = true })
-key('n', '<C-S-k>', ':m .-2<CR>==', { silent = true })
-key('i', '<C-j>', '<Esc>:m .+1<CR>==gi', { silent = true })
-key('i', '<C-k>', '<Esc>:m .-2<CR>==gi', { silent = true })
-key('v', '<C-k>', ":m '>+1<CR>gv=gv", { silent = true })
-key('v', '<C-j>', ":m '<-1<CR>gv=gv", { silent = true })
 key('n', ld .. 'a', 'ggVG')
 key('v', ld .. 'a', '<Esc>')
 key('n', 'yaa', ':%y<Esc>', { silent = true })
