@@ -830,6 +830,27 @@ cmp.setup {
     },
   },
 }
+-- document existing key chains
+require('which-key').register {
+  ['<leader>d'] = { name = '[D]ocument', _ = 'which_key_ignore' },
+  ['<leader>g'] = { name = '[G]it', _ = 'which_key_ignore' },
+  ['<leader>r'] = { name = '[R]ename', _ = 'which_key_ignore' },
+  ['<leader>w'] = { name = '[W]orkspace', _ = 'which_key_ignore' },
+  ['<leader>f'] = { name = '[F]uzzy find', _ = 'which_key_ignore' },
+}
+
+-- luasnip keybind
+vim.keymap.set({ 'i', 's' }, '<A-j>', function()
+  if luasnip.expand_or_jumpable() then
+    luasnip.expand_or_jump()
+  end
+end, { silent = true })
+
+vim.keymap.set({ 'i', 's' }, '<A-k>', function()
+  if luasnip.jumpable(-1) then
+    luasnip.jump(-1)
+  end
+end, { silent = true })
 
 -- +-------------------------------+
 -- |            Commands           |
