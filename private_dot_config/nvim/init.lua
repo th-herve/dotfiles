@@ -468,6 +468,11 @@ require('lazy').setup({
   },
 
   {
+    'ptdewey/darkearth-nvim',
+    priority = 1000,
+  },
+
+  {
     'rose-pine/neovim',
     priority = 1000,
   },
