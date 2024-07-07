@@ -558,18 +558,15 @@ require('lazy').setup({
     ft = 'lua',
   },
 
-  -- {
-  --   dir = '~/programming/project/sline-nvim/', -- Your path
-  --   name = 'sline',
-  --   opts = {
-  --     depth = 1,
-  --     status_line = false,
-  --     unamed_buffer_label = 'new',
-  --   },
-  --   -- config = function()
-  --   --   require('winbar')
-  --   -- end
-  -- },
+  {
+    'th-herve/sline-nvim',
+    opts = {
+      depth = 1,
+      status_line = false,
+      contrast = false,
+      -- unamed_buffer_label = '',
+    },
+  },
   require 'plugins.debug',
 }, {
   -- Lazy config
@@ -907,46 +904,3 @@ augroup BladeFiltypeRelated
   au BufNewFile,BufRead *.blade.php set ft=blade
 augroup END
 ]]
-
-local function get_winbar()
-  local devicon = require 'nvim-web-devicons'
-
-  local filename = vim.fn.expand '%:t'
-  local extension = vim.fn.expand '%:e'
-
-  local dir = vim.fn.expand '%:p:h'
-
-  local split_dir = vim.split(dir, '/') -- break path into all directories
-  dir = split_dir[#split_dir] -- get last dir in the path
-
-  local icon, icon_hl = devicon.get_icon(filename, extension, { default = true })
-  local win_hl = '%#WinBar#'
-
-  local branch = vim.fn.FugitiveStatusline()
-
-  if branch ~= '' then
-    branch = string.match(branch, '%((.*)%)')
-    branch = '%#Green#  ' .. win_hl .. branch
-  end
-
-  return '%#Directory#󰉋 '
-    .. win_hl
-    .. dir
-    .. '%#Yellow#'
-    .. ' > '
-    .. '%#'
-    .. icon_hl
-    .. '#'
-    .. icon
-    .. win_hl
-    .. ' '
-    .. filename
-    .. '%='
-    .. (branch or '')
-end
-
-vim.api.nvim_create_autocmd({ 'BufEnter' }, {
-  callback = function()
-    vim.o.winbar = get_winbar()
-  end,
-})
