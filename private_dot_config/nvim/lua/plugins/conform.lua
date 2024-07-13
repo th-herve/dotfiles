@@ -28,6 +28,7 @@ return { -- Autoformat
       php = { { 'pint', 'php-cs-fixer', 'intelephense' } },
       blade = { 'blade-formatter', 'prettierd', 'prettier' },
       javascript = { { 'prettierd', 'prettier' } },
+      typescript = { { 'prettierd', 'prettier' } },
       html = { { 'prettierd', 'prettier' } },
       css = { { 'prettierd', 'prettier' } },
       python = { 'isort', 'black' },
