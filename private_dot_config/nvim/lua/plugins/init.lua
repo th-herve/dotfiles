@@ -4,7 +4,7 @@ return {
 
   'tpope/vim-surround',
   -- 'jiangmiao/auto-pairs',
-  -- 'tpope/vim-repeat',
+  'tpope/vim-repeat',
   -- 'mg979/vim-visual-multi',
 
   {
