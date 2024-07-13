@@ -39,10 +39,12 @@ key('n', '<C-i>', '<C-i>zz')
 -- emacs binding in insert and command mode
 key({ 'i', 'c' }, '<C-b>', '<left>')
 key({ 'i', 'c' }, '<C-f>', '<right>')
-key({ 'i', 'c' }, '<M-b>', '<C-left>') -- does not work. overriden by autopair plugin
+key({ 'i', 'c' }, '<M-b>', '<C-left>')
 key({ 'i', 'c' }, '<M-f>', '<C-right>')
 key({ 'i', 'c' }, '<C-a>', '<Home>')
 key({ 'i', 'c' }, '<C-e>', '<End>')
+key({ 'i', 'c' }, '<C-d>', '<Delete>')
+key('i', '<M-d>', '<Esc>ldwi', { noremap = true, silent = true })
 
 -- Text edit
 key('n', ld .. 'a', 'ggVG')
