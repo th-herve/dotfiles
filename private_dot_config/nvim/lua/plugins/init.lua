@@ -15,13 +15,7 @@ return {
 
   { 'numToStr/Comment.nvim', opts = {} },
 
-  { 'folke/lazydev.nvim', ft = 'lua' },
+  { 'th-herve/sline-nvim', opts = {} },
 
-  {
-    'th-herve/sline-nvim',
-    opts = {
-      status_line = false,
-      contrast = false,
-    },
-  },
+  -- require 'debug.debug',
 }
