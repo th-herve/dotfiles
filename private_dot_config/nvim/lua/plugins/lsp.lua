@@ -108,13 +108,13 @@ return {
     -- |              ui               |
     -- +-------------------------------+
 
-    -- vim.diagnostic.config {
-    --   float = { border = 'rounded' },
-    -- }
+    vim.diagnostic.config {
+      float = { border = 'rounded' },
+    }
 
-    -- require('lspconfig.ui.windows').default_options = {
-    --   border = 'single',
-    -- }
+    require('lspconfig.ui.windows').default_options = {
+      border = 'single',
+    }
 
     local signs = { Error = ' ', Warn = ' ', Hint = '󰌵 ', Info = ' ' }
     for type, icon in pairs(signs) do
