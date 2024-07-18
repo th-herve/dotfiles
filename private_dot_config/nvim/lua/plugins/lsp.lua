@@ -65,9 +65,9 @@ return {
       pyright = {},
       -- rust_analyzer = {},
       tsserver = {},
-      html = { filetypes = { 'html', 'twig', 'hbs', 'blade' } },
+      html = { filetypes = { 'html', 'twig', 'hbs', 'blade', 'typescript' } },
       cssls = {},
-      tailwindcss = { filetypes = { 'javascript', 'javascriptreact', 'typescriptreact', 'php', 'blade' } },
+      tailwindcss = { filetypes = { 'html', 'javascript', 'javascriptreact', 'typescriptreact', 'php', 'blade' } },
       emmet_ls = { 'html', 'typescriptreact', 'javascriptreact', 'css', 'sass' },
 
       lua_ls = {

@@ -29,6 +29,7 @@ return { -- Autoformat
       blade = { 'blade-formatter', 'prettierd', 'prettier' },
       javascript = { { 'prettierd', 'prettier' } },
       typescript = { { 'prettierd', 'prettier' } },
+      json = { { 'prettierd', 'prettier' } },
       html = { { 'prettierd', 'prettier' } },
       css = { { 'prettierd', 'prettier' } },
       python = { 'isort', 'black' },

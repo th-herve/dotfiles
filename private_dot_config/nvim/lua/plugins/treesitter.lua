@@ -66,9 +66,13 @@ return {
     ---@diagnostic disable-next-line: missing-fields
     require('nvim-treesitter.configs').setup(opts)
 
-    require('nvim-treesitter.configs').setup {}
-
     local parser_config = require('nvim-treesitter.parsers').get_parser_configs()
+
+    vim.filetype.add {
+      pattern = {
+        ['.*%.blade%.php'] = 'blade',
+      },
+    }
 
     -- manually add blade parser
     ---@diagnostic disable-next-line: inject-field
