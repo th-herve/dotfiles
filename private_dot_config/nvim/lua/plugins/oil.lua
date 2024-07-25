@@ -10,6 +10,11 @@ return {
     },
   },
   key = {
-    key('n', '<leader>b', ':Oil --float<CR>:set nonumber norelativenumber<CR>:highlight EndOfBuffer guifg=#1D2021<CR>', { silent = true }),
+    key(
+      'n',
+      '<leader>b',
+      ':Oil --float<CR>:set nonumber norelativenumber<CR>:highlight EndOfBuffer guifg=#1D2021<CR>',
+      { silent = true, desc = 'Oil' }
+    ),
   },
 }

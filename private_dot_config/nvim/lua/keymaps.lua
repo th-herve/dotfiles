@@ -21,8 +21,8 @@ key({ 'n', 'o', 'v' }, 'L', '$')
 key({ 'n', 'o', 'v' }, 'H', '^')
 
 -- Operation
-key('n', ld .. 'q', ':bd<CR>', { silent = true }) -- close current buffer without saving
-key('n', ld .. 's', ':w<CR>', { silent = true })
+key('n', ld .. 'q', ':bd<CR>', { silent = true, desc = 'close buffer' }) -- close current buffer without saving
+key('n', ld .. 's', ':w<CR>', { silent = true, desc = 'save buffer' })
 
 -- Scrolling
 key('n', '<A-j>', '<C-e>', { silent = true })
@@ -47,14 +47,14 @@ key({ 'i', 'c' }, '<C-d>', '<Delete>')
 key('i', '<M-d>', '<Esc>ldwi', { noremap = true, silent = true })
 
 -- Text edit
-key('n', ld .. 'a', 'ggVG')
-key('v', ld .. 'a', '<Esc>')
+key('n', ld .. 'a', 'ggVG', { desc = 'select all file' })
+key('v', ld .. 'a', '<Esc>', { desc = 'deselect' })
 key('n', 'yaa', ':%y<Esc>', { silent = true })
 key('v', '<', '<gv', { silent = true })
 key('v', '>', '>gv', { silent = true })
 -- ld+char to add it at the end of the line
 for _, c in ipairs { ';', '.', ',', ':', '>' } do
-  key('n', ld .. c, 'A' .. c .. '<Esc>')
+  key('n', ld .. c, 'A' .. c .. '<Esc>', { desc = 'append ' .. c .. ' to line' })
 end
 
 -- Quickfix
@@ -62,13 +62,13 @@ key('n', ld .. 'cp', ':cp<CR>zz', { desc = 'Quickfix [P]revious' })
 key('n', ld .. 'cn', ':cn<CR>zz', { desc = 'Quickfix [N]ext' })
 
 -- Others
-key('n', ld .. 'oo', ':setlocal spell!<CR>', { silent = true })
-key('n', ld .. 'of', ':setlocal spelllang=fr<CR>')
-key('n', ld .. 'oe', ':setlocal spelllang=en<CR>')
+key('n', ld .. 'oo', ':setlocal spell!<CR>', { silent = true, desc = 'set spell' })
+key('n', ld .. 'of', ':setlocal spelllang=fr<CR>', { desc = 'set Fr spell' })
+key('n', ld .. 'oe', ':setlocal spelllang=en<CR>', { desc = 'set En spell' })
 -- key("n", ld .. "F", ":Format<CR>", { desc = "[F]ormat" })
 
 -- Past 0 register (usefull when deleting something, for pasting last yanked text)
-key('n', ld .. 'p', '"0p')
+key('n', ld .. 'p', '"0p', { desc = 'past last yanked' })
 
 --------------------------------------------------------------
 

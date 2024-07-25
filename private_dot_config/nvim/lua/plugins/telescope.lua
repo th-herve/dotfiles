@@ -37,7 +37,7 @@ return {
     local builtin = require 'telescope.builtin'
 
     key('n', '<leader>fb', builtin.buffers, { desc = '[F]ind buffers' })
-    key('n', '<leader>/', builtin.current_buffer_fuzzy_find, { desc = '[/] Fuzzily search in current buffer' })
+    key('n', '<leader>/', builtin.current_buffer_fuzzy_find, { desc = 'search current buffer' })
     key('n', '<leader>fgf', builtin.git_files, { desc = '[F]ind [G]it [F]iles' })
     key('n', '<leader>ff', builtin.find_files, { desc = '[F]ind [F]iles' })
     key('n', '<leader>fgg', builtin.live_grep, { desc = '[F]ind [G]rep' })
