@@ -48,6 +48,7 @@ vim.cmd [[
   autocmd FileType html       iabbrev clo console.log();jkhi
 
   autocmd FileType c iabbrev pfd printf("%d\n", );jkhhi
+  autocmd FileType c iabbrev pfi printf("%i\n", );jkhhi
   autocmd FileType c iabbrev pfs printf("%s\n", );jkhhi
   autocmd FileType c iabbrev pfc printf("%c\n", );jkhhi
 ]]
