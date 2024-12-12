@@ -51,6 +51,7 @@ return {
         map('gI', telescope.lsp_implementations, '[G]oto [I]mplementation')
         map('<leader>D', telescope.lsp_type_definitions, 'Type [D]efinition')
         map('<leader>ws', telescope.lsp_dynamic_workspace_symbols, '[W]orkspace [S]ymbols')
+        map('<leader>fs', telescope.lsp_document_symbols, '[F]ind [S]ymbols')
         map('<leader>fh', telescope.help_tags, '[F]ind [H]elp tags')
         map('<leader>ds', function()
           telescope.lsp_document_symbols { symbols = 'function' }
@@ -74,7 +75,8 @@ return {
           columnLimit = 100,
         },
       },
-      -- gopls = {},
+      gopls = {},
+      sqlls = { filetypes = { 'sql' } },
       pyright = {},
       -- rust_analyzer = {},
       -- tsserver = {},
