@@ -7,6 +7,9 @@ setopt HIST_IGNORE_SPACE
 # node path
 export PATH="$PATH:$HOME/.nvm/versions/node/v20.10.0/bin"
 
+# go bin
+export PATH=$PATH:$HOME/go/bin
+
 #        === autocomplete ===
 
 autoload -Uz compinit promptinit
