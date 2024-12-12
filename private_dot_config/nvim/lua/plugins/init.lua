@@ -5,7 +5,9 @@ return {
   'tpope/vim-surround',
   -- 'jiangmiao/auto-pairs',
   'tpope/vim-repeat',
-  -- 'mg979/vim-visual-multi',
+
+  'mg979/vim-visual-multi',
+  -- 'terryma/vim-multiple-cursors',
 
   {
     'windwp/nvim-autopairs',
