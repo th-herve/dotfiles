@@ -302,3 +302,7 @@ bindkey -M emacs '^N' history-substring-search-down
 bindkey '^j' autosuggest-execute
 
 # eval "$(starship init zsh)"
+
+. "$HOME/.atuin/bin/env"
+
+eval "$(atuin init zsh)"

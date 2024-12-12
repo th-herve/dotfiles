@@ -66,6 +66,7 @@ alias npmt="npm test"
 export VISUAL=nvim;
 export EDITOR=nvim;
 
+
 # enable auto cd
 shopt -s autocd
 
@@ -221,3 +222,6 @@ if [ -n "$IN_NIX_SHELL" ]; then
 fi
 
 # neofetch
+
+[[ -f ~/.bash-preexec.sh ]] && source ~/.bash-preexec.sh
+eval "$(atuin init bash)"
