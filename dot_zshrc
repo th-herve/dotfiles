@@ -10,6 +10,10 @@ export PATH="$PATH:$HOME/.nvm/versions/node/v20.10.0/bin"
 # go bin
 export PATH=$PATH:$HOME/go/bin
 
+# for flutter
+export CHROME_EXECUTABLE=chromium
+export PATH=$PATH:$HOME/.local/bin/flutter/bin
+
 #        === autocomplete ===
 
 autoload -Uz compinit promptinit
