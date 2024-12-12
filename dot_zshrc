@@ -31,6 +31,7 @@ EDITOR=nvim
 export VISUAL=nvim
 export PATH="$PATH:/home/adiantum/.local/bin"
 export PATH="$PATH:/opt/gradle/gradle-8.4/bin"
+export MANPAGER='nvim +Man!' # man pages in nvim
 
 #        === Prompt ===
 setopt autocd
