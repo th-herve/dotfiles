@@ -2,38 +2,17 @@
 # see /usr/share/doc/bash/examples/startup-files (in the package bash-doc)
 # for examples
 
-# working temp aliases
-alias odin="cd ~/programming/web/odin"
-
 # my aliases
 alias python="python3"
-alias r="ranger"
-alias bat="batcat"
-alias ztr="zathura"
 
 # nvim
 alias v="nvim"
-alias nvc="cd ~/.config/nvim"
-alias nvcw="cd ~/.config/nvim/vimwiki/docs"
-alias nvi="chezmoi edit ~/.config/nvim/init.vim"
-alias nvp="cd ~/.config/nvim/plugged"
-alias wiki="nvim ~/.config/nvim/vimwiki/docs/index.md"
 
 # Kitty
 alias icat="kitty +kitten icat"
 alias kt.='nohup kitty --directory "$(pwd)" >/dev/null 2>&1 & disown'
 alias ktc="cd ~/.config/kitty"
 alias kti="chezmoi edit ~/.config/kitty/kitty.conf"
-
-# qtile
-alias qtc="cd ~/.config/qtile"
-alias qti="chezmoi edit ~/.config/qtile/config.py"
-alias qtr="pkill -SIGUSR1 qtile"
-
-# chezmoi
-alias cmd="chezmoi cd"
-alias cme="chezmoi edit"
-alias cma="chezmoi -v apply"
 
 # git aliases
 alias gs="git status"
@@ -45,7 +24,7 @@ alias gd="git diff"
 alias gg="git graph"
 
 # bashrc
-alias bsi="chezmoi edit ~/.bashrc"
+alias bsi="nvim ~/.bashrc"
 alias bss="source ~/.bashrc"
 
 # cmd aliases
@@ -56,29 +35,18 @@ alias ..="cd .."
 alias rm="rm -i"
 
 # ls aliases
+alias l='ls -l'
 alias ll='ls -alF'
 alias la='ls -lA'
-alias l='ls -CF'
-
-alias npmt="npm test"
 
 # set default editor
 export VISUAL=nvim;
 export EDITOR=nvim;
 
-
 # enable auto cd
 shopt -s autocd
 
 PATH="$HOME/.local/bin:$PATH"
-export PATH="$HOME/programming/git_clone/eww/target/release:$PATH"
-
-# set vi mode and enable ctrl l in insert mode
-# set -o vi
-# bind -m vi-command 'Control-l: clear-screen'
-# bind -m vi-insert 'Control-l: clear-screen'
-
-
 
 # If not running interactively, don't do anything
 case $- in

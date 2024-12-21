@@ -152,8 +152,9 @@ alias zss="source ~/.zshrc"
 
 alias ipadress="echo \$(ip addr show | awk '/inet.*brd/{print \$2}' | sed 's|/.*||')"
 alias cddl="cd ~/Downloads"
-alias ..="cd .."
-alias cd..="cd .."
+alias ..="z .."
+alias cd..="z .."
+alias cd='z'
 
 # security
 alias mv="mv -i" # ask if override
