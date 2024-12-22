@@ -1,0 +1,32 @@
+XF86Audio{Prev,Next}
+	playerctl {previous,next}
+
+XF86AudioPlay
+	playerctl --player=spotify play-pause
+
+XF86Audio{Lower,Raise}Volume
+    amixer sset Master 2%{-,+}
+
+XF86AudioMute
+    amixer sset Master toggle
+
+XF86MonBrightness{Down,Up}
+    xbacklight -{dec,inc} 5
+
+Print
+    flameshot gui
+
+shift + Print
+    flameshot full --clipboard --path ~/Pictures/screenshot
+
+mod4 + shift + k
+    $HOME/.config/dmenu_script/pkill_process.sh
+
+mod4 + shift + c
+    gnome-calculator
+
+mod4 + shift + i
+    $HOME/programming/script/url_launcher.sh
+
+mod4 + shift + t
+    $HOME/programming/script/text_expension.sh
