@@ -1,4 +1,4 @@
-# vim modeline to specify filetype:
+# vim modeline to specify filetype: boo
 # vim: set ft=zsh:
 
 setopt autocd
@@ -10,6 +10,7 @@ source ~/.profile
 
 # stow directory (only use in this file, not a stow variable)
 export DOT_DIR="~/stow"
+export DOT_CONFIG="~/stow/dot-config"
 
 # node path
 export PATH="$PATH:$HOME/.nvm/versions/node/v20.10.0/bin"
@@ -122,7 +123,7 @@ alias wiki="nvim ~/.config/nvim/vimwiki/docs/index.md"
 alias kt.='nohup kitty --directory "$(pwd)" >/dev/null 2>&1 & disown'  # opens a new kitty terminal in the same directory as the current one
 alias icat="kitty +kitten icat"
 alias ktc="cd ~/.config/kitty"
-alias kti="chezmoi edit ~/.config/kitty/kitty.conf"
+alias kti="nvim $DOT_CONFIG/kitty/kitty.conf"
 
 # chezmoi
 alias cmd="chezmoi cd"
