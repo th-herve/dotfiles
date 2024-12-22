@@ -26,7 +26,7 @@ mod4 + shift + c
     gnome-calculator
 
 mod4 + shift + i
-    $HOME/programming/script/url_launcher.sh
+    $HOME/.config/dmenu_script/url_launcher.sh
 
 mod4 + shift + t
-    $HOME/programming/script/text_expension.sh
+    $HOME/.config/dmenu_script/text_expension.sh
