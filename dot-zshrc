@@ -1,8 +1,15 @@
+# vim modeline to specify filetype:
+# vim: set ft=zsh:
+
 setopt autocd
 zle_highlight=('paste:none')
 
 source ~/.profile
-setopt HIST_IGNORE_SPACE
+
+#        === env variables ===
+
+# stow directory (only use in this file, not a stow variable)
+export DOT_DIR="~/stow"
 
 # node path
 export PATH="$PATH:$HOME/.nvm/versions/node/v20.10.0/bin"
@@ -14,6 +21,15 @@ export PATH=$PATH:$HOME/go/bin
 export CHROME_EXECUTABLE=chromium
 export PATH=$PATH:$HOME/.local/bin/flutter/bin
 
+export PATH="$PATH:/home/adiantum/.local/bin"
+
+export PATH="$PATH:/opt/gradle/gradle-8.4/bin"
+
+# set nvim as editor
+export EDITOR=nvim
+export VISUAL=nvim
+export MANPAGER='nvim +Man!' # opens man pages in nvim
+
 #        === autocomplete ===
 
 autoload -Uz compinit promptinit
@@ -24,17 +40,7 @@ zstyle ':completion:*' menu select
 zstyle ':completion:*' matcher-list 'm:{a-z}={A-Za-z}'
 zmodload zsh/complist
 
-
-#        === editor ===
-
-EDITOR=nvim
-export VISUAL=nvim
-export PATH="$PATH:/home/adiantum/.local/bin"
-export PATH="$PATH:/opt/gradle/gradle-8.4/bin"
-export MANPAGER='nvim +Man!' # man pages in nvim
-
 #        === Prompt ===
-setopt autocd
 
 PROMPT="%(?.%F{cyan}󰊠 %F{green}󰊠 %F{magenta}󰊠.%F{cyan}%F{red}󰊠%F{cyan}) %F{green}%n:%F{cyan}%1~%f%# "
 PS2="%{[0;1;95m%}> %{[0m%}"
@@ -66,13 +72,12 @@ alias nsz="nix-shell --command 'zsh'"
 
 #        === History ===
 
+setopt HIST_IGNORE_SPACE
 HISTSIZE=10000
 SAVEHIST=10000
 HISTFILE=~/.config/zsh/history/zshhistory
 
-
 #        === keybind ===
-
 
 # Use vim keys in tab complete menu:
 bindkey -M menuselect 'h' vi-backward-char
@@ -80,7 +85,6 @@ bindkey -M menuselect 'k' vi-up-line-or-history
 bindkey -M menuselect 'l' vi-forward-char
 bindkey -M menuselect 'j' vi-down-line-or-history
 bindkey -v '^?' backward-delete-char
-
 
 bindkey -e  # set emacs key
 
@@ -93,6 +97,7 @@ bindkey '^v' edit-command-line
 
 # working temp aliases
 alias bts="cd ~/Documents/bts/"
+alias cda="cd ~/Documents/cda/"
 alias pof="cd ~/programming/project/portfolio/"
 alias sail='sh $([ -f sail ] && echo sail || echo vendor/bin/sail)'
 alias spa='sail php artisan'
@@ -100,8 +105,6 @@ alias spa='sail php artisan'
 # my aliases
 alias python="python3"
 alias py="python3"
-alias r="ranger"
-alias ztr="zathura"
 alias tm="tmux"
 alias tma="tmux a"
 alias lzg="lazygit"
@@ -116,15 +119,10 @@ alias nvi="chezmoi cd ~/.config/nvim/"
 alias wiki="nvim ~/.config/nvim/vimwiki/docs/index.md"
 
 # Kitty
+alias kt.='nohup kitty --directory "$(pwd)" >/dev/null 2>&1 & disown'  # opens a new kitty terminal in the same directory as the current one
 alias icat="kitty +kitten icat"
-alias kt.='nohup kitty --directory "$(pwd)" >/dev/null 2>&1 & disown'
 alias ktc="cd ~/.config/kitty"
 alias kti="chezmoi edit ~/.config/kitty/kitty.conf"
-
-# qtile
-alias qtc="cd ~/.config/qtile"
-alias qti="chezmoi edit ~/.config/qtile/config.py"
-alias qtr="pkill -SIGUSR1 qtile"
 
 # chezmoi
 alias cmd="chezmoi cd"
@@ -143,15 +141,17 @@ alias gc="git checkout"
 alias gcb="git checkout -b"
 
 # bashrc
-alias bsi="chezmoi edit ~/.bashrc"
+alias bsi="nvim $DOT_DIR/dot-zshrc"
 alias bss="source ~/.bashrc"
 
 # zshrc
-alias zsi="chezmoi edit ~/.zshrc"
+alias zsi="nvim $DOT_DIR/dot-zshrc"
 alias zss="source ~/.zshrc"
 
 alias ipadress="echo \$(ip addr show | awk '/inet.*brd/{print \$2}' | sed 's|/.*||')"
 alias cddl="cd ~/Downloads"
+
+# replace cd with zoxide
 alias ..="z .."
 alias cd..="z .."
 alias cd='z'
@@ -161,38 +161,28 @@ alias mv="mv -i" # ask if override
 alias rm="rm -i"
 alias cp="cp -i"
 
-alias ls='ls --color=auto'
 alias grep='grep --color=auto'
 alias fgrep='fgrep --color=auto'
 alias egrep='egrep --color=auto'
 
-# ls aliases
+# ls aliases, mostly replace it with exa
+alias ls='ls --color=auto'
 alias l='exa -l --icons'
 alias la='exa -la --icons'
 alias ll='ls -CF'
 alias tree='exa -T --icons'
 export EXA_COLORS="da=30:uu=0:fi=1;35:di=34"
 
-alias npmt="npm test"
-
-alias pacman="sudo pacman -S"
-
-alias battery="~/battery_level.sh"
-
+# feh
 alias feh="feh --scale-down -B 'black' -z --action 'feh --bg-scale %f' "
 alias feh-i="feh --index --thumb-width 200 --thumb-height 150"
 
-# apt
-alias aptup="sudo apt update && sudo apt upgrade"
-alias aptin="sudo apt install"
-alias aptrm="sudo apt remove"
-
 alias mkdir="mkdir -pv"
 
+# put a given file in the clipboard
 alias clip="xclip -selection c"
 
 # docker
-
 alias dcu="docker-compose up -d"
 alias dcd="docker-compose down"
 alias dcp="docker-compose ps"
@@ -200,7 +190,6 @@ alias dcp="docker-compose ps"
 alias pandock='docker run --rm -v "$(pwd):/data" -u $(id -u):$(id -g) pandoc/extra' # docker pour utiliser pandoc
 
 #        === fzf ===
-
 eval "$(fzf --zsh)"
 export FZF_DEFAULT_COMMAND="fd --hidden --strip-cwd-prefix --exclude .git"
 export FZF_CTRL_T_COMMAND="$FZF_DEFAULT_COMMAND"
@@ -224,8 +213,11 @@ export FZF_DEFAULT_OPTS=$FZF_DEFAULT_OPTS'
  --color=info:#89b482,prompt:#89b482,pointer:#e78a4e
  --color=marker:#89b482,spinner:#89b482,header:#87afaf'
 
+
+#        === functions ===
+
 # search directory and cd into it, search in ~
-fzc() {
+f() {
   local dir
   dir=$(fd --search-path $HOME --hidden --exclude .git --type d | fzf)
 
@@ -233,10 +225,9 @@ fzc() {
     cd "$dir"; l
   fi
 }
-alias f="fzc"
 
 # search directory and cd into it, search in current dir
-fz.() {
+f.() {
   local dir
   dir=$(fd --type d --hidden --exclude .git | fzf)
 
@@ -244,11 +235,9 @@ fz.() {
     cd "$dir"
   fi
 }
-alias f.="fz."
 
-
-# search directory and open it in nvim, search in current dir
-fzv() {
+# search for files and open it in nvim, search in current ~
+fv() {
   local file
   file=$(fd --search-path $HOME --type f --hidden --exclude .git | fzf)
 
@@ -256,10 +245,9 @@ fzv() {
     nvim "$file"
   fi
 }
-alias fv="fzv"
 
-# search directory and open it in nvim, search in current dir
-fzp() {
+# search pdf file and open it in sioyek, search in current ~
+fp() {
   local file
   file=$(fd --search-path $HOME --type f .pdf --exclude .git | fzf)
 
@@ -267,7 +255,8 @@ fzp() {
     sioyek "$file"
   fi
 }
-alias fp="fzp"
+
+
 
 # start x automatically if on tty1
 if [ "$(tty)" = "/dev/tty1" ]; then
