@@ -9,8 +9,8 @@ source ~/.profile
 #        === env variables ===
 
 # stow directory (only use in this file, not a stow variable)
-export DOT_DIR="~/stow"
-export DOT_CONFIG="~/stow/dot-config"
+export DOT_DIR="~/dotfiles"
+export DOT_CONFIG="$DOT_DIR/dot-config"
 
 # node path
 export PATH="$PATH:$HOME/.nvm/versions/node/v20.10.0/bin"
@@ -31,6 +31,8 @@ export EDITOR=nvim
 export VISUAL=nvim
 export MANPAGER='nvim +Man!' # opens man pages in nvim
 
+export BAT_THEME="ansi"
+
 #        === autocomplete ===
 
 autoload -Uz compinit promptinit
@@ -43,7 +45,7 @@ zmodload zsh/complist
 
 #        === Prompt ===
 
-PROMPT="%(?.%F{cyan}󰊠 %F{green}󰊠 %F{magenta}󰊠.%F{cyan}%F{red}󰊠%F{cyan}) %F{green}%n:%F{cyan}%1~%f%# "
+PROMPT="%(?.%F{cyan}󰊠 %F{green}󰊠 %F{magenta}󰊠.%F{cyan}%F{red}󰊠 󰊠 󰊠%F{cyan}) %F{green}%n:%F{cyan}%1~%f%# "
 PS2="%{[0;1;95m%}> %{[0m%}"
 
 # Set cursor to vertical before each promt (To avoid programs changing the cursor)
@@ -113,9 +115,9 @@ alias sx="startx"
 
 # nvim
 alias v="nvim"
-alias nvc="cd ~/.config/nvim"
+alias nvc="cd $DOT_CONFIG/nvim"
 alias nvcw="cd ~/.config/nvim/vimwiki/docs"
-alias nvi="chezmoi cd ~/.config/nvim/"
+alias nvi="cd $DOT_CONFIG/nvim/ && nvim init.lua"
 # alias nvp="cd ~/.config/nvim/plugged"
 alias wiki="nvim ~/.config/nvim/vimwiki/docs/index.md"
 
@@ -153,9 +155,9 @@ alias ipadress="echo \$(ip addr show | awk '/inet.*brd/{print \$2}' | sed 's|/.*
 alias cddl="cd ~/Downloads"
 
 # replace cd with zoxide
-alias ..="z .."
-alias cd..="z .."
-alias cd='z'
+# alias ..="z .."
+# alias cd..="z .."
+# alias cd='z'
 
 # security
 alias mv="mv -i" # ask if override
@@ -276,9 +278,7 @@ ctrlz () {
 zle -N ctrlz
 bindkey '^Z' ctrlz
 
-export BAT_THEME="ansi"
-
-eval "$(zoxide init zsh)"
+# eval "$(zoxide init zsh)"
 
 #        === keybind ===
 
