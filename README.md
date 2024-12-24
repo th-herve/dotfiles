@@ -26,12 +26,14 @@ If no .stowrc is set, by default it uses the current dir for '--dir' and its par
 
 ## Install the other programs
 
-Add dmenu or install it from source to patch it
 
 ```bash
 sudo pacman -S kitty rofi tmux zsh exa fzf
 ```
+> Add dmenu or install it from source to patch it
+ 
 > Add sxhkd and rofi if needed
+ 
 > Get greenclip from its github page
 
 ### install fonts
