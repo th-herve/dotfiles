@@ -1,4 +1,4 @@
---dir=~/stow/
+--dir=~/dotfiles/
 --target=~
 --ignore=.stowrc
 --dotfiles
