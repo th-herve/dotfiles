@@ -22,7 +22,7 @@ export PATH=$PATH:$HOME/go/bin
 export CHROME_EXECUTABLE=chromium
 export PATH=$PATH:$HOME/.local/bin/flutter/bin
 
-export PATH="$PATH:/home/adiantum/.local/bin"
+export PATH="$PATH:$HOME/.local/bin"
 
 export PATH="$PATH:/opt/gradle/gradle-8.4/bin"
 
