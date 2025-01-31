@@ -1,0 +1,28 @@
+
+(defcfg
+  process-unmapped-keys yes
+)
+
+(defsrc
+  caps tab a s d w h j k l ; q e x c
+)
+(defvar
+  tap-time 150
+  hold-time 200
+)
+
+(defalias
+  navLayer (layer-while-held nav)
+  tab (tap-hold $tap-time $hold-time tab lmet)
+  ; (tap-hold $tap-time $hold-time ; rmet)
+  q C-left
+  e C-right
+)
+
+(deflayer base
+  @navLayer @tab a s d w h j k l @; q e x c
+)
+
+(deflayer nav
+  _ _ left down right up bspc rctl rsft del _ @q @e home end
+)
