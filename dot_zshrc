@@ -16,7 +16,7 @@ export VISUAL=nvim
 
 #        === Prompt ===
 
-PROMPT="%(?.%F{cyan}[茶雨].%F{cyan}[%F{red}茶雨%F{cyan}]) %F{green}%n:%F{cyan}%1~%f%# "
+PROMPT="%(?.%F{cyan}󰊠 %F{green}󰊠 %F{magenta}󰊠.%F{cyan}[%F{red}󰊠 %F{cyan}]) %F{green}%n:%F{cyan}%1~%f%# "
 PS2="%{[0;1;95m%}> %{[0m%}"
 
 
@@ -238,7 +238,7 @@ bindkey '^j' autosuggest-execute
 #        === env ===
 
 # Created by `pipx` on 2023-07-30 14:33:14
-# export PATH="$PATH:/home/adiantum/.local/bin"
+export PATH="$PATH:/home/adiantum/.local/bin"
 
 export NVM_DIR="$HOME/.nvm"
 [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm

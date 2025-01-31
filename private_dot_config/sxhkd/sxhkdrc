@@ -11,7 +11,7 @@ XF86AudioMute
     pactl set-sink-mute 0 toggle
 
 XF86MonBrightness{Down,Up}
-    xbacklight -{dec,inc} 5
+    xbacklight -{dec,inc} 1
 
 Print
     gnome-screenshot -f ~/Pictures/screenshot/"$(date '+%Y-%m-%d_%H-%M-%S').png"
