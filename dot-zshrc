@@ -1,5 +1,12 @@
+# vim modeline to specify filetype: boo
+# vim: set ft=zsh:
+
 setopt autocd
 zle_highlight=('paste:none')
+
+# stow directory (only use in this file, not a stow variable)
+export DOT_DIR="~/dotfiles"
+export DOT_CONFIG="$DOT_DIR/dot-config"
 
 #        === autocomplete ===
 
@@ -11,12 +18,14 @@ zstyle ':completion:*' menu select
 zstyle ':completion:*' matcher-list 'm:{a-z}={A-Za-z}'
 zmodload zsh/complist
 
-EDITOR=nvim
+# set nvim as editor
+export EDITOR=nvim
 export VISUAL=nvim
+export MANPAGER='nvim +Man!' # opens man pages in nvim
 
 #        === Prompt ===
 
-PROMPT="%(?.%F{cyan}󰊠 %F{green}󰊠 %F{magenta}󰊠.%F{cyan}[%F{red}󰊠 %F{cyan}]) %F{green}%n:%F{cyan}%1~%f%# "
+PROMPT="%(?.%F{cyan}󰊠 %F{green}󰊠 %F{magenta}󰊠.%F{cyan}%F{red}󰊠 󰊠 󰊠 %F{cyan}) %F{green}%n:%F{cyan}%1~%f%# "
 PS2="%{[0;1;95m%}> %{[0m%}"
 
 
@@ -75,7 +84,7 @@ alias bat="batcat"
 alias v="nvim"
 alias nvc="cd ~/.config/nvim"
 alias nvcw="cd ~/.config/nvim/vimwiki/docs"
-alias nvi="chezmoi edit ~/.config/nvim/init.lua"
+alias nvi="nvim ~/.config/nvim/init.lua"
 alias nvp="cd ~/.config/nvim/plugged"
 alias wiki="nvim ~/.config/nvim/vimwiki/docs/index.md"
 
@@ -83,17 +92,11 @@ alias wiki="nvim ~/.config/nvim/vimwiki/docs/index.md"
 alias icat="kitty +kitten icat"
 alias kt.='nohup kitty --directory "$(pwd)" >/dev/null 2>&1 & disown'
 alias ktc="cd ~/.config/kitty"
-alias kti="chezmoi edit ~/.config/kitty/kitty.conf"
+alias kti="nvim $DOT_CONFIG/kitty/kitty.conf"
 
 # qtile
 alias qtc="cd ~/.config/qtile"
-alias qti="chezmoi edit ~/.config/qtile/config.py"
 alias qtr="pkill -SIGUSR1 qtile"
-
-# chezmoi
-alias cmd="chezmoi cd"
-alias cme="chezmoi edit"
-alias cma="chezmoi -v apply"
 
 # git aliases
 alias gs="git status"
@@ -106,11 +109,11 @@ alias gg="git log --graph --abbrev-commit --oneline --all --decorate"
 alias lzg="lazygit"
 
 # bashrc
-alias bsi="chezmoi edit ~/.bashrc"
+alias bsi="nvim edit ~/.bashrc"
 alias bss="source ~/.bashrc"
 
 # zshrc
-alias zsi="chezmoi edit ~/.zshrc"
+alias bsi="nvim $DOT_DIR/dot-zshrc"
 alias zss="source ~/.zshrc"
 
 # cmd aliases
@@ -182,18 +185,18 @@ export FZF_DEFAULT_OPTS=" \
 --color=fg:#cad3f5,header:#ed8796,info:#c6a0f6,pointer:#f4dbd6 \
 --color=marker:#f4dbd6,fg+:#cad3f5,prompt:#c6a0f6,hl+:#ed8796"
 
-# Define a function for the 'cf' command
-fzc() {
+# search directory and cd into it, search in ~
+f() {
   local dir
   dir=$(fd --search-path $HOME --hidden --exclude .git --type d | fzf)
 
   if [ -n "$dir" ]; then
-    cd "$dir"
+    cd "$dir"; l
   fi
-} 
-alias f='fzc'
+}
 
-fz.() {
+# search directory and cd into it, search in current dir
+f.() {
   local dir
   dir=$(fd --type d --hidden --exclude .git | fzf)
 
@@ -201,15 +204,24 @@ fz.() {
     cd "$dir"
   fi
 }
-alias f.='fz.'
 
-
-fzv() {
+# search for files and open it in nvim, search in current ~
+fv() {
   local file
-  file=$(fd --type f --hidden --exclude .git | fzf)
+  file=$(fd --search-path $HOME --type f --hidden --exclude .git | fzf)
 
   if [ -n "$file" ]; then
     nvim "$file"
+  fi
+}
+
+# search pdf file and open it in sioyek, search in current ~
+fp() {
+  local file
+  file=$(fd --search-path $HOME --type f .pdf --exclude .git | fzf)
+
+  if [ -n "$file" ]; then
+    sioyek "$file"
   fi
 }
 
