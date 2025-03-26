@@ -42,8 +42,11 @@ vim.cmd [[
 
 -- abbrev
 vim.cmd [[
+  autocmd FileType *          iabbrev cosnt const
+
   autocmd FileType javascript iabbrev clo console.log();jkhi
   autocmd FileType typescript iabbrev clo console.log();jkhi
+
   autocmd FileType php        iabbrev clo console.log();jkhi
   autocmd FileType html       iabbrev clo console.log();jkhi
 
