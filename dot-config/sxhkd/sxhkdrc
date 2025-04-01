@@ -29,4 +29,4 @@ mod4 + shift + i
     $HOME/.config/dmenu_script/url_launcher.sh
 
 mod4 + shift + t
-    $HOME/.config/dmenu_script/text_expension.sh
+    $HOME/.config/text_expension.sh
