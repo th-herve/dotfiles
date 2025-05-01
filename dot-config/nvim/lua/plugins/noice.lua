@@ -10,7 +10,7 @@ return {
       lsp_doc_border = true, -- add a border to hover docs and signature help
     },
     notify = {
-      enabled = true,
+      enabled = false,
     },
     messages = {
       enabled = false,
