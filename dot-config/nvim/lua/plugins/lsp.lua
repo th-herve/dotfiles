@@ -92,7 +92,7 @@ return {
         },
       },
 
-      intelephense = { filetypes = { 'php', 'blade' } },
+      phpactor = { filetypes = { 'php', 'blade' } },
     }
 
     local ok, cmp = pcall(require, 'cmp_nvim_lsp')
