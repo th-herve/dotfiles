@@ -24,6 +24,9 @@ return {
     -- Add your own debuggers here
     -- 'leoluz/nvim-dap-go',
     'jbyuki/one-small-step-for-vimkind',
+
+    -- Go extension
+    'leoluz/nvim-dap-go',
   },
   config = function()
     local dap = require 'dap'
@@ -65,13 +68,13 @@ return {
         icons = {
           pause = '⏸',
           play = '▶',
-          step_into = '⏎',
-          step_over = '⏭',
-          step_out = '⏮',
-          step_back = 'b',
-          run_last = '▶▶',
-          terminate = '⏹',
-          disconnect = '⏏',
+          step_into = '',
+          step_over = '',
+          step_out = '',
+          step_back = '',
+          run_last = '',
+          terminate = '',
+          disconnect = '',
         },
       },
     }
@@ -91,6 +94,8 @@ return {
     --     detached = vim.fn.has 'win32' == 0,
     --   },
     -- }
+    require('dap-go').setup()
+
     dap.configurations.lua = {
       {
         type = 'nlua',
