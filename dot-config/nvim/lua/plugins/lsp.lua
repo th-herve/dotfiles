@@ -5,6 +5,7 @@ return {
   dependencies = {
     'williamboman/mason.nvim',
     'williamboman/mason-lspconfig.nvim',
+    'folke/noice.nvim',
     {
       'pmizio/typescript-tools.nvim',
       dependencies = { 'nvim-lua/plenary.nvim', 'neovim/nvim-lspconfig' },
@@ -134,6 +135,7 @@ return {
     -- |              ui               |
     -- +-------------------------------+
 
+
     vim.diagnostic.config {
       float = { border = 'rounded' },
     }
@@ -141,6 +143,8 @@ return {
     require('lspconfig.ui.windows').default_options = {
       border = 'single',
     }
+
+    vim.lsp.buf.hover({ buffer = 'rounded' })
 
     local signs = { Error = ' ', Warn = ' ', Hint = '󰌵 ', Info = ' ' }
     for type, icon in pairs(signs) do
