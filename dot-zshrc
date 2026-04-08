@@ -4,8 +4,6 @@
 setopt autocd
 zle_highlight=('paste:none')
 
-source ~/.profile
-
 #        === env variables ===
 
 # stow directory (only use in this file, not a stow variable)
@@ -13,14 +11,10 @@ export DOT_DIR="~/dotfiles"
 export DOT_CONFIG="$DOT_DIR/dot-config"
 
 # node path
-export PATH="$PATH:$HOME/.nvm/versions/node/v20.10.0/bin"
+export PATH="$PATH:$HOME/.nvm/versions/node/v24.12.0/bin"
 
 # go bin
 export PATH=$PATH:$HOME/go/bin
-
-# for flutter
-export CHROME_EXECUTABLE=chromium
-export PATH=$PATH:$HOME/.local/bin/flutter/bin
 
 export PATH="$PATH:$HOME/.local/bin"
 
@@ -78,9 +72,12 @@ alias nsz="nix-shell --command 'zsh'"
 #        === History ===
 
 setopt HIST_IGNORE_SPACE
+setopt SHARE_HISTORY
+setopt INC_APPEND_HISTORY
 HISTSIZE=10000
 SAVEHIST=10000
 HISTFILE=~/.config/zsh/history/zshhistory
+
 
 #        === keybind ===
 
@@ -162,9 +159,9 @@ alias ipadress="echo \$(ip addr show | awk '/inet.*brd/{print \$2}' | sed 's|/.*
 alias cddl="cd ~/Downloads"
 
 # replace cd with zoxide
-# alias ..="z .."
-# alias cd..="z .."
-# alias cd='z'
+alias ..="z .."
+alias cd..="z .."
+alias cd='z'
 
 # security
 alias mv="mv -i" # ask if override
@@ -269,9 +266,9 @@ fp() {
 
 
 # start x automatically if on tty1
-if [ "$(tty)" = "/dev/tty1" ]; then
-    startx
-fi
+# if [ "$(tty)" = "/dev/tty1" ]; then
+#     startx
+# fi
 
 # toggle ctrl-z
 ctrlz () {
@@ -310,6 +307,13 @@ bindkey '^j' autosuggest-execute
 
 # eval "$(starship init zsh)"
 
-. "$HOME/.atuin/bin/env"
+# . "$HOME/.atuin/bin/env"
 
-eval "$(atuin init zsh)"
+# eval "$(atuin init zsh)"
+
+eval "$(zoxide init zsh)"
+
+export NVM_DIR="$HOME/.config/nvm"
+[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
+[ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
+

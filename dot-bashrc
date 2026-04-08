@@ -178,11 +178,6 @@ show_git_branch() {
 PS1="\[\e[0;96m\][\$(if [ \$? = 0 ]; then echo '\[\e[0;1;96m\]茶雨\[\e[0m\]'; else echo '\[\e[0;1;5;31m\]茶雨\[\e[0m\]'; fi)\[\e[0;96m\]] \[\e[0;32m\]\u\[\e[0m\]:\[\e[0;36m\]\W\[\e[0m\]\$\[\e[0m\] "
 PS2="\[\e[0;1;95m\]> \[\e[0m\]"
 
-# nvm env (auto generated)
-export NVM_DIR="$HOME/.nvm"
-[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
-[ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
-
 # change prompt if in a nix shell
 if [ -n "$IN_NIX_SHELL" ]; then
   export PS1 " $PS1"
@@ -192,3 +187,7 @@ fi
 
 [[ -f ~/.bash-preexec.sh ]] && source ~/.bash-preexec.sh
 eval "$(atuin init bash)"
+
+export NVM_DIR="$HOME/.config/nvm"
+[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
+[ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
