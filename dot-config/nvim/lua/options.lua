@@ -60,6 +60,8 @@ vim.o.timeoutlen = 300
 vim.o.completeopt = 'menuone,noselect,menu'
 vim.o.termguicolors = true
 
+-- global border style for floating window
+vim.o.winborder = 'rounded'
 ---------------------------------------------------------------
 
 -- Decrease update time
@@ -71,3 +73,4 @@ vim.opt.timeoutlen = 300
 
 -- Preview substitutions live, as you type!
 vim.opt.inccommand = 'split'
+
