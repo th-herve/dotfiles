@@ -7,15 +7,27 @@ end
 local snippet = ls.snippet
 local t = ls.text_node
 local i = ls.insert_node
-local d = ls.dynamic_node
-local sn = ls.snippet_node
+local f = ls.function_node
 local extras = require 'luasnip.extras'
 local rep = extras.rep
 local fmt = require('luasnip.extras.fmt').fmt
 
+local return_filename = function()
+  -- Get the filename without the path
+  local filename = vim.fn.fnamemodify(vim.fn.expand('%'), ':t')
+  -- Remove the extension
+  local name = filename:match("(.+)%..+$") or filename
+  -- Convert to PascalCase
+  local pascal = name:gsub("[^%w]+(%w)", function(c)
+    return c:upper()
+  end)
+  pascal = pascal:gsub("^%l", string.upper) -- capitalize first letter
+  return pascal
+end
+
 local function php_method(type)
   return fmt(
-    [[ 
+    [[
         {} function {}({}): {}
         {{
         {}{}
@@ -40,18 +52,19 @@ local function react_component()
   return fmt(
     [[
 interface Props {{
-	childrend: React.ReactNode;
+  children: React.ReactNode;
+  className?: string;
 }}
 
-const {} = (props: Props) => {{
+const {} = ({{children, className}}: Props) => {{
 	return (
-		<div>TODO</div>
+		<div className={{className}}>{{children}}</div>
 	)
 }}
 
 export default {};
 ]],
-    { i(1, 'App'), rep(1) }
+    { f(return_filename, {}), f(return_filename, {}) }
   )
 end
 
