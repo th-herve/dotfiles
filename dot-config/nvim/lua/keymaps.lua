@@ -5,8 +5,10 @@ key('n', 'k', "v:count == 0 ? 'gk' : 'k'", { expr = true, silent = true })
 key('n', 'j', "v:count == 0 ? 'gj' : 'j'", { expr = true, silent = true })
 
 -- Diagnostic keymaps
-key('n', '[d', vim.diagnostic.goto_prev, { desc = 'Go to previous diagnostic message' })
-key('n', ']d', vim.diagnostic.goto_next, { desc = 'Go to next diagnostic message' })
+key('n', '[d', function() vim.diagnostic.jump({ count = -1, float = true }) end,
+  { desc = 'Go to previous diagnostic message' })
+key('n', ']d', function() vim.diagnostic.jump({ count = 1, float = true }) end,
+  { desc = 'Go to next diagnostic message' })
 key('n', '<leader>dq', vim.diagnostic.setloclist, { desc = 'Open diagnostics list' })
 
 -- clear highlight search
