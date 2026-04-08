@@ -33,7 +33,6 @@ return {
       -- +-------------------------------+
       -- |           Keybinds            |
       -- +-------------------------------+
-
       map('<leader>rn', vim.lsp.buf.rename, '[R]e[n]ame')
       map('<leader>ca', vim.lsp.buf.code_action, '[C]ode [A]ction')
       map('K', vim.lsp.buf.hover, 'Hover Documentation')
@@ -134,17 +133,6 @@ return {
     -- +-------------------------------+
     -- |              ui               |
     -- +-------------------------------+
-
-
-    vim.diagnostic.config {
-      float = { border = 'rounded' },
-    }
-
-    require('lspconfig.ui.windows').default_options = {
-      border = 'single',
-    }
-
-    vim.lsp.buf.hover({ buffer = 'rounded' })
 
     local signs = { Error = ' ', Warn = ' ', Hint = '󰌵 ', Info = ' ' }
     for type, icon in pairs(signs) do
