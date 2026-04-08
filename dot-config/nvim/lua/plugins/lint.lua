@@ -9,6 +9,8 @@ return {
       typescript = { 'eslint_d' },
       javascriptreact = { 'eslint_d' },
       typescriptreact = { 'eslint_d' },
+      terraform = { "terraform_validate" },
+      tf = { "terraform_validate" },
       -- c = { 'cpplint' },
       -- python = { 'pylint' },
     }
