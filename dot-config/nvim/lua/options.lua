@@ -22,28 +22,7 @@ vim.o.laststatus = 2
 vim.o.tabstop = 4
 vim.o.softtabstop = 4
 vim.o.shiftwidth = 4
--- augroup('setIndent', { clear = true })
--- local augroup = vim.api.nvim_create_augroup
--- local autocmd = vim.api.nvim_create_autocmd
--- augroup('setIndent', { clear = true })
--- autocmd('Filetype', {
---   group = 'setIndent',
---   pattern = {
---     -- "html",
---     -- "htmldjango",
---     -- "css",
---     -- "json",
---     -- "lua",
---     -- "javascript",
---     -- "markdown",
---     -- "text",
---     -- "vimwiki",
---     -- "java",
---     -- "javascriptreact",
---     -- "php",
---   },
---   command = [[setlocal shiftwidth=2 tabstop=2]],
--- })
+vim.o.autoindent = true
 
 vim.o.backup = false
 vim.o.swapfile = false
@@ -65,12 +44,12 @@ vim.o.winborder = 'rounded'
 ---------------------------------------------------------------
 
 -- Decrease update time
-vim.opt.updatetime = 250
+vim.o.updatetime = 250
 
 -- Decrease mapped sequence wait time
 -- Displays which-key popup sooner
-vim.opt.timeoutlen = 300
+vim.o.timeoutlen = 300
 
 -- Preview substitutions live, as you type!
-vim.opt.inccommand = 'split'
+vim.o.inccommand = 'split'
 
