@@ -47,7 +47,7 @@ return {
     -- toggle fugitive status with ld..gs
     local function showFugitiveGit()
       if vim.fn.FugitiveHead() ~= '' then
-        vim.cmd [[ tab Git ]]
+        vim.cmd [[ 0Git ]]
         vim.cmd [[ execute ":set nonumber norelativenumber" ]]
       end
     end
