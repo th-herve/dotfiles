@@ -61,8 +61,12 @@ return {
     end
     key('n', ld .. 'gs', toggleFugitiveGit, opts) -- has to use the leader key, otherwise it won't close
 
-    vim.cmd [[
-        autocmd BufNewFile COMMIT_EDITMSG exec set nonumber norelativenumber
-      ]]
+    vim.api.nvim_create_autocmd("FileType", {
+      pattern = { "fugitive", "gitcommit" },
+      callback = function()
+        vim.opt_local.number = false
+        vim.opt_local.relativenumber = false
+      end,
+    })
   end,
 }
