@@ -174,10 +174,10 @@ alias egrep='egrep --color=auto'
 
 # ls aliases, mostly replace it with exa
 alias ls='ls --color=auto'
-alias l='exa -l --icons'
-alias la='exa -la --icons'
+alias l='exa -l --icons always'
+alias la='exa -la --icons always'
 alias ll='ls -CF'
-alias tree='exa -T --icons'
+alias tree='exa -T --icons always'
 export EXA_COLORS="da=30:uu=0:fi=1;35:di=34"
 
 # feh
